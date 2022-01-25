@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Smoke" thread-count="3" parallel="tests">
+    <test name="Login + exercises">
+        <parameter name="browser" value="Chrome"></parameter>
+        <classes>
+            <class name="JeFit.Test.LoginTest">
+                <methods>
+                    <exclude name="loginPositiveTest"></exclude>
+                </methods>
+            </class>
+            <class name="JeFit.Test.ExercisesTest"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Profile">
+        <parameter name="browser" value="Edge"></parameter>
+        <classes>
+            <class name="JeFit.Test.ProfileTest"/>
+        </classes>
+    </test> <!-- Test -->
+</suite>
