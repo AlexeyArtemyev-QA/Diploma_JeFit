@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import utils.AllureUtils;
 
 public class TestListener implements ITestListener {
 
@@ -31,14 +30,14 @@ public class TestListener implements ITestListener {
 //        File distFile = new File("C:\\dev\\Linker\\target/screenshot1.png");
 //        FileUtils.copyFile(file, distFile);
 
-        WebDriver driver = (WebDriver)(result.getAttribute("driver"));
-        AllureUtils.attachScreenshot(driver);
+//        WebDriver driver = (WebDriver)(result.getAttribute("driver"));
+//        AllureUtils.attachScreenshot(driver);
 
 
-        // Скриншот
-       // System.out.println(String.format("Test '%s' failed", result.getName()));
-       // WebDriver driver = (WebDriver)(result.getTestContext().getAttribute("driver"));
-       //  AllureUtils.attachScreenshot(driver);
+         //Скриншот
+        System.out.println(String.format("Test '%s' failed", result.getName()));
+        WebDriver driver = (WebDriver)(result.getTestContext().getAttribute("driver"));
+         //AllureUtils.attachScreenshot(driver);
     }
 
     @Override

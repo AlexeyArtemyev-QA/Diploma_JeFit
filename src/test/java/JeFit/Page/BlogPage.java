@@ -48,9 +48,10 @@ public class BlogPage extends BasePage {
         GENERAL_FITNESS_INPUT.click();
     }
 
-    public static void selectNutritionTips() {
+    public static void selectNutritionTips() throws InterruptedException {
         log.info("click on nutrition tips");
         NUTRITION_TIPS_INPUT.click();
+        Thread.sleep(10000);
     }
 
     public static void selectProductTipsAndFAQ() {

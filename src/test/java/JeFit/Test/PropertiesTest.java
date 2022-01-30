@@ -114,8 +114,4 @@ public class PropertiesTest {
     public static final By WHAT_S_NEW_INPUT = By.cssSelector("[data-category='4']");
     public static final By WORKOUT_TIPS_INPUT = By.cssSelector("[data-category='673']");
     public static final By SEARCH_TOPICS_INPUT = By.cssSelector("[type='search']");
-
-
-
-
 }
