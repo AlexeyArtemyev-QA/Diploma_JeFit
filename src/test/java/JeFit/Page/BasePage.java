@@ -23,6 +23,5 @@ public abstract class BasePage {
         return driver.getCurrentUrl();
     }
 
-    public abstract void get(String urlLogin);
 
 }

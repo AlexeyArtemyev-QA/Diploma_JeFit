@@ -12,10 +12,7 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    @Override
-    public void get(String urlLogin) {
 
-    }
     // Методы
    public void enterUserName(String userName) {
         log.info("Enter the User Name");

@@ -7,6 +7,7 @@ public class PropertiesTest {
     public final static String URL_LOGIN = "https://www.jefit.com/login/";
     public final static String URL_PROFILE = "https://www.jefit.com/my-jefit/profile/";
     public final static String URL_EXERCISES = "https://www.jefit.com/exercises/";
+    public final static String URL_BLOG = "https://www.jefit.com/blog";
 
     // LoginPage
     public static final By USERNAME_INPUT = By.cssSelector("[id='navbar_username']");
@@ -103,4 +104,18 @@ public class PropertiesTest {
     public static final By GLUTES_DATABASE_RESULT = By.xpath("//strong[text()='Glutes Exercise Database']");
     public static final By SHOULDERS_DATABASE_INPUT = By.cssSelector("[href='http://www.jefit.com/exercises/bodypart.php?id=6&exercises=Shoulders']");
     public static final By SHOULDERS_DATABASE_RESULT = By.xpath("//strong[text()='Shoulders Exercise Database']");
+
+    //BlogPage
+    public static final By ALL_INPUT = By.xpath("//a[text()='All']");
+    public static final By EXERCISE_TIPS_INPUT = By.cssSelector("[data-category='638']");
+    public static final By GENERAL_FITNESS_INPUT = By.cssSelector("[data-category='1244']");
+    public static final By NUTRITION_TIPS_INPUT = By.cssSelector("[data-category='674']");
+    public static final By PRODUCT_TIPS_AND_FAQ_INPUT = By.cssSelector("[data-category='1270']");
+    public static final By WHAT_S_NEW_INPUT = By.cssSelector("[data-category='4']");
+    public static final By WORKOUT_TIPS_INPUT = By.cssSelector("[data-category='673']");
+    public static final By SEARCH_TOPICS_INPUT = By.cssSelector("[type='search']");
+
+
+
+
 }

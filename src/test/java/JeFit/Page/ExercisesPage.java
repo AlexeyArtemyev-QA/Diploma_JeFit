@@ -12,10 +12,6 @@ public class ExercisesPage extends BasePage {
         super(driver);
     }
 
-    @Override
-    public void get(String urlLogin) {
-
-    }
 
     public void clickSearchButton() {
         log.info("Search by name. click search button ");
@@ -136,4 +132,5 @@ public class ExercisesPage extends BasePage {
     public String atPage() {
         return driver.getCurrentUrl();
     }
+
 }

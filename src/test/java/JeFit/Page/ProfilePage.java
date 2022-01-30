@@ -17,10 +17,7 @@ public class ProfilePage extends BasePage {
         super(driver);
     }
 
-    @Override
-    public void get(String urlLogin) {
 
-    }
 
     // Методы
     public void clickCheckBoxOnIbInch (){

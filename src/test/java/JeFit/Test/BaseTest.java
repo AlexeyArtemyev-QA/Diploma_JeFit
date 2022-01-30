@@ -1,5 +1,6 @@
 package JeFit.Test;
 
+import JeFit.Page.BlogPage;
 import JeFit.Page.ExercisesPage;
 import JeFit.Page.LoginPage;
 import JeFit.Page.ProfilePage;
@@ -18,6 +19,7 @@ public abstract class BaseTest {
     protected LoginPage loginPage;
     protected ProfilePage profilePage;
     protected ExercisesPage exercisesPage;
+    protected BlogPage blogPage;
 
 
     @Parameters({"browser"})
