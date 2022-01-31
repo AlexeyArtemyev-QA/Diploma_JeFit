@@ -19,13 +19,6 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
         driver.get(URL_EXERCISES);
     }
 
-    //    @AfterMethod
-//    public void clearCookies() {
-//        driver.manage().deleteAllCookies();
-//        driver.close();
-//        driver.quit();
-//    }
-
     // Exercise Search
     @Link("https://www.jefit.com/exercises/")
     @Test(alwaysRun = true, description = "Exercise Search with parameters: equipment - body only, type - strength, difficulty - beginner", invocationCount = 1, threadPoolSize = 1)
@@ -35,7 +28,11 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
         exercisesPage.checkBoxSearchStrength();
         exercisesPage.checkBoxSearchBeginner();
         exercisesPage.clickSearchButton();
-        // Assert.assertEquals(exercisesPage.atPage(),);
+
+        int a = driver.findElements(By.xpath("//p[text()='Equipment : Body Only ']")).size();
+System.out.println(a);
+//        String result = driver.findElement().getText();
+//        Assert.assertEquals(result, "");
     }
 
     @Link("https://www.jefit.com/exercises/")
@@ -46,7 +43,9 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
         exercisesPage.checkBoxSearchStretching();
         exercisesPage.checkBoxSearchIntermediate();
         exercisesPage.clickSearchButton();
-//        Assert.assertEquals(exercisesPage.atPage());
+
+//        String result = driver.findElement().getText();
+//        Assert.assertEquals(result, "");
     }
 
     @Link("https://www.jefit.com/exercises/")
@@ -57,7 +56,9 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
         exercisesPage.checkBoxSearchPowerlifting();
         exercisesPage.checkBoxSearchExpert();
         exercisesPage.clickSearchButton();
-//        Assert.assertEquals(exercisesPage.atPage());
+
+//        String result = driver.findElement().getText();
+//        Assert.assertEquals(result, "");
     }
 
     @Link("https://www.jefit.com/exercises/")
@@ -68,9 +69,13 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
         exercisesPage.checkBoxSearchOlympic();
         exercisesPage.checkBoxSearchExpert();
         exercisesPage.clickSearchButton();
-//        Assert.assertEquals(exercisesPage.atPage());
+
+
+//        String result = driver.findElement().getText();
+//        Assert.assertEquals(result, "");
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Exercise Database
     @Link("https://www.jefit.com/exercises/")
     @Test(alwaysRun = true, description = "Exercise Database. Glutes", invocationCount = 1, threadPoolSize = 1)
@@ -84,7 +89,7 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
     @Test(alwaysRun = true, description = "Exercise Database. Biceps", invocationCount = 1, threadPoolSize = 1)
     public void searchTestSix() {
         exercisesPage.clickDataBaseBiceps();
-        String result = driver.findElement(BICEPS_DATABASE_INPUT).getText();
+        String result = driver.findElement(BICEPS_DATABASE_RESULT).getText();
         Assert.assertEquals(result, "Biceps Exercise Database");
     }
 

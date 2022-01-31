@@ -79,6 +79,7 @@ public class ProfilePage extends BasePage {
     }
 
     public boolean checkBoxIsSelected() {
+        log.info("Check that check-box selected");
         return driver.findElement(CHECKBOX_INPUT).isSelected();
     }
 
