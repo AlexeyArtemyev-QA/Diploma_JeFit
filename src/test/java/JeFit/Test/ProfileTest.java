@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.AllureUtils;
@@ -30,12 +30,13 @@ public class ProfileTest extends JeFit.Test.BaseTest {
         AllureUtils.attachScreenshot(driver);
     }
 
-    @AfterTest(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     @Description("Close browser")
     public void signOut() {
         Actions actions = new Actions(driver);
         WebElement menuOption = driver.findElement(By.cssSelector("#my-jefit-app-menu"));
         actions.moveToElement(menuOption).perform();
+        driver.findElement(By.xpath("//a[text()='Sign out']")).click();
         // new Actions(driver).moveToElement((WebElement) MY_JEFIT_BUTTON).perform();
         // driver.findElement(MY_JEFIT_BUTTON).click();
         // driver.findElement(SIGNOUT_BUTTON).click();

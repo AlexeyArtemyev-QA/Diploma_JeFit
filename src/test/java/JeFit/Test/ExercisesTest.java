@@ -21,61 +21,52 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
 
     // Exercise Search
     @Link("https://www.jefit.com/exercises/")
-    @Test(alwaysRun = true, description = "Exercise Search with parameters: equipment - body only, type - strength, difficulty - beginner", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - body only, type - strength, difficulty - beginner", invocationCount = 1, threadPoolSize = 1)
     public void searchTestOne() {
         exercisesPage.checkBoxSearchBodyOnly();
         driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL, Keys.END);
         exercisesPage.checkBoxSearchStrength();
         exercisesPage.checkBoxSearchBeginner();
         exercisesPage.clickSearchButton();
-
         int a = driver.findElements(By.xpath("//p[text()='Equipment : Body Only ']")).size();
-System.out.println(a);
-//        String result = driver.findElement().getText();
-//        Assert.assertEquals(result, "");
+        System.out.println(a);
+        Assert.assertEquals(a, 10);
+        int b = driver.findElements(By.xpath("//p[text()='Type : Strength ']")).size();
+        Assert.assertEquals(b, 10);
     }
 
     @Link("https://www.jefit.com/exercises/")
-    @Test(alwaysRun = true, description = "Exercise Search with parameters: equipment - all, type - stretching, difficulty - intermediate", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - all, type - stretching, difficulty - intermediate", invocationCount = 1, threadPoolSize = 1)
     public void searchTestTwo() {
         exercisesPage.checkBoxSearchAll();
         driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL, Keys.END);
         exercisesPage.checkBoxSearchStretching();
         exercisesPage.checkBoxSearchIntermediate();
         exercisesPage.clickSearchButton();
-
-//        String result = driver.findElement().getText();
-//        Assert.assertEquals(result, "");
+        int b = driver.findElements(By.xpath("//p[text()='Type : Stretching ']")).size();
+        Assert.assertEquals(b, 10);
     }
 
     @Link("https://www.jefit.com/exercises/")
-    @Test(alwaysRun = true, description = "Exercise Search with parameters: equipment - machine cardio, type - powerlifting, difficulty - expert", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - machine cardio, type - powerlifting, difficulty - expert", invocationCount = 1, threadPoolSize = 1)
     public void searchTestThree() {
         exercisesPage.checkBoxSearchMachineCardio();
-        ((JavascriptExecutor)driver).executeScript("scroll(0,400)");
+        ((JavascriptExecutor) driver).executeScript("scroll(0,400)");
         exercisesPage.checkBoxSearchPowerlifting();
         exercisesPage.checkBoxSearchExpert();
         exercisesPage.clickSearchButton();
-
-//        String result = driver.findElement().getText();
-//        Assert.assertEquals(result, "");
     }
 
     @Link("https://www.jefit.com/exercises/")
-    @Test(alwaysRun = true, description = "Exercise Search with parameters: equipment - weight plat, type - olympic, difficulty - expert", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - weight plat, type - olympic, difficulty - expert", invocationCount = 1, threadPoolSize = 1)
     public void searchTestFour() {
-        ((JavascriptExecutor)driver).executeScript("scroll(0,400)");
+        ((JavascriptExecutor) driver).executeScript("scroll(0,400)");
         exercisesPage.checkBoxSearchWeightPlate();
         exercisesPage.checkBoxSearchOlympic();
         exercisesPage.checkBoxSearchExpert();
         exercisesPage.clickSearchButton();
-
-
-//        String result = driver.findElement().getText();
-//        Assert.assertEquals(result, "");
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Exercise Database
     @Link("https://www.jefit.com/exercises/")
     @Test(alwaysRun = true, description = "Exercise Database. Glutes", invocationCount = 1, threadPoolSize = 1)
