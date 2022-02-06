@@ -37,9 +37,6 @@ public class ProfileTest extends JeFit.Test.BaseTest {
         WebElement menuOption = driver.findElement(By.cssSelector("#my-jefit-app-menu"));
         actions.moveToElement(menuOption).perform();
         driver.findElement(By.xpath("//a[text()='Sign out']")).click();
-        // new Actions(driver).moveToElement((WebElement) MY_JEFIT_BUTTON).perform();
-        // driver.findElement(MY_JEFIT_BUTTON).click();
-        // driver.findElement(SIGNOUT_BUTTON).click();
     }
 
     @Link("https://www.jefit.com/my-jefit/profile/")
@@ -53,7 +50,6 @@ public class ProfileTest extends JeFit.Test.BaseTest {
         Assert.assertEquals(profilePage.atprofilePage(), "https://www.jefit.com/my-jefit/");
     }
 
-    //
     @Link("https://www.jefit.com/my-jefit/profile/")
     @Test(alwaysRun = true, description = "Тест настройка параметров для пользователя № 2 (JeFit)", invocationCount = 1, threadPoolSize = 1)
     public void profilePositiveModifyDataTestVersionTwo() {

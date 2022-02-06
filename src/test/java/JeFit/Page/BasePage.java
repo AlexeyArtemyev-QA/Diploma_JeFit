@@ -4,11 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
-// Для logger использовать аннотации ниже
-//import org.apache.logging.log4j.LogManager;
-//import org.apache.logging.log4j.Logger;
-
-
 public abstract class BasePage {
 
     WebDriver driver;

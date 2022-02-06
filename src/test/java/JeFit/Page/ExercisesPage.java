@@ -1,6 +1,7 @@
 package JeFit.Page;
 
 import lombok.extern.log4j.Log4j2;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import static JeFit.Test.PropertiesTest.*;
@@ -12,6 +13,16 @@ public class ExercisesPage extends BasePage {
         super(driver);
     }
 
+    public static final int EXERCISE_RESULT_ARRAY = 10;
+
+    public final static String GLUTES = "Glutes Exercise Database";
+    public final static String BICEPS = "Biceps Exercise Database";
+    public final static String SHOULDERS = "Shoulders Exercise Database";
+    public final static String TRICEPS = "Triceps Exercise Database";
+    public final static String CHEST = "Chest Exercise Database";
+    public final static String ABS = "Abs Exercise Database";
+    public final static String BACK = "Back Exercise Database";
+    public final static String LOWER_LEGS_RESULT = "Lower-Legs Exercise Database";
 
     public void clickSearchButton() {
         log.info("Search by name. click search button ");

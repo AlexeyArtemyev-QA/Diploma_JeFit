@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import utils.AllureUtils;
 
 public class TestListener implements ITestListener {
 
@@ -24,20 +25,10 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         ITestListener.super.onTestFailure(result);
-
-        // Делает скриншот и сохраняет его в target
-//        File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-//        File distFile = new File("C:\\dev\\Linker\\target/screenshot1.png");
-//        FileUtils.copyFile(file, distFile);
-
-//        WebDriver driver = (WebDriver)(result.getAttribute("driver"));
-//        AllureUtils.attachScreenshot(driver);
-
-
-         //Скриншот
+        //Скриншот
         System.out.println(String.format("Test '%s' failed", result.getName()));
         WebDriver driver = (WebDriver)(result.getTestContext().getAttribute("driver"));
-         //AllureUtils.attachScreenshot(driver);
+        AllureUtils.attachScreenshot(driver);
     }
 
     @Override

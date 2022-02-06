@@ -9,9 +9,11 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import static JeFit.Page.BlogPage.RESULT;
 import static JeFit.Test.PropertiesTest.URL_BLOG;
 @Log4j2
 public class BlogTest extends BaseTest {
+
 
     @BeforeTest(alwaysRun = true)
     public void navigateToLoginPage() {
@@ -22,7 +24,6 @@ public class BlogTest extends BaseTest {
     @AfterTest(alwaysRun = true)
     public void tearDown() {
         driver.manage().deleteAllCookies();
-        driver.close();
         driver.quit();
     }
 
@@ -37,8 +38,7 @@ public class BlogTest extends BaseTest {
     public void blogExerciseTips() {
         blogPage.selectExerciseTips();
         int a =  driver.findElements(By.cssSelector("span[class='raven-post-meta-item raven-post-categories']")).size();
-        System.out.println(a);
-        Assert.assertEquals(a,9);
+        Assert.assertEquals(a, RESULT);
     }
 
     @Link("https://www.jefit.com/blog")
@@ -46,17 +46,15 @@ public class BlogTest extends BaseTest {
     public void blogGeneralFitness() {
         blogPage.selectGeneralFitness();
         int a =  driver.findElements(By.cssSelector("span[class='raven-post-meta-item raven-post-categories']")).size();
-        System.out.println(a);
-        Assert.assertEquals(a,9);
+        Assert.assertEquals(a, RESULT);
     }
 
     @Link("https://www.jefit.com/blog")
     @Test(alwaysRun = true, description = "Blog.", invocationCount = 1, threadPoolSize = 1)
-    public void blogNutritionTips() throws InterruptedException {
+    public void blogNutritionTips() {
         blogPage.selectNutritionTips();
         int a =  driver.findElements(By.cssSelector("span[class='raven-post-meta-item raven-post-categories']")).size();
-        System.out.println(a);
-        Assert.assertEquals(a,9);
+        Assert.assertEquals(a, RESULT);
     }
 
     @Link("https://www.jefit.com/blog")
@@ -64,8 +62,7 @@ public class BlogTest extends BaseTest {
     public void blogProductTipsAndFAQ() {
         blogPage.selectProductTipsAndFAQ();
         int a =  driver.findElements(By.cssSelector("span[class='raven-post-meta-item raven-post-categories']")).size();
-        System.out.println(a);
-        Assert.assertEquals(a,9);
+        Assert.assertEquals(a, RESULT);
     }
 
     @Link("https://www.jefit.com/blog")
@@ -73,8 +70,7 @@ public class BlogTest extends BaseTest {
     public void blogWhatsNew() {
         blogPage.selectWhatsNew();
         int a =  driver.findElements(By.cssSelector("span[class='raven-post-meta-item raven-post-categories']")).size();
-        System.out.println(a);
-        Assert.assertEquals(a,9);
+        Assert.assertEquals(a, RESULT);
     }
 
     @Link("https://www.jefit.com/blog")
@@ -82,7 +78,6 @@ public class BlogTest extends BaseTest {
     public void blogWorkoutTips() {
         blogPage.selectWorkoutTips();
         int a =  driver.findElements(By.cssSelector("span[class='raven-post-meta-item raven-post-categories']")).size();
-        System.out.println(a);
-        Assert.assertEquals(a,9);
+        Assert.assertEquals(a, RESULT);
     }
 }

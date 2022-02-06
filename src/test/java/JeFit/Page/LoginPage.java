@@ -12,7 +12,6 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-
     // Методы
    public void enterUserName(String userName) {
         log.info("Enter the User Name");

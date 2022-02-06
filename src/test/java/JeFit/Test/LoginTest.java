@@ -13,7 +13,6 @@ import java.io.IOException;
 
 import static JeFit.Test.PropertiesTest.*;
 
-
 public class LoginTest extends JeFit.Test.BaseTest {
 
     @BeforeTest(alwaysRun = true)

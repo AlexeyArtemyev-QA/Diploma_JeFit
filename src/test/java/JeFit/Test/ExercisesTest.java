@@ -9,6 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static JeFit.Page.ExercisesPage.*;
 import static JeFit.Test.PropertiesTest.*;
 
 public class ExercisesTest extends JeFit.Test.BaseTest {
@@ -30,9 +31,9 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
         exercisesPage.clickSearchButton();
         int a = driver.findElements(By.xpath("//p[text()='Equipment : Body Only ']")).size();
         System.out.println(a);
-        Assert.assertEquals(a, 10);
+        Assert.assertEquals(a, EXERCISE_RESULT_ARRAY);
         int b = driver.findElements(By.xpath("//p[text()='Type : Strength ']")).size();
-        Assert.assertEquals(b, 10);
+        Assert.assertEquals(b, EXERCISE_RESULT_ARRAY);
     }
 
     @Link("https://www.jefit.com/exercises/")
@@ -44,7 +45,7 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
         exercisesPage.checkBoxSearchIntermediate();
         exercisesPage.clickSearchButton();
         int b = driver.findElements(By.xpath("//p[text()='Type : Stretching ']")).size();
-        Assert.assertEquals(b, 10);
+        Assert.assertEquals(b, EXERCISE_RESULT_ARRAY);
     }
 
     @Link("https://www.jefit.com/exercises/")
@@ -73,7 +74,7 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
     public void searchTestFive() {
         exercisesPage.clickDataBaseGlutes();
         String result = driver.findElement(GLUTES_DATABASE_RESULT).getText();
-        Assert.assertEquals(result, "Glutes Exercise Database");
+        Assert.assertEquals(result, GLUTES);
     }
 
     @Link("https://www.jefit.com/exercises/")
@@ -81,7 +82,7 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
     public void searchTestSix() {
         exercisesPage.clickDataBaseBiceps();
         String result = driver.findElement(BICEPS_DATABASE_RESULT).getText();
-        Assert.assertEquals(result, "Biceps Exercise Database");
+        Assert.assertEquals(result, BICEPS);
     }
 
     @Link("https://www.jefit.com/exercises/")
@@ -89,7 +90,7 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
     public void searchTestSeven() {
         exercisesPage.clickDataBaseShoulders();
         String result = driver.findElement(SHOULDERS_DATABASE_RESULT).getText();
-        Assert.assertEquals(result, "Shoulders Exercise Database");
+        Assert.assertEquals(result, SHOULDERS);
     }
 
     // Picture
@@ -98,7 +99,7 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
     public void searchTestEight() {
         exercisesPage.clickPictureTriceps();
         String result = driver.findElement(PICTURE_RESULT).getText();
-        Assert.assertEquals(result, "Triceps Exercise Database");
+        Assert.assertEquals(result, TRICEPS);
     }
 
     @Link("https://www.jefit.com/exercises/")
@@ -106,7 +107,7 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
     public void searchTestNine() {
         exercisesPage.clickPictureChest();
         String result = driver.findElement(PICTURE_RESULT).getText();
-        Assert.assertEquals(result, "Chest Exercise Database");
+        Assert.assertEquals(result, CHEST);
     }
 
     @Link("https://www.jefit.com/exercises/")
@@ -114,7 +115,7 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
     public void searchTestTen() {
         exercisesPage.clickPictureAbs();
         String result = driver.findElement(PICTURE_RESULT).getText();
-        Assert.assertEquals(result, "Abs Exercise Database");
+        Assert.assertEquals(result, ABS);
     }
 
     @Link("https://www.jefit.com/exercises/")
@@ -122,7 +123,7 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
     public void searchTestEleven() {
         exercisesPage.clickPictureBack();
         String result = driver.findElement(PICTURE_RESULT).getText();
-        Assert.assertEquals(result, "Back Exercise Database");
+        Assert.assertEquals(result, BACK);
     }
 
     @Link("https://www.jefit.com/exercises/")
@@ -130,6 +131,6 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
     public void searchTestTwelve() {
         exercisesPage.clickPictureLowerLegs();
         String result = driver.findElement(PICTURE_RESULT).getText();
-        Assert.assertEquals(result, "Lower-Legs Exercise Database");
+        Assert.assertEquals(result, LOWER_LEGS_RESULT);
     }
 }

@@ -17,8 +17,6 @@ public class ProfilePage extends BasePage {
         super(driver);
     }
 
-
-
     // Методы
     public void clickCheckBoxOnIbInch (){
         log.info("Select check-box Ib/inch");
