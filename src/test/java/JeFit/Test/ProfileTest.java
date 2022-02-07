@@ -13,7 +13,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.AllureUtils;
 
-import static JeFit.Test.PropertiesTest.*;
+import static JeFit.Page.BasePage.URL_MY_JIFIT;
+import static JeFit.Page.BasePage.URL_PROFILE;
+import static JeFit.Page.LoginPage.PASSWORD;
+import static JeFit.Page.LoginPage.USERNAME;
 
 @Log4j2
 public class ProfileTest extends JeFit.Test.BaseTest {
@@ -47,7 +50,7 @@ public class ProfileTest extends JeFit.Test.BaseTest {
         profilePage.clickCheckBoxOnIbInch();
         profilePage.clickCheckBoxOnGenderMan();
         profilePage.clickButtonSaved();
-        Assert.assertEquals(profilePage.atprofilePage(), "https://www.jefit.com/my-jefit/");
+        Assert.assertEquals(profilePage.atprofilePage(), URL_MY_JIFIT);
     }
 
     @Link("https://www.jefit.com/my-jefit/profile/")
@@ -57,7 +60,7 @@ public class ProfileTest extends JeFit.Test.BaseTest {
         profilePage.clickCheckBoxOnKgCm();
         profilePage.clickCheckBoxOnGenderWoman();
         profilePage.clickButtonSaved();
-        Assert.assertEquals(profilePage.atprofilePage(), "https://www.jefit.com/my-jefit/");
+        Assert.assertEquals(profilePage.atprofilePage(), URL_MY_JIFIT);
     }
 
     @Link("https://www.jefit.com/my-jefit/profile/")
@@ -67,6 +70,6 @@ public class ProfileTest extends JeFit.Test.BaseTest {
         profilePage.clickCheckBoxOnIbInch();
         profilePage.clickCheckBoxOnGenderWoman();
         profilePage.clickButtonSaved();
-        Assert.assertEquals(profilePage.atprofilePage(), "https://www.jefit.com/my-jefit/");
+        Assert.assertEquals(profilePage.atprofilePage(), URL_MY_JIFIT);
     }
 }

@@ -8,10 +8,47 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static JeFit.Test.PropertiesTest.*;
+import static JeFit.Page.LoginPage.*;
 
 @Log4j2
 public class ProfilePage extends BasePage {
+
+    public static final By MONTH_INPUT = By.cssSelector("[name='month']");
+    public static final By MONTH_JANUARY_1_INPUT = By.xpath("//option[text()='January']");
+    public static final By MONTH_OCTOBER_10_INPUT = By.xpath("//option[text()='October']");
+    public static final By MONTH_DECEMBER_12_INPUT = By.xpath("//option[text()='December']");
+
+    public static final By DAY_INPUT = By.xpath("//select[@name='dt']");
+    public static final By DAY_INPUT_1 = By.xpath("//option[text()='1']");
+    public static final By DAY_INPUT_30 = By.xpath("//option[text()='30']");
+    public static final By DAY_INPUT_31 = By.xpath("//option[text()='31']");
+
+    public static final By YEAR_INPUT = By.xpath("//select[@name='year']");
+    public static final By YEAR_INPUT_1921 = By.xpath("//option[@value='1921']");
+    public static final By YEAR_INPUT_1996 = By.xpath("//option[@value='1996']");
+    public static final By YEAR_INPUT_2010 = By.xpath("//option[@value='2010']");
+
+    public static final By CHECKBOX_IB_INCH_INPUT = By.id("unitradio");
+    public static final By CHECKBOX_KG_CM_INPUT = By.cssSelector("[style='margin-left:12px']");
+
+    public static final By HEIGTH_INPUT = By.id("heightinput");
+
+    public static final By WEIGHT_INPUT = By.id("weightinput");
+
+    public static final By CHECKBOX_GENDER_MAN_INPUT = By.cssSelector("input[value='M']");
+    public static final By CHECKBOX_GENDER_WOMAN_INPUT = By.cssSelector("input[value='F']");
+
+    public static final By SAVE_BUTTON_INPUT = By.cssSelector("[name='Submit']");
+
+    // public static final By SAVE_BUTTON_INPUT = By.cssSelector("input[name='Submit']");
+
+    public static final By HEIGTH1_INPUT_1 = By.xpath("//select[@id='feetP']//ancestor::option[@value='1']");
+    public static final By HEIGTH1_INPUT_4 = By.xpath("//select[@id='feetP']//ancestor::option[@value='4']");
+    public static final By HEIGTH1_INPUT_8 = By.xpath("//select[@id='feetP']//ancestor::option[@value='8']");
+
+    public static final By HEIGTH2_INPUT_1 = By.xpath("//select[@id='inchP']//ancestor::option[@value='1']");
+    public static final By HEIGTH2_INPUT_5 = By.xpath("//select[@id='inchP']//ancestor::option[@value='5']");
+    public static final By HEIGTH2_INPUT_11 = By.xpath("//select[@id='inchP']//ancestor::option[@value='11']");
 
     public ProfilePage(WebDriver driver) {
         super(driver);

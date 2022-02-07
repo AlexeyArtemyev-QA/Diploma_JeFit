@@ -4,10 +4,56 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import static JeFit.Test.PropertiesTest.*;
 
 @Log4j2
 public class ExercisesPage extends BasePage {
+
+    // ExercisesPage
+    // Лскаторы Picture
+    public static final By TRICEPS_PICTURE_INPUT = By.cssSelector("[href='bodypart.php?id=7&exercises=Triceps']");
+    public static final By CHEST_PICTURE_INPUT = By.cssSelector("[href='bodypart.php?id=3&exercises=Chest']");
+    public static final By BACK_PICTURE_INPUT = By.cssSelector("[href='bodypart.php?id=1&exercises=Back']");
+    public static final By ABS_PICTURE_INPUT = By.cssSelector("[href='bodypart.php?id=0&exercises=Abs']");
+    public static final By LOWER_LEGS_PICTURE_INPUT = By.cssSelector("[href='bodypart.php?id=9&exercises=Lower-Legs']");
+    public static final By VIEW_ALL_EXERCISES_PICTURE_INPUT = By.cssSelector("[href='bodypart.php?id=11&exercises=All']");
+
+    public static final By PICTURE_RESULT = By.id("bodyparttext");
+
+    public static final By RESULT_BODY_ONLY = By.xpath("//p[text()='Equipment : Body Only ']");
+    public static final By RESULT_STRENGTH = By.xpath("//p[text()='Type : Strength ']");
+    public static final By RESULT_STRETCHING = By.xpath("//p[text()='Type : Stretching ']");
+
+    // Локаторы Exercise Search
+    // Equipment
+    public static final By ALL_EXERCISE_SEARCH_INPUT = By.cssSelector("[name='All']");
+    public static final By BODY_ONLY_EXERCISE_SEARCH_INPUT = By.cssSelector("[name='BodyOnly']");
+    public static final By MACHINE_CARDIO_EXERCISE_SEARCH_INPUT = By.cssSelector("[name='MachineCardio']");
+    public static final By WEIGHT_PLATE_EXERCISE_SEARCH_INPUT = By.cssSelector("[name='WeightPlate']");
+
+    //Type
+    public static final By STRENGTH_EXERCISE_SEARCH_INPUT = By.cssSelector("[name='Strength']");
+    public static final By STRETCHING_EXERCISE_SEARCH_INPUT = By.cssSelector("[name='Stretching']");
+    public static final By POWERLIFTING_EXERCISE_SEARCH_INPUT = By.cssSelector("[name='Powerlifting']");
+    public static final By OLYMPIC_EXERCISE_SEARCH_INPUT = By.cssSelector("[name='OlympicWeightLifting']");
+
+    // Difficulty
+    public static final By BEGINNER_EXERCISE_SEARCH_INPUT = By.cssSelector("[name='Beginner']");
+    public static final By INTERMEDIATE_EXERCISE_SEARCH_INPUT = By.cssSelector("[name='Intermediate']");
+    public static final By EXPERT_EXERCISE_SEARCH_INPUT = By.cssSelector("[name='Expert']");
+
+    // Поиск по имени
+    public static final By SEARCH_EXERCISE_SEARCH_INPUT = By.id("searchText");
+
+    // Кнопка поиска
+    public static final By SEARCH_BUTTON_EXERCISE_SEARCH_INPUT = By.cssSelector("[class='statusblueButton']");
+
+    // DataBase
+    public static final By BICEPS_DATABASE_INPUT = By.cssSelector("[href='http://www.jefit.com/exercises/bodypart.php?id=2&exercises=Biceps']");
+    public static final By BICEPS_DATABASE_RESULT = By.xpath("//strong[text()='Biceps Exercise Database']");
+    public static final By GLUTES_DATABASE_INPUT = By.cssSelector("[href='http://www.jefit.com/exercises/bodypart.php?id=5&exercises=Glutes']");
+    public static final By GLUTES_DATABASE_RESULT = By.xpath("//strong[text()='Glutes Exercise Database']");
+    public static final By SHOULDERS_DATABASE_INPUT = By.cssSelector("[href='http://www.jefit.com/exercises/bodypart.php?id=6&exercises=Shoulders']");
+    public static final By SHOULDERS_DATABASE_RESULT = By.xpath("//strong[text()='Shoulders Exercise Database']");
 
     public ExercisesPage(WebDriver driver) {
         super(driver);
@@ -144,4 +190,21 @@ public class ExercisesPage extends BasePage {
         return driver.getCurrentUrl();
     }
 
+    public static int resultArrayBodyOnly() {
+        log.info("Considers numbers of elements");
+        int a = driver.findElements(RESULT_BODY_ONLY).size();
+        return a;
+    }
+
+    public static int resultArrayStrength() {
+        log.info("Considers numbers of elements");
+        int a = driver.findElements(RESULT_STRENGTH).size();
+        return a;
+    }
+
+    public static int resultArrayStretching() {
+        log.info("Considers numbers of elements");
+        int a = driver.findElements(RESULT_STRETCHING).size();
+        return a;
+    }
 }

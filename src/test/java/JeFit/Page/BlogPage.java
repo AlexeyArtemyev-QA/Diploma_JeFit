@@ -1,10 +1,10 @@
 package JeFit.Page;
 
 import lombok.extern.log4j.Log4j2;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
@@ -16,8 +16,9 @@ public class BlogPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public final static int RESULT = 9;
 
+    public final static int RESULT = 9;
+    public static final By ARRAY_LOCATOR = By.cssSelector("span[class='raven-post-meta-item raven-post-categories']");
 
     @FindBy(xpath = "//a[text()='All']")
     public static WebElement ALL_INPUT;
@@ -36,11 +37,7 @@ public class BlogPage extends BasePage {
     @FindBy(how = How.CSS, using = "[type='search']")
     private static WebElement SEARCH_TOPICS_INPUT;
 
-    //
-    @FindBy(css = "span[class='raven-post-meta-item raven-post-categories']")
-    private static WebElement ARRAY_LOCATOR;
 
-    //
     public void selectAll() {
         log.info("click on All");
         ALL_INPUT.click();
@@ -82,5 +79,10 @@ public class BlogPage extends BasePage {
         SEARCH_TOPICS_INPUT.click();
     }
 
+    public static int resultArray() {
+        log.info("Considers numbers of elements");
+        int a = driver.findElements(ARRAY_LOCATOR).size();
+        return a;
+    }
 
 }

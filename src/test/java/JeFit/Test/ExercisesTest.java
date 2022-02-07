@@ -9,8 +9,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
+
 import static JeFit.Page.ExercisesPage.*;
-import static JeFit.Test.PropertiesTest.*;
 
 public class ExercisesTest extends JeFit.Test.BaseTest {
 
@@ -29,11 +30,10 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
         exercisesPage.checkBoxSearchStrength();
         exercisesPage.checkBoxSearchBeginner();
         exercisesPage.clickSearchButton();
-        int a = driver.findElements(By.xpath("//p[text()='Equipment : Body Only ']")).size();
-        System.out.println(a);
-        Assert.assertEquals(a, EXERCISE_RESULT_ARRAY);
-        int b = driver.findElements(By.xpath("//p[text()='Type : Strength ']")).size();
-        Assert.assertEquals(b, EXERCISE_RESULT_ARRAY);
+        int sizeBodyOnly = exercisesPage.resultArrayBodyOnly();
+        Assert.assertEquals(sizeBodyOnly, EXERCISE_RESULT_ARRAY);
+        int sizeStrength = exercisesPage.resultArrayStrength();
+        Assert.assertEquals(sizeStrength, EXERCISE_RESULT_ARRAY);
     }
 
     @Link("https://www.jefit.com/exercises/")
@@ -44,8 +44,8 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
         exercisesPage.checkBoxSearchStretching();
         exercisesPage.checkBoxSearchIntermediate();
         exercisesPage.clickSearchButton();
-        int b = driver.findElements(By.xpath("//p[text()='Type : Stretching ']")).size();
-        Assert.assertEquals(b, EXERCISE_RESULT_ARRAY);
+        int sizeStretching = exercisesPage.resultArrayStretching();
+        Assert.assertEquals(sizeStretching, EXERCISE_RESULT_ARRAY);
     }
 
     @Link("https://www.jefit.com/exercises/")

@@ -9,9 +9,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utils.AllureUtils;
 
-import java.io.IOException;
-
-import static JeFit.Test.PropertiesTest.*;
+import static JeFit.Page.BasePage.URL_LOGIN;
+import static JeFit.Page.LoginPage.*;
 
 public class LoginTest extends JeFit.Test.BaseTest {
 
@@ -29,7 +28,7 @@ public class LoginTest extends JeFit.Test.BaseTest {
         loginPage.checkBoxClick();
         loginPage.loginButton();
         AllureUtils.attachScreenshot(driver);
-        Assert.assertEquals(loginPage.getErrorMessageText(), "Invalid username/email or password",
+        Assert.assertEquals(loginPage.getErrorMessageText(), ERROR_TEXT,
                 "ERROR:Unregistered user successfully logged in");
     }
 
@@ -41,7 +40,7 @@ public class LoginTest extends JeFit.Test.BaseTest {
         loginPage.checkBoxClick();
         loginPage.loginButton();
         AllureUtils.attachScreenshot(driver);
-        Assert.assertEquals(loginPage.getErrorMessageText(), "Invalid username/email or password",
+        Assert.assertEquals(loginPage.getErrorMessageText(), ERROR_TEXT,
                 "ERROR:User without UserName successfully logged in");
     }
 
@@ -53,19 +52,19 @@ public class LoginTest extends JeFit.Test.BaseTest {
         loginPage.checkBoxClick();
         loginPage.loginButton();
         AllureUtils.attachScreenshot(driver);
-        Assert.assertEquals(loginPage.getErrorMessageText(), "Invalid username/email or password",
+        Assert.assertEquals(loginPage.getErrorMessageText(), ERROR_TEXT,
                 "ERROR:User without password successfully logged in");
     }
 
     @Link("https://www.jefit.com/login/")
     @Test(alwaysRun = true, description = "[Positive] Login.", retryAnalyzer = JeFit.Test.Retry.class, invocationCount = 1, threadPoolSize = 1)
-    public void loginPositiveTest() throws IOException {
+    public void loginPositiveTest() {
         loginPage.enterUserName(USERNAME);
         loginPage.enterPassword(PASSWORD);
         loginPage.checkBoxIsSelected();
         loginPage.loginButton();
         AllureUtils.attachScreenshot(driver);
-        Assert.assertEquals(loginPage.atPage(), "https://www.jefit.com/my-jefit/", "ERROR:Positive test was failed");
+        Assert.assertEquals(loginPage.atPage(), URL_MY_JIFIT, "ERROR:Positive test was failed");
     }
 
     @Link("https://www.jefit.com/login/")
@@ -82,22 +81,21 @@ public class LoginTest extends JeFit.Test.BaseTest {
         String actualErrorMessageText = loginPage.getErrorMessageText();
         Assert.assertEquals(actualErrorMessageText, expectedErrorMessage1);
 
-
     }
 
     @DataProvider(name = "Negative Login Test")
     public Object[][] getNegativeLogin() {
         return new Object[][]{
-                {"Пользователь1", "Пароль", "Invalid username/email or password"},
-                {"User", "Password", "Invalid username/email or password"},
-                {"U", "P", "Invalid username/email or password"},
-                {"#@?!", "_*@#", "Invalid username/email or password"},
-                {"123Iv", "12345A", "Invalid username/email or password"},
-                {"drop table", "drop table", "Invalid username/email or password"},
-                {"", "PASSWORD", "Invalid username/email or password"},
-                {"USERNAME", "", "Invalid username/email or password"},
-                {" U s e r ", "PASSWORD", "Invalid username/email or password"},
-                {"User", " P A S S W O R D ", "Invalid username/email or password"},
+                {"Пользователь1", "Пароль", ERROR_TEXT},
+                {"User", "Password", ERROR_TEXT},
+                {"U", "P", ERROR_TEXT},
+                {"#@?!", "_*@#", ERROR_TEXT},
+                {"123Iv", "12345A", ERROR_TEXT},
+                {"drop table", "drop table", ERROR_TEXT},
+                {"", "PASSWORD", ERROR_TEXT},
+                {"USERNAME", "", ERROR_TEXT},
+                {" U s e r ", "PASSWORD", ERROR_TEXT},
+                {"User", " P A S S W O R D ", ERROR_TEXT},
         };
     }
 }
