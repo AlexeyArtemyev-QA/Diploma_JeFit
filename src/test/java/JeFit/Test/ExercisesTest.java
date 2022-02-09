@@ -24,9 +24,9 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
     // Exercise Search
     @Link("https://www.jefit.com/exercises/")
     @Test(alwaysRun = true, retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - body only, type - strength, difficulty - beginner", invocationCount = 1, threadPoolSize = 1)
-    public void searchTestOne() {
+    public void searchExerciseWithParametersBodyOnlyStrengthBeginnerTest() {
         exercisesPage.checkBoxSearchBodyOnly();
-        driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL, Keys.END);
+        exercisesPage.scrollPage();
         exercisesPage.checkBoxSearchStrength();
         exercisesPage.checkBoxSearchBeginner();
         exercisesPage.clickSearchButton();
@@ -38,9 +38,9 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
 
     @Link("https://www.jefit.com/exercises/")
     @Test(alwaysRun = true, retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - all, type - stretching, difficulty - intermediate", invocationCount = 1, threadPoolSize = 1)
-    public void searchTestTwo() {
+    public void searchExerciseWithParametersAllStretchingIntermediateTest() {
         exercisesPage.checkBoxSearchAll();
-        driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL, Keys.END);
+        exercisesPage.scrollPage();
         exercisesPage.checkBoxSearchStretching();
         exercisesPage.checkBoxSearchIntermediate();
         exercisesPage.clickSearchButton();
@@ -50,9 +50,9 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
 
     @Link("https://www.jefit.com/exercises/")
     @Test(alwaysRun = true, retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - machine cardio, type - powerlifting, difficulty - expert", invocationCount = 1, threadPoolSize = 1)
-    public void searchTestThree() {
+    public void searchExerciseWithParametersMachineCardioPowerliftingExpertTest() {
         exercisesPage.checkBoxSearchMachineCardio();
-        ((JavascriptExecutor) driver).executeScript("scroll(0,400)");
+        exercisesPage.scrollPageTwo();
         exercisesPage.checkBoxSearchPowerlifting();
         exercisesPage.checkBoxSearchExpert();
         exercisesPage.clickSearchButton();
@@ -60,8 +60,8 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
 
     @Link("https://www.jefit.com/exercises/")
     @Test(alwaysRun = true, retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - weight plat, type - olympic, difficulty - expert", invocationCount = 1, threadPoolSize = 1)
-    public void searchTestFour() {
-        ((JavascriptExecutor) driver).executeScript("scroll(0,400)");
+    public void searchExerciseWithParametersWeightPlateOlympicExpertTest() {
+        exercisesPage.scrollPageTwo();
         exercisesPage.checkBoxSearchWeightPlate();
         exercisesPage.checkBoxSearchOlympic();
         exercisesPage.checkBoxSearchExpert();
@@ -71,7 +71,7 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
     // Exercise Database
     @Link("https://www.jefit.com/exercises/")
     @Test(alwaysRun = true, description = "Exercise Database. Glutes", invocationCount = 1, threadPoolSize = 1)
-    public void searchTestFive() {
+    public void searchDataBaseGlutesTest() {
         exercisesPage.clickDataBaseGlutes();
         String result = driver.findElement(GLUTES_DATABASE_RESULT).getText();
         Assert.assertEquals(result, GLUTES);
@@ -79,7 +79,7 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
 
     @Link("https://www.jefit.com/exercises/")
     @Test(alwaysRun = true, description = "Exercise Database. Biceps", invocationCount = 1, threadPoolSize = 1)
-    public void searchTestSix() {
+    public void searchDataBaseBicepsTest() {
         exercisesPage.clickDataBaseBiceps();
         String result = driver.findElement(BICEPS_DATABASE_RESULT).getText();
         Assert.assertEquals(result, BICEPS);
@@ -87,7 +87,7 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
 
     @Link("https://www.jefit.com/exercises/")
     @Test(alwaysRun = true, description = "Exercise Database. Shoulders", invocationCount = 1, threadPoolSize = 1)
-    public void searchTestSeven() {
+    public void searchDataBaseShouldersTest() {
         exercisesPage.clickDataBaseShoulders();
         String result = driver.findElement(SHOULDERS_DATABASE_RESULT).getText();
         Assert.assertEquals(result, SHOULDERS);
@@ -96,7 +96,7 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
     // Picture
     @Link("https://www.jefit.com/exercises/")
     @Test(alwaysRun = true, description = "", invocationCount = 1, threadPoolSize = 1)
-    public void searchTestEight() {
+    public void searchPictureTricepsTest() {
         exercisesPage.clickPictureTriceps();
         String result = driver.findElement(PICTURE_RESULT).getText();
         Assert.assertEquals(result, TRICEPS);
@@ -104,7 +104,7 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
 
     @Link("https://www.jefit.com/exercises/")
     @Test(alwaysRun = true, description = "", invocationCount = 1, threadPoolSize = 1)
-    public void searchTestNine() {
+    public void searchPictureChestTest() {
         exercisesPage.clickPictureChest();
         String result = driver.findElement(PICTURE_RESULT).getText();
         Assert.assertEquals(result, CHEST);
@@ -112,7 +112,7 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
 
     @Link("https://www.jefit.com/exercises/")
     @Test(alwaysRun = true, description = "", invocationCount = 1, threadPoolSize = 1)
-    public void searchTestTen() {
+    public void searchPictureAbsTest() {
         exercisesPage.clickPictureAbs();
         String result = driver.findElement(PICTURE_RESULT).getText();
         Assert.assertEquals(result, ABS);
@@ -120,7 +120,7 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
 
     @Link("https://www.jefit.com/exercises/")
     @Test(alwaysRun = true, description = "", invocationCount = 1, threadPoolSize = 1)
-    public void searchTestEleven() {
+    public void searchPictureBackTest() {
         exercisesPage.clickPictureBack();
         String result = driver.findElement(PICTURE_RESULT).getText();
         Assert.assertEquals(result, BACK);
@@ -128,7 +128,7 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
 
     @Link("https://www.jefit.com/exercises/")
     @Test(alwaysRun = true, description = "", invocationCount = 1, threadPoolSize = 1)
-    public void searchTestTwelve() {
+    public void searchPictureLowerLegsTest() {
         exercisesPage.clickPictureLowerLegs();
         String result = driver.findElement(PICTURE_RESULT).getText();
         Assert.assertEquals(result, LOWER_LEGS_RESULT);

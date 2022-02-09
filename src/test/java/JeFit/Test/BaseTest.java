@@ -5,6 +5,9 @@ import JeFit.Page.ExercisesPage;
 import JeFit.Page.LoginPage;
 import JeFit.Page.ProfilePage;
 import io.qameta.allure.Description;
+import lombok.extern.log4j.Log4j2;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
@@ -12,6 +15,7 @@ import org.testng.annotations.*;
 import java.util.concurrent.TimeUnit;
 
 @Listeners(TestListener.class)
+@Log4j2
 public abstract class BaseTest {
 
     protected WebDriver driver;
@@ -36,6 +40,8 @@ public abstract class BaseTest {
         driver.manage().deleteAllCookies();
         driver.quit();
     }
+
+
 }
 
 

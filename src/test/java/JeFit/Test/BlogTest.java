@@ -32,6 +32,8 @@ public class BlogTest extends BaseTest {
     @Test(alwaysRun = true, description = "Blog.", invocationCount = 1, threadPoolSize = 1)
     public void blogAll() {
         blogPage.selectAll();
+        int size = blogPage.resultArray();
+        Assert.assertEquals(size, RESULT);
     }
 
     @Link("https://www.jefit.com/blog")

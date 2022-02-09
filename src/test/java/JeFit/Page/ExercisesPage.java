@@ -2,6 +2,8 @@ package JeFit.Page;
 
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 
@@ -99,6 +101,7 @@ public class ExercisesPage extends BasePage {
     public void clickPictureBack() {
         log.info("Exercise By BodyPart. Picture - back");
         driver.findElement(BACK_PICTURE_INPUT).click();
+
     }
 
     public void clickPictureLowerLegs() {
@@ -206,5 +209,15 @@ public class ExercisesPage extends BasePage {
         log.info("Considers numbers of elements");
         int a = driver.findElements(RESULT_STRETCHING).size();
         return a;
+    }
+
+    public void scrollPage() {
+        log.info("Scroll page");
+        driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL, Keys.END);
+    }
+
+    public void scrollPageTwo() {
+        log.info("Scroll page");
+        ((JavascriptExecutor) driver).executeScript("scroll(0,400)");
     }
 }

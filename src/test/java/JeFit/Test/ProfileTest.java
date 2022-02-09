@@ -45,7 +45,6 @@ public class ProfileTest extends JeFit.Test.BaseTest {
     @Link("https://www.jefit.com/my-jefit/profile/")
     @Test(alwaysRun = true, description = "Тест настройка параметров для пользователя № 1 (JeFit)", invocationCount = 1, threadPoolSize = 1)
     public void profilePositiveModifyDataTestVersionOne() {
-
         profilePage.modifyDataOn01_01_1921();
         profilePage.clickCheckBoxOnIbInch();
         profilePage.clickCheckBoxOnGenderMan();

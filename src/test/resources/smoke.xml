@@ -13,7 +13,6 @@
         </classes>
     </test> <!-- Test -->
     <test name="Profile">
-        <parameter name="browser" value="Edge"></parameter>
         <classes>
             <class name="JeFit.Test.ProfileTest"/>
         </classes>
