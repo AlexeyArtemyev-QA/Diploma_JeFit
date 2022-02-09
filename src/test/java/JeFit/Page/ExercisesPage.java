@@ -97,20 +97,25 @@ public class ExercisesPage extends BasePage {
         return result;
     }
 
-    public void clickPictureAbs() {
+    public String clickPictureAbs() {
         log.info("Exercise By BodyPart. Picture - abs");
         driver.findElement(ABS_PICTURE_INPUT).click();
+        String result = driver.findElement(PICTURE_RESULT).getText();
+        return  result;
     }
 
-    public void clickPictureBack() {
+    public String  clickPictureBack() {
         log.info("Exercise By BodyPart. Picture - back");
         driver.findElement(BACK_PICTURE_INPUT).click();
-
+        String result = driver.findElement(PICTURE_RESULT).getText();
+        return result;
     }
 
-    public void clickPictureLowerLegs() {
+    public String clickPictureLowerLegs() {
         log.info("Exercise By BodyPart. Picture - lower legs");
         driver.findElement(LOWER_LEGS_PICTURE_INPUT).click();
+        String result = driver.findElement(PICTURE_RESULT).getText();
+        return result;
     }
 
     public void clickPictureAllExercises() {

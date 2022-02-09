@@ -69,7 +69,6 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
     public void searchDataBaseGlutesTest() {
         exercisesPage.clickDataBaseGlutes();
         String result = exercisesPage.clickDataBaseGlutes();
-//        String result = driver.findElement(GLUTES_DATABASE_RESULT).getText();
         Assert.assertEquals(result, GLUTES);
     }
 
@@ -78,7 +77,6 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
     public void searchDataBaseBicepsTest() {
         exercisesPage.clickDataBaseBiceps();
         String result = exercisesPage.clickDataBaseBiceps();
-        //String result = driver.findElement(BICEPS_DATABASE_RESULT).getText();
         Assert.assertEquals(result, BICEPS);
     }
 
@@ -94,7 +92,6 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
     @Link("https://www.jefit.com/exercises/")
     @Test(alwaysRun = true, description = "", invocationCount = 1, threadPoolSize = 1)
     public void searchPictureTricepsTest() {
-        exercisesPage.clickPictureTriceps();
         String result = exercisesPage.clickPictureTriceps();
         Assert.assertEquals(result, TRICEPS);
     }
@@ -102,33 +99,28 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
     @Link("https://www.jefit.com/exercises/")
     @Test(alwaysRun = true, description = "", invocationCount = 1, threadPoolSize = 1)
     public void searchPictureChestTest() {
-        exercisesPage.clickPictureChest();
-        // String result = exercisesPage.clickPictureChest();
-        String result = driver.findElement(PICTURE_RESULT).getText();
+        String result = exercisesPage.clickPictureChest();
         Assert.assertEquals(result, CHEST);
     }
 
     @Link("https://www.jefit.com/exercises/")
     @Test(alwaysRun = true, description = "", invocationCount = 1, threadPoolSize = 1)
     public void searchPictureAbsTest() {
-        exercisesPage.clickPictureAbs();
-        String result = driver.findElement(PICTURE_RESULT).getText();
+        String result = exercisesPage.clickPictureAbs();
         Assert.assertEquals(result, ABS);
     }
 
     @Link("https://www.jefit.com/exercises/")
     @Test(alwaysRun = true, description = "", invocationCount = 1, threadPoolSize = 1)
     public void searchPictureBackTest() {
-        exercisesPage.clickPictureBack();
-        String result = driver.findElement(PICTURE_RESULT).getText();
+        String result = exercisesPage.clickPictureBack();
         Assert.assertEquals(result, BACK);
     }
 
     @Link("https://www.jefit.com/exercises/")
     @Test(alwaysRun = true, description = "", invocationCount = 1, threadPoolSize = 1)
     public void searchPictureLowerLegsTest() {
-        exercisesPage.clickPictureLowerLegs();
-        String result = driver.findElement(PICTURE_RESULT).getText();
+        String result = exercisesPage.clickPictureLowerLegs();
         Assert.assertEquals(result, LOWER_LEGS_RESULT);
     }
 }
