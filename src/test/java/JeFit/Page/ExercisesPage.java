@@ -83,14 +83,18 @@ public class ExercisesPage extends BasePage {
     }
 
     // Методы (Picture)
-    public void clickPictureTriceps() {
+    public String clickPictureTriceps() {
         log.info("Search by name. Picture - triceps");
         driver.findElement(TRICEPS_PICTURE_INPUT).click();
+        String result = driver.findElement(PICTURE_RESULT).getText();
+        return result;
     }
 
-    public void clickPictureChest() {
+    public String clickPictureChest() {
         log.info("Exercise By BodyPart. Picture - chest");
         driver.findElement(CHEST_PICTURE_INPUT).click();
+        String result = driver.findElement(PICTURE_RESULT).getText();
+        return result;
     }
 
     public void clickPictureAbs() {
@@ -173,19 +177,25 @@ public class ExercisesPage extends BasePage {
     }
 
     // Методы (Database)
-    public void clickDataBaseBiceps() {
+    public String clickDataBaseBiceps() {
         log.info("Exercise Database. Select biceps");
         driver.findElement(BICEPS_DATABASE_INPUT).click();
+        String result = driver.findElement(BICEPS_DATABASE_RESULT).getText();
+        return result;
     }
 
-    public void clickDataBaseGlutes() {
+    public String clickDataBaseGlutes() {
         log.info("Exercise Database. Select glutes");
         driver.findElement(GLUTES_DATABASE_INPUT).click();
+        String result = driver.findElement(GLUTES_DATABASE_RESULT).getText();
+        return result;
     }
 
-    public void clickDataBaseShoulders() {
+    public String clickDataBaseShoulders() {
         log.info("Exercise Database. Select shoulders");
         driver.findElement(SHOULDERS_DATABASE_INPUT).click();
+        String result = driver.findElement(SHOULDERS_DATABASE_RESULT).getText();
+        return result;
     }
 
     // Проверка что мы на нужной странице
