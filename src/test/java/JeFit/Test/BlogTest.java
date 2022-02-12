@@ -8,12 +8,12 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import static JeFit.Page.BasePage.URL_BLOG;
-import static JeFit.Page.BlogPage.ARRAY_LOCATOR;
-import static JeFit.Page.BlogPage.RESULT;
+import static JeFit.Page.BlogPage.URL_BLOG;
 
 @Log4j2
 public class BlogTest extends BaseTest {
+
+    public final static int RESULT = 9;
 
 
     @BeforeTest(alwaysRun = true)

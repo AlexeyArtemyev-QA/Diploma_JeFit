@@ -32,6 +32,7 @@ public abstract class BaseTest {
         driver.get("https://www.jefit.com/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        testContext.setAttribute("driver", driver);
     }
 
     @AfterTest(alwaysRun = true)

@@ -11,13 +11,13 @@ import org.openqa.selenium.support.PageFactory;
 @Log4j2
 public class BlogPage extends BasePage {
 
+    public final static String URL_BLOG = "https://www.jefit.com/blog";
+
     public BlogPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
-
-    public final static int RESULT = 9;
     public static final By ARRAY_LOCATOR = By.cssSelector("span[class='raven-post-meta-item raven-post-categories']");
 
     @FindBy(xpath = "//a[text()='All']")

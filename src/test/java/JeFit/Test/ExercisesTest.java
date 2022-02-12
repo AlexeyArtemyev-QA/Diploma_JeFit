@@ -2,6 +2,7 @@ package JeFit.Test;
 
 import JeFit.Page.ExercisesPage;
 import io.qameta.allure.Link;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -9,6 +10,10 @@ import org.testng.annotations.Test;
 import static JeFit.Page.ExercisesPage.*;
 
 public class ExercisesTest extends JeFit.Test.BaseTest {
+
+    public static final int EXERCISE_RESULT_ARRAY = 10;
+    public static final String EXERCISE_RESULT_TEXT = "No result found!";
+    public static final By EXERCISE_RESULT = By.id("hor-minimalist_3");
 
     @BeforeMethod(alwaysRun = true)
     public void navigateToLoginPage() {
@@ -21,7 +26,7 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
     @Test(alwaysRun = true, retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - body only, type - strength, difficulty - beginner", invocationCount = 1, threadPoolSize = 1)
     public void searchExerciseWithParametersBodyOnlyStrengthBeginnerTest() {
         exercisesPage.checkBoxSearchBodyOnly();
-        exercisesPage.scrollPage();
+        exercisesPage.scrollPageToBottom();
         exercisesPage.checkBoxSearchStrength();
         exercisesPage.checkBoxSearchBeginner();
         exercisesPage.clickSearchButton();
@@ -35,7 +40,7 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
     @Test(alwaysRun = true, retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - all, type - stretching, difficulty - intermediate", invocationCount = 1, threadPoolSize = 1)
     public void searchExerciseWithParametersAllStretchingIntermediateTest() {
         exercisesPage.checkBoxSearchAll();
-        exercisesPage.scrollPage();
+        exercisesPage.scrollPageToBottom();
         exercisesPage.checkBoxSearchStretching();
         exercisesPage.checkBoxSearchIntermediate();
         exercisesPage.clickSearchButton();
@@ -47,20 +52,23 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
     @Test(alwaysRun = true, retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - machine cardio, type - powerlifting, difficulty - expert", invocationCount = 1, threadPoolSize = 1)
     public void searchExerciseWithParametersMachineCardioPowerliftingExpertTest() {
         exercisesPage.checkBoxSearchMachineCardio();
-        exercisesPage.scrollPageTwo();
         exercisesPage.checkBoxSearchPowerlifting();
         exercisesPage.checkBoxSearchExpert();
         exercisesPage.clickSearchButton();
+        String result = exercisesPage.getTextResult();
+        Assert.assertEquals(result, EXERCISE_RESULT_TEXT);
     }
 
     @Link("https://www.jefit.com/exercises/")
     @Test(alwaysRun = true, retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - weight plat, type - olympic, difficulty - expert", invocationCount = 1, threadPoolSize = 1)
     public void searchExerciseWithParametersWeightPlateOlympicExpertTest() {
-        exercisesPage.scrollPageTwo();
         exercisesPage.checkBoxSearchWeightPlate();
         exercisesPage.checkBoxSearchOlympic();
         exercisesPage.checkBoxSearchExpert();
         exercisesPage.clickSearchButton();
+        String result = exercisesPage.getTextResult();
+        Assert.assertEquals(result, EXERCISE_RESULT_TEXT);
+
     }
 
     // Exercise Database

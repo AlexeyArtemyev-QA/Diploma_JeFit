@@ -8,10 +8,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static JeFit.Page.LoginPage.*;
+import static JeFit.Test.LoginTest.*;
 
 @Log4j2
 public class ProfilePage extends BasePage {
+
+    public final static String URL_MY_JIFIT = "https://www.jefit.com/my-jefit/";
+    public final static String URL_PROFILE = "https://www.jefit.com/my-jefit/profile/";
 
     public static final By MONTH_INPUT = By.cssSelector("[name='month']");
     public static final By MONTH_JANUARY_1_INPUT = By.xpath("//option[text()='January']");
@@ -118,13 +121,13 @@ public class ProfilePage extends BasePage {
         return driver.findElement(CHECKBOX_INPUT).isSelected();
     }
 
-    public void modifyDataOn01_01_1921() {
+    public void modifyDataOnMinimumValueInRange () {
         log.info("Select of the date - 01.01.1921");
         driver.findElement(MONTH_JANUARY_1_INPUT).click();
         driver.findElement(DAY_INPUT_1).click();
         driver.findElement(YEAR_INPUT_1921).click();
     }
-    public void modifyDataOn31_12_2010() {
+    public void modifyDataOnMaximumValueInRange() {
         log.info("Select of the date - 31.12.2010");
         driver.findElement(MONTH_INPUT).click();
         driver.findElement(MONTH_DECEMBER_12_INPUT).click();
@@ -132,7 +135,7 @@ public class ProfilePage extends BasePage {
         driver.findElement(YEAR_INPUT_2010).click();
     }
 
-    public  void modifyDataOn30_10_1996 (){
+    public  void modifyDataOnMiddleValueInRange (){
         log.info("Select of the date - 30.10.1996");
         driver.findElement(MONTH_OCTOBER_10_INPUT).click();
         driver.findElement(DAY_INPUT_30).click();

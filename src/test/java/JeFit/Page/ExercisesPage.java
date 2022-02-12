@@ -1,14 +1,16 @@
 package JeFit.Page;
 
 import lombok.extern.log4j.Log4j2;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
+
+import static JeFit.Test.ExercisesTest.EXERCISE_RESULT;
 
 
 @Log4j2
 public class ExercisesPage extends BasePage {
+
+    public final static String URL_EXERCISES = "https://www.jefit.com/exercises/";
+
 
     // ExercisesPage
     // Лскаторы Picture
@@ -61,7 +63,7 @@ public class ExercisesPage extends BasePage {
         super(driver);
     }
 
-    public static final int EXERCISE_RESULT_ARRAY = 10;
+
 
     public final static String GLUTES = "Glutes Exercise Database";
     public final static String BICEPS = "Biceps Exercise Database";
@@ -87,6 +89,12 @@ public class ExercisesPage extends BasePage {
         log.info("Search by name. Picture - triceps");
         driver.findElement(TRICEPS_PICTURE_INPUT).click();
         String result = driver.findElement(PICTURE_RESULT).getText();
+        return result;
+    }
+
+    public String getTextResult() {
+        log.info("");
+        String result = driver.findElement(EXERCISE_RESULT).getText();
         return result;
     }
 
@@ -126,59 +134,81 @@ public class ExercisesPage extends BasePage {
     // Методы (Search, Equipment)
     public void checkBoxSearchAll() {
         log.info("Exercise Search. Equipment - All");
-        driver.findElement(ALL_EXERCISE_SEARCH_INPUT).click();
+        WebElement ckeckBox = driver.findElement(ALL_EXERCISE_SEARCH_INPUT);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ckeckBox);
+        ckeckBox.click();
     }
 
     public void checkBoxSearchBodyOnly() {
         log.info("Exercise Search. Equipment - Body Only");
-        driver.findElement(BODY_ONLY_EXERCISE_SEARCH_INPUT).click();
+        WebElement ckeckBox = driver.findElement(BODY_ONLY_EXERCISE_SEARCH_INPUT);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ckeckBox);
+        ckeckBox.click();
     }
 
     public void checkBoxSearchMachineCardio() {
         log.info("Exercise Search. Equipment - Machine Cardio");
-        driver.findElement(MACHINE_CARDIO_EXERCISE_SEARCH_INPUT).click();
+        WebElement ckeckBox = driver.findElement(MACHINE_CARDIO_EXERCISE_SEARCH_INPUT);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ckeckBox);
+        ckeckBox.click();
     }
 
     public void checkBoxSearchWeightPlate() {
         log.info("Exercise Search. Equipment - Weight Plate");
-        driver.findElement(WEIGHT_PLATE_EXERCISE_SEARCH_INPUT).click();
+       WebElement ckeckBox = driver.findElement(WEIGHT_PLATE_EXERCISE_SEARCH_INPUT);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ckeckBox);
+        ckeckBox.click();
     }
 
     // Методы (Search, Type)
     public void checkBoxSearchStrength() {
         log.info("Exercise Search. Type - Strength");
-        driver.findElement(STRENGTH_EXERCISE_SEARCH_INPUT).click();
+        WebElement ckeckBox = driver.findElement(STRENGTH_EXERCISE_SEARCH_INPUT);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ckeckBox);
+        ckeckBox.click();
     }
 
     public void checkBoxSearchStretching() {
         log.info("Exercise Search. Type - Stretching");
-        driver.findElement(STRETCHING_EXERCISE_SEARCH_INPUT).click();
+        WebElement ckeckBox = driver.findElement(STRETCHING_EXERCISE_SEARCH_INPUT);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ckeckBox);
+        ckeckBox.click();
     }
 
     public void checkBoxSearchPowerlifting() {
         log.info("Exercise Search. Type - Powerlifting");
-        driver.findElement(POWERLIFTING_EXERCISE_SEARCH_INPUT).click();
+        WebElement ckeckBox = driver.findElement(POWERLIFTING_EXERCISE_SEARCH_INPUT);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ckeckBox);
+        ckeckBox.click();
     }
 
     public void checkBoxSearchOlympic() {
         log.info("Exercise Search. Type - Olympic");
-        driver.findElement(OLYMPIC_EXERCISE_SEARCH_INPUT).click();
+       WebElement ckeckBox =  driver.findElement(OLYMPIC_EXERCISE_SEARCH_INPUT);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ckeckBox);
+       ckeckBox.click();
     }
 
     // Методы (Search, Difficulty)
     public void checkBoxSearchBeginner() {
         log.info("Exercise Search. Difficulty - Beginner");
-        driver.findElement(BEGINNER_EXERCISE_SEARCH_INPUT).click();
+        WebElement ckeckBox = driver.findElement(BEGINNER_EXERCISE_SEARCH_INPUT);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ckeckBox);
+        ckeckBox.click();
     }
 
     public void checkBoxSearchIntermediate() {
         log.info("Exercise Search. Difficulty - Intermediate");
-        driver.findElement(INTERMEDIATE_EXERCISE_SEARCH_INPUT).click();
+        WebElement ckeckBox = driver.findElement(INTERMEDIATE_EXERCISE_SEARCH_INPUT);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ckeckBox);
+        ckeckBox.click();
     }
 
     public void checkBoxSearchExpert() {
         log.info("Exercise Search. Difficulty - Expert");
-        driver.findElement(EXPERT_EXERCISE_SEARCH_INPUT).click();
+        WebElement ckeckBox = driver.findElement(EXPERT_EXERCISE_SEARCH_INPUT);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ckeckBox);
+        ckeckBox.click();
     }
 
     // Методы (Database)
@@ -226,13 +256,13 @@ public class ExercisesPage extends BasePage {
         return a;
     }
 
-    public void scrollPage() {
+    public void scrollPageToBottom() {
         log.info("Scroll page");
         driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL, Keys.END);
     }
 
-    public void scrollPageTwo() {
+    public void scrollPageTo(int x, int y) {
         log.info("Scroll page");
-        ((JavascriptExecutor) driver).executeScript("scroll(0,400)");
+        ((JavascriptExecutor) driver).executeScript(String.format("scroll(%,%)",x,y));
     }
 }
