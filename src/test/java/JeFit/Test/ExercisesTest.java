@@ -2,7 +2,7 @@ package JeFit.Test;
 
 import JeFit.Page.ExercisesPage;
 import io.qameta.allure.Link;
-import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -13,7 +13,15 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
 
     public static final int EXERCISE_RESULT_ARRAY = 10;
     public static final String EXERCISE_RESULT_TEXT = "No result found!";
-    public static final By EXERCISE_RESULT = By.id("hor-minimalist_3");
+    public final static String GLUTES = "Glutes Exercise Database";
+    public final static String BICEPS = "Biceps Exercise Database";
+    public final static String SHOULDERS = "Shoulders Exercise Database";
+    public final static String TRICEPS = "Triceps Exercise Database";
+    public final static String CHEST = "Chest Exercise Database";
+    public final static String ABS = "Abs Exercise Database";
+    public final static String BACK = "Back Exercise Database";
+    public final static String LOWER_LEGS_RESULT = "Lower-Legs Exercise Database";
+
 
     @BeforeMethod(alwaysRun = true)
     public void navigateToLoginPage() {
@@ -23,112 +31,98 @@ public class ExercisesTest extends JeFit.Test.BaseTest {
 
     // Exercise Search
     @Link("https://www.jefit.com/exercises/")
-    @Test(alwaysRun = true, retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - body only, type - strength, difficulty - beginner", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - body only, type - strength, difficulty - beginner")
     public void searchExerciseWithParametersBodyOnlyStrengthBeginnerTest() {
-        exercisesPage.checkBoxSearchBodyOnly();
-        exercisesPage.scrollPageToBottom();
+        WebElement element = exercisesPage.checkBoxSearchBodyOnly();
+        exercisesPage.scrollIntoView(element);
         exercisesPage.checkBoxSearchStrength();
         exercisesPage.checkBoxSearchBeginner();
         exercisesPage.clickSearchButton();
-        int sizeBodyOnly = exercisesPage.resultArrayBodyOnly();
-        Assert.assertEquals(sizeBodyOnly, EXERCISE_RESULT_ARRAY);
-        int sizeStrength = exercisesPage.resultArrayStrength();
-        Assert.assertEquals(sizeStrength, EXERCISE_RESULT_ARRAY);
+        Assert.assertEquals(exercisesPage.resultArrayBodyOnly(), EXERCISE_RESULT_ARRAY);
+        Assert.assertEquals(exercisesPage.resultArrayStrength(), EXERCISE_RESULT_ARRAY);
     }
 
     @Link("https://www.jefit.com/exercises/")
-    @Test(alwaysRun = true, retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - all, type - stretching, difficulty - intermediate", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - all, type - stretching, difficulty - intermediate")
     public void searchExerciseWithParametersAllStretchingIntermediateTest() {
-        exercisesPage.checkBoxSearchAll();
-        exercisesPage.scrollPageToBottom();
+        WebElement element = exercisesPage.checkBoxSearchAll();
+        exercisesPage.scrollIntoView(element);
         exercisesPage.checkBoxSearchStretching();
         exercisesPage.checkBoxSearchIntermediate();
         exercisesPage.clickSearchButton();
-        int sizeStretching = exercisesPage.resultArrayStretching();
-        Assert.assertEquals(sizeStretching, EXERCISE_RESULT_ARRAY);
+        Assert.assertEquals(exercisesPage.resultArrayStretching(), EXERCISE_RESULT_ARRAY);
     }
 
     @Link("https://www.jefit.com/exercises/")
-    @Test(alwaysRun = true, retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - machine cardio, type - powerlifting, difficulty - expert", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - machine cardio, type - powerlifting, difficulty - expert")
     public void searchExerciseWithParametersMachineCardioPowerliftingExpertTest() {
-        exercisesPage.checkBoxSearchMachineCardio();
+        WebElement element = exercisesPage.checkBoxSearchMachineCardio();
+        exercisesPage.scrollIntoView(element);
         exercisesPage.checkBoxSearchPowerlifting();
         exercisesPage.checkBoxSearchExpert();
         exercisesPage.clickSearchButton();
-        String result = exercisesPage.getTextResult();
-        Assert.assertEquals(result, EXERCISE_RESULT_TEXT);
+        Assert.assertEquals(exercisesPage.getTextResult(), EXERCISE_RESULT_TEXT);
     }
 
     @Link("https://www.jefit.com/exercises/")
-    @Test(alwaysRun = true, retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - weight plat, type - olympic, difficulty - expert", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - weight plat, type - olympic, difficulty - expert")
     public void searchExerciseWithParametersWeightPlateOlympicExpertTest() {
-        exercisesPage.checkBoxSearchWeightPlate();
+        WebElement element = exercisesPage.checkBoxSearchWeightPlate();
+        exercisesPage.scrollIntoView(element);
         exercisesPage.checkBoxSearchOlympic();
         exercisesPage.checkBoxSearchExpert();
         exercisesPage.clickSearchButton();
-        String result = exercisesPage.getTextResult();
-        Assert.assertEquals(result, EXERCISE_RESULT_TEXT);
-
+        Assert.assertEquals(exercisesPage.getTextResult(), EXERCISE_RESULT_TEXT);
     }
 
     // Exercise Database
     @Link("https://www.jefit.com/exercises/")
-    @Test(alwaysRun = true, description = "Exercise Database. Glutes", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, description = "Exercise Database. Glutes")
     public void searchDataBaseGlutesTest() {
-        exercisesPage.clickDataBaseGlutes();
         String result = exercisesPage.clickDataBaseGlutes();
         Assert.assertEquals(result, GLUTES);
     }
 
     @Link("https://www.jefit.com/exercises/")
-    @Test(alwaysRun = true, description = "Exercise Database. Biceps", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, description = "Exercise Database. Biceps")
     public void searchDataBaseBicepsTest() {
-        exercisesPage.clickDataBaseBiceps();
-        String result = exercisesPage.clickDataBaseBiceps();
-        Assert.assertEquals(result, BICEPS);
+        Assert.assertEquals(exercisesPage.clickDataBaseBiceps(), BICEPS);
     }
 
     @Link("https://www.jefit.com/exercises/")
-    @Test(alwaysRun = true, description = "Exercise Database. Shoulders", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, description = "Exercise Database. Shoulders")
     public void searchDataBaseShouldersTest() {
-        exercisesPage.clickDataBaseShoulders();
-        String result = exercisesPage.clickDataBaseShoulders();
-        Assert.assertEquals(result, SHOULDERS);
+        Assert.assertEquals(exercisesPage.clickDataBaseShoulders(), SHOULDERS);
     }
 
     // Picture
     @Link("https://www.jefit.com/exercises/")
-    @Test(alwaysRun = true, description = "", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, description = "Picture. Triceps")
     public void searchPictureTricepsTest() {
-        String result = exercisesPage.clickPictureTriceps();
-        Assert.assertEquals(result, TRICEPS);
+        Assert.assertEquals(exercisesPage.clickPictureTriceps(), TRICEPS);
     }
 
     @Link("https://www.jefit.com/exercises/")
-    @Test(alwaysRun = true, description = "", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, description = "Picture. Chest")
     public void searchPictureChestTest() {
-        String result = exercisesPage.clickPictureChest();
-        Assert.assertEquals(result, CHEST);
+        Assert.assertEquals(exercisesPage.clickPictureChest(), CHEST);
     }
 
     @Link("https://www.jefit.com/exercises/")
-    @Test(alwaysRun = true, description = "", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, description = "Picture. Abs")
     public void searchPictureAbsTest() {
-        String result = exercisesPage.clickPictureAbs();
-        Assert.assertEquals(result, ABS);
+        Assert.assertEquals(exercisesPage.clickPictureAbs(), ABS);
     }
 
     @Link("https://www.jefit.com/exercises/")
-    @Test(alwaysRun = true, description = "", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, description = "Picture. Back")
     public void searchPictureBackTest() {
-        String result = exercisesPage.clickPictureBack();
-        Assert.assertEquals(result, BACK);
+        Assert.assertEquals(exercisesPage.clickPictureBack(), BACK);
     }
 
     @Link("https://www.jefit.com/exercises/")
-    @Test(alwaysRun = true, description = "", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, description = "Picture. Lower-legs")
     public void searchPictureLowerLegsTest() {
-        String result = exercisesPage.clickPictureLowerLegs();
-        Assert.assertEquals(result, LOWER_LEGS_RESULT);
+        Assert.assertEquals(exercisesPage.clickPictureLowerLegs(), LOWER_LEGS_RESULT);
     }
 }

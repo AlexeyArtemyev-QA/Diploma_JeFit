@@ -1,13 +1,17 @@
 package JeFit.Page;
 
 import lombok.extern.log4j.Log4j2;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import static JeFit.Test.LoginTest.*;
-
 
 @Log4j2
 public class LoginPage extends BasePage {
+
+    public static final By USERNAME_INPUT = By.cssSelector("[id='navbar_username']");
+    public static final By PASSWORD_INPUT = By.id("navbar_password");
+    public static final By CHECKBOX_INPUT = By.id("cb_cookieuser_navbar");
+    public static final By LOGIN_BUTTON = By.cssSelector(".loginblueButton1");
+    public static final By ERROR_MESSAGE = By.id("invalidpassworderrormessage");
 
     public final static String URL_MY_JIFIT = "https://www.jefit.com/my-jefit/";
 

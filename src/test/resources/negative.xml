@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Negative" thread-count="3" parallel="tests">
-    <test name="Login + exercises">
-
+    <test name="Login test">
+        <parameter name="browser" value="Chrome"></parameter>
         <classes>
-            <class name="JeFit.Test.LoginTest">
-                <methods>
-                    <include name="loginPositiveTest"/>
-                    <exclude name="loginNegativeEmptyPasswordTest"></exclude>
-                </methods>
-            </class>
-            <class name="JeFit.Test.ExercisesTest"/>
-        </classes>
-    </test> <!-- Test -->
-    <test name="Profile">
-        <classes>
-            <class name="JeFit.Test.ProfileTest"/>
+            <class name="JeFit.Test.LoginTest"/>
         </classes>
     </test> <!-- Test -->
 </suite>

@@ -15,7 +15,6 @@ public class BlogTest extends BaseTest {
 
     public final static int RESULT = 9;
 
-
     @BeforeTest(alwaysRun = true)
     public void navigateToLoginPage() {
         blogPage = new BlogPage(driver);
@@ -29,58 +28,51 @@ public class BlogTest extends BaseTest {
     }
 
     @Link("https://www.jefit.com/blog")
-    @Test(alwaysRun = true, description = "Blog.", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, description = "Blog.")
     public void blogAll() {
         blogPage.selectAll();
-        int size = blogPage.resultArray();
-        Assert.assertEquals(size, RESULT);
+        Assert.assertEquals(blogPage.resultArray(), RESULT);
     }
 
     @Link("https://www.jefit.com/blog")
-    @Test(alwaysRun = true, description = "Blog.", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, description = "Blog.")
     public void blogExerciseTips() {
         blogPage.selectExerciseTips();
-        int size = blogPage.resultArray();
-        Assert.assertEquals(size, RESULT);
+        Assert.assertEquals(blogPage.resultArray(), RESULT);
     }
 
     @Link("https://www.jefit.com/blog")
-    @Test(alwaysRun = true, description = "Blog.", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, description = "Blog.")
     public void blogGeneralFitness() {
         blogPage.selectGeneralFitness();
-        int size = blogPage.resultArray();
-        Assert.assertEquals(size, RESULT);
+        Assert.assertEquals(blogPage.resultArray(), RESULT);
     }
 
     @Link("https://www.jefit.com/blog")
-    @Test(alwaysRun = true, description = "Blog.", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, description = "Blog.")
     public void blogNutritionTips() {
         blogPage.selectNutritionTips();
-        int size = blogPage.resultArray();
-        Assert.assertEquals(size, RESULT);
+        Assert.assertEquals(blogPage.resultArray(), RESULT);
     }
 
     @Link("https://www.jefit.com/blog")
-    @Test(alwaysRun = true, description = "Blog.", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, description = "Blog.")
     public void blogProductTipsAndFAQ() {
         blogPage.selectProductTipsAndFAQ();
-        int size = blogPage.resultArray();
-        Assert.assertEquals(size, RESULT);
+        Assert.assertEquals(blogPage.resultArray(), RESULT);
     }
 
     @Link("https://www.jefit.com/blog")
-    @Test(alwaysRun = true, description = "Blog.", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, description = "Blog.")
     public void blogWhatsNew() {
         blogPage.selectWhatsNew();
-        int size = blogPage.resultArray();
-        Assert.assertEquals(size, RESULT);
+        Assert.assertEquals(blogPage.resultArray(), RESULT);
     }
 
     @Link("https://www.jefit.com/blog")
-    @Test(alwaysRun = true, description = "Blog.", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, description = "Blog.")
     public void blogWorkoutTips() {
         blogPage.selectWorkoutTips();
-        int size = blogPage.resultArray();
-        Assert.assertEquals(size, RESULT);
+        Assert.assertEquals(blogPage.resultArray(), RESULT);
     }
 }

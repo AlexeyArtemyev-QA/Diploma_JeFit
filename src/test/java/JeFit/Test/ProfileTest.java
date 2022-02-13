@@ -42,7 +42,7 @@ public class ProfileTest extends JeFit.Test.BaseTest {
     }
 
     @Link("https://www.jefit.com/my-jefit/profile/")
-    @Test(alwaysRun = true, description = "Тест настройка параметров для пользователя № 1 (JeFit)", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, description = "Тест настройка параметров для пользователя № 1 (JeFit)")
     public void profilePositiveModifyDataTestVersionOne() {
         profilePage.modifyDataOnMinimumValueInRange();
         profilePage.clickCheckBoxOnIbInch();
@@ -52,7 +52,7 @@ public class ProfileTest extends JeFit.Test.BaseTest {
     }
 
     @Link("https://www.jefit.com/my-jefit/profile/")
-    @Test(alwaysRun = true, description = "Тест настройка параметров для пользователя № 2 (JeFit)", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, description = "Тест настройка параметров для пользователя № 2 (JeFit)")
     public void profilePositiveModifyDataTestVersionTwo() {
         profilePage.modifyDataOnMaximumValueInRange();
         profilePage.clickCheckBoxOnKgCm();
@@ -62,7 +62,7 @@ public class ProfileTest extends JeFit.Test.BaseTest {
     }
 
     @Link("https://www.jefit.com/my-jefit/profile/")
-    @Test(alwaysRun = true, description = "Тест настройка параметров для пользователя № 3 (JeFit)", invocationCount = 1, threadPoolSize = 1)
+    @Test(alwaysRun = true, description = "Тест настройка параметров для пользователя № 3 (JeFit)")
     public void profilyPositiveModifyDataTestVersionThree() {
         profilePage.modifyDataOnMiddleValueInRange();
         profilePage.clickCheckBoxOnIbInch();

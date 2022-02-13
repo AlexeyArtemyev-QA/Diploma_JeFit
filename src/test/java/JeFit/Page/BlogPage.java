@@ -46,7 +46,6 @@ public class BlogPage extends BasePage {
     public void selectExerciseTips() {
         log.info("click on exercise tips");
         EXERCISE_TIPS_INPUT.click();
-
     }
 
     public static void selectGeneralFitness() {
@@ -74,15 +73,9 @@ public class BlogPage extends BasePage {
         WORKOUT_TIPS_INPUT.click();
     }
 
-    public static void seachByText() {
-        log.info("Search by text");
-        SEARCH_TOPICS_INPUT.click();
-    }
-
     public static int resultArray() {
         log.info("Considers numbers of elements");
-        int a = driver.findElements(ARRAY_LOCATOR).size();
-        return a;
+        return  driver.findElements(ARRAY_LOCATOR).size();
     }
 
 }
