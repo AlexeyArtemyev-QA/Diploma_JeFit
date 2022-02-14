@@ -21,21 +21,21 @@ public class BlogPage extends BasePage {
     public static final By ARRAY_LOCATOR = By.cssSelector("span[class='raven-post-meta-item raven-post-categories']");
 
     @FindBy(xpath = "//a[text()='All']")
-    public static WebElement ALL_INPUT;
+    public WebElement ALL_INPUT;
     @FindBy(css = "[data-category='638']")
-    private static WebElement EXERCISE_TIPS_INPUT;
+    private WebElement EXERCISE_TIPS_INPUT;
     @FindBy(css = "[data-category='1244']")
-    private static WebElement GENERAL_FITNESS_INPUT;
+    private WebElement GENERAL_FITNESS_INPUT;
     @FindBy(css = "[data-category='674']")
-    private static WebElement NUTRITION_TIPS_INPUT;
+    private WebElement NUTRITION_TIPS_INPUT;
     @FindBy(how = How.CSS, using = "[data-category='1270']")
-    private static WebElement PRODUCT_TIPS_AND_FAQ_INPUT;
+    private WebElement PRODUCT_TIPS_AND_FAQ_INPUT;
     @FindBy(how = How.CSS, using = "[data-category='4']")
-    private static WebElement WHAT_S_NEW_INPUT;
+    private WebElement WHAT_S_NEW_INPUT;
     @FindBy(how = How.CSS, using = "[data-category='673']")
-    private static WebElement WORKOUT_TIPS_INPUT;
+    private WebElement WORKOUT_TIPS_INPUT;
     @FindBy(how = How.CSS, using = "[type='search']")
-    private static WebElement SEARCH_TOPICS_INPUT;
+    private WebElement SEARCH_TOPICS_INPUT;
 
 
     public void selectAll() {
@@ -48,32 +48,32 @@ public class BlogPage extends BasePage {
         EXERCISE_TIPS_INPUT.click();
     }
 
-    public static void selectGeneralFitness() {
+    public void selectGeneralFitness() {
         log.info("click on general fitness");
         GENERAL_FITNESS_INPUT.click();
     }
 
-    public static void selectNutritionTips() {
+    public void selectNutritionTips() {
         log.info("click on nutrition tips");
         NUTRITION_TIPS_INPUT.click();
     }
 
-    public static void selectProductTipsAndFAQ() {
+    public void selectProductTipsAndFAQ() {
         log.info("click on product tips and FAQ");
         PRODUCT_TIPS_AND_FAQ_INPUT.click();
     }
 
-    public static void selectWhatsNew() {
+    public void selectWhatsNew() {
         log.info("click on what`s new");
         WHAT_S_NEW_INPUT.click();
     }
 
-    public static void selectWorkoutTips() {
+    public void selectWorkoutTips() {
         log.info("click on workout tips");
         WORKOUT_TIPS_INPUT.click();
     }
 
-    public static int resultArray() {
+    public int resultArray() {
         log.info("Considers numbers of elements");
         return  driver.findElements(ARRAY_LOCATOR).size();
     }

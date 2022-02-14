@@ -27,7 +27,7 @@ public class TestListener implements ITestListener {
         ITestListener.super.onTestFailure(result);
         //Скриншот
         System.out.println(String.format("Test '%s' failed", result.getName()));
-        WebDriver driver = (WebDriver)(result.getTestContext().getAttribute("driver"));
+        WebDriver driver = (WebDriver) (result.getTestContext().getAttribute("driver"));
         AllureUtils.attachScreenshot(driver);
     }
 

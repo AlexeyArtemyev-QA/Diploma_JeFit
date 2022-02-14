@@ -16,7 +16,6 @@ public class ProfilePage extends BasePage {
     public final static String URL_MY_JIFIT = "https://www.jefit.com/my-jefit/";
     public final static String URL_PROFILE = "https://www.jefit.com/my-jefit/profile/";
 
-    public static final By MONTH_INPUT = By.cssSelector("[name='month']");
     public static final By MONTH_JANUARY_1_INPUT = By.xpath("//option[text()='January']");
     public static final By MONTH_OCTOBER_10_INPUT = By.xpath("//option[text()='October']");
     public static final By MONTH_DECEMBER_12_INPUT = By.xpath("//option[text()='December']");
@@ -40,34 +39,34 @@ public class ProfilePage extends BasePage {
     }
 
     // Методы
-    public void clickCheckBoxOnIbInch (){
+    public void selectIbInch() {
         log.info("Select check-box Ib/inch");
         driver.findElement(CHECKBOX_IB_INCH_INPUT).click();
     }
 
-    public void clickCheckBoxOnKgCm (){
+    public void selectKgCm() {
         log.info("Select check-box kg/cm");
         driver.findElement(CHECKBOX_KG_CM_INPUT).click();
     }
 
-    public void clickCheckBoxOnGenderMan (){
+    public void selectGenderMan() {
         log.info("Select gender check-box man");
         driver.findElement(CHECKBOX_GENDER_MAN_INPUT).click();
     }
 
-    public void clickCheckBoxOnGenderWoman (){
+    public void selectGenderWoman() {
         log.info("Select gender check-box woman");
         driver.findElement(CHECKBOX_GENDER_WOMAN_INPUT).click();
     }
 
-    public void clickButtonSaved (){
+    public void selectSaved() {
         log.info("Click on button save settings");
         WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[name='Submit']")));
-        ((JavascriptExecutor)driver).executeScript("arguments[0].click();", element);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
     }
 
-    public String atprofilePage() {
+    public String getCurrentUrl() {
         return driver.getCurrentUrl();
     }
 
@@ -81,7 +80,7 @@ public class ProfilePage extends BasePage {
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
     }
 
-    public void loginButton() {
+    public void selectLogin() {
         log.info("Click on login button");
         driver.findElement(LOGIN_BUTTON).click();
     }
@@ -91,24 +90,36 @@ public class ProfilePage extends BasePage {
         return driver.findElement(CHECKBOX_INPUT).isSelected();
     }
 
-    public void modifyDataOnMinimumValueInRange () {
+    public void selectDateFromMinimumValueInRange() {
         log.info("Select of the date - 01.01.1921");
-        driver.findElement(MONTH_JANUARY_1_INPUT).click();
-        driver.findElement(DAY_INPUT_1).click();
-        driver.findElement(YEAR_INPUT_1921).click();
-    }
-    public void modifyDataOnMaximumValueInRange() {
-        log.info("Select of the date - 31.12.2010");
-        driver.findElement(MONTH_INPUT).click();
-        driver.findElement(MONTH_DECEMBER_12_INPUT).click();
-        driver.findElement(DAY_INPUT_31).click();
-        driver.findElement(YEAR_INPUT_2010).click();
+        selectMonthOfBirthday(MONTH_JANUARY_1_INPUT);
+        selectDayOfBirthday(DAY_INPUT_1);
+        selectYearOfBirthday(YEAR_INPUT_1921);
     }
 
-    public  void modifyDataOnMiddleValueInRange (){
+    public void selectDateFromMaximumValueInRange() {
+        log.info("Select of the date - 31.12.2010");
+        selectMonthOfBirthday(MONTH_DECEMBER_12_INPUT);
+        selectDayOfBirthday(DAY_INPUT_31);
+        selectYearOfBirthday(YEAR_INPUT_2010);
+    }
+
+    public void selectDateFromMiddleValueInRange() {
         log.info("Select of the date - 30.10.1996");
-        driver.findElement(MONTH_OCTOBER_10_INPUT).click();
-        driver.findElement(DAY_INPUT_30).click();
-        driver.findElement(YEAR_INPUT_1996).click();
+        selectMonthOfBirthday(MONTH_OCTOBER_10_INPUT);
+        selectDayOfBirthday(DAY_INPUT_30);
+        selectYearOfBirthday(YEAR_INPUT_1996);
+    }
+
+    private void selectDayOfBirthday(By pathOfDay) {
+        driver.findElement(pathOfDay).click();
+    }
+
+    private void selectMonthOfBirthday(By pathOfMonth) {
+        driver.findElement(pathOfMonth).click();
+    }
+
+    private void selectYearOfBirthday(By pathOfYear) {
+        driver.findElement(pathOfYear).click();
     }
 }

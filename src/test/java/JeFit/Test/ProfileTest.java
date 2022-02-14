@@ -27,7 +27,7 @@ public class ProfileTest extends JeFit.Test.BaseTest {
         profilePage.enterUserName(USERNAME);
         profilePage.enterPassword(PASSWORD);
         profilePage.checkBoxIsSelected();
-        profilePage.loginButton();
+        profilePage.selectLogin();
         driver.get(URL_PROFILE);
         AllureUtils.attachScreenshot(driver);
     }
@@ -42,32 +42,32 @@ public class ProfileTest extends JeFit.Test.BaseTest {
     }
 
     @Link("https://www.jefit.com/my-jefit/profile/")
-    @Test(alwaysRun = true, description = "Тест настройка параметров для пользователя № 1 (JeFit)")
+    @Test(alwaysRun = true, description = "Check is profile can be editable with minimum range value")
     public void profilePositiveModifyDataTestVersionOne() {
-        profilePage.modifyDataOnMinimumValueInRange();
-        profilePage.clickCheckBoxOnIbInch();
-        profilePage.clickCheckBoxOnGenderMan();
-        profilePage.clickButtonSaved();
-        Assert.assertEquals(profilePage.atprofilePage(), URL_MY_JIFIT);
+        profilePage.selectDateFromMinimumValueInRange();
+        profilePage.selectIbInch();
+        profilePage.selectGenderMan();
+        profilePage.selectSaved();
+        Assert.assertEquals(profilePage.getCurrentUrl(), URL_MY_JIFIT);
     }
 
     @Link("https://www.jefit.com/my-jefit/profile/")
-    @Test(alwaysRun = true, description = "Тест настройка параметров для пользователя № 2 (JeFit)")
+    @Test(alwaysRun = true, description = "Check is profile can be editable with maximum range value")
     public void profilePositiveModifyDataTestVersionTwo() {
-        profilePage.modifyDataOnMaximumValueInRange();
-        profilePage.clickCheckBoxOnKgCm();
-        profilePage.clickCheckBoxOnGenderWoman();
-        profilePage.clickButtonSaved();
-        Assert.assertEquals(profilePage.atprofilePage(), URL_MY_JIFIT);
+        profilePage.selectDateFromMaximumValueInRange();
+        profilePage.selectKgCm();
+        profilePage.selectGenderWoman();
+        profilePage.selectSaved();
+        Assert.assertEquals(profilePage.getCurrentUrl(), URL_MY_JIFIT);
     }
 
     @Link("https://www.jefit.com/my-jefit/profile/")
-    @Test(alwaysRun = true, description = "Тест настройка параметров для пользователя № 3 (JeFit)")
+    @Test(alwaysRun = true, description = "Check is profile can be editable with medium range value")
     public void profilyPositiveModifyDataTestVersionThree() {
-        profilePage.modifyDataOnMiddleValueInRange();
-        profilePage.clickCheckBoxOnIbInch();
-        profilePage.clickCheckBoxOnGenderWoman();
-        profilePage.clickButtonSaved();
-        Assert.assertEquals(profilePage.atprofilePage(), URL_MY_JIFIT);
+        profilePage.selectDateFromMiddleValueInRange();
+        profilePage.selectIbInch();
+        profilePage.selectGenderWoman();
+        profilePage.selectSaved();
+        Assert.assertEquals(profilePage.getCurrentUrl(), URL_MY_JIFIT);
     }
 }

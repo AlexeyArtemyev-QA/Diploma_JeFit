@@ -63,7 +63,7 @@ public class ExercisesPage extends BasePage {
     }
 
     // Методы (Picture)
-    public String clickPictureTriceps() {
+    public String getTextPictureTriceps() {
         log.info("Search by name. Picture - triceps");
         driver.findElement(TRICEPS_PICTURE_INPUT).click();
         return driver.findElement(PICTURE_RESULT).getText();
@@ -74,118 +74,118 @@ public class ExercisesPage extends BasePage {
         return driver.findElement(EXERCISE_RESULT).getText();
     }
 
-    public String clickPictureChest() {
+    public String getTextPictureChest() {
         log.info("Exercise By BodyPart. Picture - chest");
         driver.findElement(CHEST_PICTURE_INPUT).click();
         return driver.findElement(PICTURE_RESULT).getText();
     }
 
-    public String clickPictureAbs() {
+    public String getTextPictureAbs() {
         log.info("Exercise By BodyPart. Picture - abs");
         driver.findElement(ABS_PICTURE_INPUT).click();
         return driver.findElement(PICTURE_RESULT).getText();
     }
 
-    public String clickPictureBack() {
+    public String getTextPictureBack() {
         log.info("Exercise By BodyPart. Picture - back");
         driver.findElement(BACK_PICTURE_INPUT).click();
         return driver.findElement(PICTURE_RESULT).getText();
     }
 
-    public String clickPictureLowerLegs() {
+    public String getTextPictureLowerLegs() {
         log.info("Exercise By BodyPart. Picture - lower legs");
         driver.findElement(LOWER_LEGS_PICTURE_INPUT).click();
         return driver.findElement(PICTURE_RESULT).getText();
     }
 
     // Методы (Search, Equipment)
-    public WebElement checkBoxSearchAll() {
+    public WebElement getExerciseSearchInputFromAllPage() {
         log.info("Exercise Search. Equipment - All");
         return driver.findElement(ALL_EXERCISE_SEARCH_INPUT);
     }
 
-    public WebElement checkBoxSearchBodyOnly() {
+    public WebElement getExerciseSearchInputFromBody() {
         log.info("Exercise Search. Equipment - Body Only");
         return driver.findElement(BODY_ONLY_EXERCISE_SEARCH_INPUT);
     }
 
-    public WebElement checkBoxSearchMachineCardio() {
+    public WebElement getExerciseSearchMachineCardio() {
         log.info("Exercise Search. Equipment - Machine Cardio");
         return driver.findElement(MACHINE_CARDIO_EXERCISE_SEARCH_INPUT);
     }
 
-    public WebElement checkBoxSearchWeightPlate() {
+    public WebElement findButtonExerciseWeightPlate() {
         log.info("Exercise Search. Equipment - Weight Plate");
         return driver.findElement(WEIGHT_PLATE_EXERCISE_SEARCH_INPUT);
     }
 
     // Методы (Search, Type)
-    public void checkBoxSearchStrength() {
+    public void selectStrength() {
         log.info("Exercise Search. Type - Strength");
         driver.findElement(STRENGTH_EXERCISE_SEARCH_INPUT).click();
     }
 
-    public void checkBoxSearchStretching() {
+    public void selectStretching() {
         log.info("Exercise Search. Type - Stretching");
         driver.findElement(STRETCHING_EXERCISE_SEARCH_INPUT).click();
     }
 
-    public void checkBoxSearchPowerlifting() {
+    public void selectPowerlifting() {
         log.info("Exercise Search. Type - Powerlifting");
         driver.findElement(POWERLIFTING_EXERCISE_SEARCH_INPUT).click();
     }
 
-    public void checkBoxSearchOlympic() {
+    public void selectOlympic() {
         log.info("Exercise Search. Type - Olympic");
         driver.findElement(OLYMPIC_EXERCISE_SEARCH_INPUT).click();
     }
 
     // Методы (Search, Difficulty)
-    public void checkBoxSearchBeginner() {
+    public void selectBeginner() {
         log.info("Exercise Search. Difficulty - Beginner");
         driver.findElement(BEGINNER_EXERCISE_SEARCH_INPUT).click();
     }
 
-    public void checkBoxSearchIntermediate() {
+    public void selectIntermediate() {
         log.info("Exercise Search. Difficulty - Intermediate");
         driver.findElement(INTERMEDIATE_EXERCISE_SEARCH_INPUT).click();
     }
 
-    public void checkBoxSearchExpert() {
+    public void selectExpert() {
         log.info("Exercise Search. Difficulty - Expert");
         driver.findElement(EXPERT_EXERCISE_SEARCH_INPUT).click();
     }
 
     // Методы (Database)
-    public String clickDataBaseBiceps() {
+    public String getTextDataBaseBiceps() {
         log.info("Exercise Database. Select biceps");
         driver.findElement(BICEPS_DATABASE_INPUT).click();
         return driver.findElement(BICEPS_DATABASE_RESULT).getText();
     }
 
-    public String clickDataBaseGlutes() {
+    public String getTextDataBaseGlutes() {
         log.info("Exercise Database. Select glutes");
         driver.findElement(GLUTES_DATABASE_INPUT).click();
         return driver.findElement(GLUTES_DATABASE_RESULT).getText();
     }
 
-    public String clickDataBaseShoulders() {
+    public String getTextDataBaseShoulders() {
         log.info("Exercise Database. Select shoulders");
         driver.findElement(SHOULDERS_DATABASE_INPUT).click();
         return driver.findElement(SHOULDERS_DATABASE_RESULT).getText();
     }
 
-    public static int resultArrayBodyOnly() {
+    public int getSizeArrayBodyOnly() {
         log.info("Considers numbers of elements");
         return driver.findElements(RESULT_BODY_ONLY).size();
     }
 
-    public static int resultArrayStrength() {
+    public int getSizeArrayStrength() {
         log.info("Considers numbers of elements");
         return driver.findElements(RESULT_STRENGTH).size();
     }
 
-    public static int resultArrayStretching() {
+    public int getSizeArrayStretching() {
         log.info("Considers numbers of elements");
         return driver.findElements(RESULT_STRETCHING).size();
     }
