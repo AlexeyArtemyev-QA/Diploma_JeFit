@@ -11,7 +11,7 @@ public class LoginPage extends BasePage {
     public static final By PASSWORD_INPUT = By.id("navbar_password");
     public static final By CHECKBOX_INPUT = By.id("cb_cookieuser_navbar");
     public static final By LOGIN_BUTTON = By.cssSelector(".loginblueButton1");
-    public static final By ERROR_MESSAGE = By.id("invalidpassworderrormessage");
+    private static final By ERROR_MESSAGE = By.id("invalidpassworderrormessage");
 
     public final static String URL_MY_JIFIT = "https://www.jefit.com/my-jefit/";
 
@@ -35,7 +35,7 @@ public class LoginPage extends BasePage {
         driver.findElement(CHECKBOX_INPUT).click();
     }
 
-   public void selectLogin() {
+   public void selectLoginButton() {
         log.info("Click login button");
         driver.findElement(LOGIN_BUTTON).click();
     }

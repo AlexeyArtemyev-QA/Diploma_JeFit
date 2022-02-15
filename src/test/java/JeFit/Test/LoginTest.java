@@ -1,7 +1,6 @@
 package JeFit.Test;
 
 import JeFit.Page.LoginPage;
-import io.qameta.allure.Link;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
@@ -26,61 +25,23 @@ public class LoginTest extends JeFit.Test.BaseTest {
         driver.get(URL_LOGIN);
     }
 
-    @Link("https://www.jefit.com/login/")
-    @Test(alwaysRun = true, description = "[Negative] Login. Unregistered user.")
-    public void validateLoginNegativeUnregisteredUserTest() {
-        loginPage.enterUserName(USERNAME_DEFAULT);
-        loginPage.enterPassword(PASSWORD_DEFAULT);
-        loginPage.selectCheckBox();
-        loginPage.selectLogin();
-        AllureUtils.attachScreenshot(driver);
-        Assert.assertEquals(loginPage.getErrorMessageText(), ERROR_TEXT,
-                "ERROR:Unregistered user successfully logged in");
-    }
-
-    @Link("https://www.jefit.com/login/")
-    @Test(alwaysRun = true, description = "[Negative] Login. The field User name is empty")
-    public void validateLoginNegativeEmptyUserNameTest() {
-        loginPage.enterUserName("");
-        loginPage.enterPassword(PASSWORD_DEFAULT);
-        loginPage.selectCheckBox();
-        loginPage.selectLogin();
-        AllureUtils.attachScreenshot(driver);
-        Assert.assertEquals(loginPage.getErrorMessageText(), ERROR_TEXT,
-                "ERROR:User without UserName successfully logged in");
-    }
-
-    @Link("https://www.jefit.com/login/")
-    @Test(alwaysRun = true, description = "[Negative] Login. The field Password is empty", retryAnalyzer = JeFit.Test.Retry2.class)
-    public void validateLoginNegativeEmptyPasswordTest() {
-        loginPage.enterUserName(USERNAME_DEFAULT);
-        loginPage.enterPassword("");
-        loginPage.selectCheckBox();
-        loginPage.selectLogin();
-        AllureUtils.attachScreenshot(driver);
-        Assert.assertEquals(loginPage.getErrorMessageText(), ERROR_TEXT,
-                "ERROR:User without password successfully logged in");
-    }
-
-    @Link("https://www.jefit.com/login/")
-    @Test(alwaysRun = true, description = "[Positive] Login.", retryAnalyzer = JeFit.Test.Retry.class)
+    @Test(description = "[Positive] Login.", retryAnalyzer = JeFit.Test.Retry.class)
     public void validateLoginPositiveCaseTest() {
         loginPage.enterUserName(USERNAME);
         loginPage.enterPassword(PASSWORD);
         loginPage.checkBoxIsSelected();
-        loginPage.selectLogin();
+        loginPage.selectLoginButton();
         AllureUtils.attachScreenshot(driver);
         Assert.assertEquals(loginPage.atPage(), URL_MY_JIFIT, "ERROR:Positive test was failed");
     }
 
-    @Link("https://www.jefit.com/login/")
     @Step("Username {username}, password {password}")
-    @Test(alwaysRun = true, description = "[Negative] Login. Negative login tests by using annotation DataProvider", dataProvider = "Negative Login Tests")
+    @Test(description = "[Negative] Login. Negative login tests by using annotation DataProvider", dataProvider = "Negative Login Tests")
     public void validateLoginNegativeCaseTest(String username, String password, String expectedErrorMessage1) {
         loginPage.enterUserName(username);
         loginPage.enterPassword(password);
         loginPage.checkBoxIsSelected();
-        loginPage.selectLogin();
+        loginPage.selectLoginButton();
 
         // Скриншот
         AllureUtils.attachScreenshot(driver);
@@ -101,6 +62,9 @@ public class LoginTest extends JeFit.Test.BaseTest {
                 {"USERNAME", "", ERROR_TEXT},
                 {" U s e r ", "PASSWORD", ERROR_TEXT},
                 {"User", " P A S S W O R D ", ERROR_TEXT},
+                {USERNAME_DEFAULT, PASSWORD_DEFAULT, ERROR_TEXT},
+                {"", PASSWORD_DEFAULT, ERROR_TEXT},
+                {USERNAME_DEFAULT, "", ERROR_TEXT},
         };
     }
 }

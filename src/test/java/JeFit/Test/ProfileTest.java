@@ -2,7 +2,6 @@ package JeFit.Test;
 
 import JeFit.Page.ProfilePage;
 import io.qameta.allure.Description;
-import io.qameta.allure.Link;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -41,8 +40,7 @@ public class ProfileTest extends JeFit.Test.BaseTest {
         driver.findElement(By.xpath("//a[text()='Sign out']")).click();
     }
 
-    @Link("https://www.jefit.com/my-jefit/profile/")
-    @Test(alwaysRun = true, description = "Check is profile can be editable with minimum range value")
+    @Test(description = "Check is profile can be editable with minimum range value")
     public void profilePositiveModifyDataTestVersionOne() {
         profilePage.selectDateFromMinimumValueInRange();
         profilePage.selectIbInch();
@@ -51,8 +49,8 @@ public class ProfileTest extends JeFit.Test.BaseTest {
         Assert.assertEquals(profilePage.getCurrentUrl(), URL_MY_JIFIT);
     }
 
-    @Link("https://www.jefit.com/my-jefit/profile/")
-    @Test(alwaysRun = true, description = "Check is profile can be editable with maximum range value")
+
+    @Test(description = "Check is profile can be editable with maximum range value")
     public void profilePositiveModifyDataTestVersionTwo() {
         profilePage.selectDateFromMaximumValueInRange();
         profilePage.selectKgCm();
@@ -61,8 +59,7 @@ public class ProfileTest extends JeFit.Test.BaseTest {
         Assert.assertEquals(profilePage.getCurrentUrl(), URL_MY_JIFIT);
     }
 
-    @Link("https://www.jefit.com/my-jefit/profile/")
-    @Test(alwaysRun = true, description = "Check is profile can be editable with medium range value")
+    @Test(description = "Check is profile can be editable with medium range value")
     public void profilyPositiveModifyDataTestVersionThree() {
         profilePage.selectDateFromMiddleValueInRange();
         profilePage.selectIbInch();

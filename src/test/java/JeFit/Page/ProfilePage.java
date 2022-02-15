@@ -29,7 +29,8 @@ public class ProfilePage extends BasePage {
     public static final By YEAR_INPUT_2010 = By.xpath("//option[@value='2010']");
 
     public static final By CHECKBOX_IB_INCH_INPUT = By.id("unitradio");
-    public static final By CHECKBOX_KG_CM_INPUT = By.cssSelector("[style='margin-left:12px']");
+    public static final By CHECKBOX_KG_CM_INPUT = By.xpath("//input[@onclick='changeUnits(1)']");
+    // [style='margin-left:12px']
 
     public static final By CHECKBOX_GENDER_MAN_INPUT = By.cssSelector("input[value='M']");
     public static final By CHECKBOX_GENDER_WOMAN_INPUT = By.cssSelector("input[value='F']");

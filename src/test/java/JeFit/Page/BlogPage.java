@@ -73,7 +73,7 @@ public class BlogPage extends BasePage {
         WORKOUT_TIPS_INPUT.click();
     }
 
-    public int resultArray() {
+    public int getTopicSize() {
         log.info("Considers numbers of elements");
         return  driver.findElements(ARRAY_LOCATOR).size();
     }
