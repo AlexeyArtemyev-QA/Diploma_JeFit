@@ -11,13 +11,14 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.AllureUtils;
-import static JeFit.Page.ProfilePage.URL_MY_JIFIT;
-import static JeFit.Page.ProfilePage.URL_PROFILE;
-import static JeFit.Test.LoginTest.PASSWORD;
-import static JeFit.Test.LoginTest.USERNAME;
 
 @Log4j2
 public class ProfileTest extends JeFit.Test.BaseTest {
+
+    private final static String URL_MY_JIFIT = "https://www.jefit.com/my-jefit/";
+    private final static String URL_PROFILE = "https://www.jefit.com/my-jefit/profile/";
+    private final static String USERNAME = "User_1QA";
+    private final static String PASSWORD = "Test_pass0";
 
     @BeforeMethod(alwaysRun = true)
     public void navigateToProfilePage() {
@@ -37,7 +38,7 @@ public class ProfileTest extends JeFit.Test.BaseTest {
         Actions actions = new Actions(driver);
         WebElement menuOption = driver.findElement(By.cssSelector("#my-jefit-app-menu"));
         actions.moveToElement(menuOption).perform();
-        driver.findElement(By.xpath("//a[text()='Sign out']")).click();
+        profilePage.clickButtonSignOut();
     }
 
     @Test(description = "Check is profile can be editable with minimum range value")
@@ -45,7 +46,7 @@ public class ProfileTest extends JeFit.Test.BaseTest {
         profilePage.selectDateFromMinimumValueInRange();
         profilePage.selectIbInch();
         profilePage.selectGenderMan();
-        profilePage.selectSaved();
+        profilePage.selectSavedButton();
         Assert.assertEquals(profilePage.getCurrentUrl(), URL_MY_JIFIT);
     }
 
@@ -55,7 +56,7 @@ public class ProfileTest extends JeFit.Test.BaseTest {
         profilePage.selectDateFromMaximumValueInRange();
         profilePage.selectKgCm();
         profilePage.selectGenderWoman();
-        profilePage.selectSaved();
+        profilePage.selectSavedButton();
         Assert.assertEquals(profilePage.getCurrentUrl(), URL_MY_JIFIT);
     }
 
@@ -64,7 +65,7 @@ public class ProfileTest extends JeFit.Test.BaseTest {
         profilePage.selectDateFromMiddleValueInRange();
         profilePage.selectIbInch();
         profilePage.selectGenderWoman();
-        profilePage.selectSaved();
+        profilePage.selectSavedButton();
         Assert.assertEquals(profilePage.getCurrentUrl(), URL_MY_JIFIT);
     }
 }

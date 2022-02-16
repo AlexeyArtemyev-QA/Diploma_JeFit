@@ -8,32 +8,33 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static JeFit.Page.LoginPage.*;
-
 @Log4j2
 public class ProfilePage extends BasePage {
 
-    public final static String URL_MY_JIFIT = "https://www.jefit.com/my-jefit/";
-    public final static String URL_PROFILE = "https://www.jefit.com/my-jefit/profile/";
+    private static final By USERNAME_INPUT = By.cssSelector("[id='navbar_username']");
+    private static final By PASSWORD_INPUT = By.id("navbar_password");
+    private static final By CHECKBOX_INPUT = By.id("cb_cookieuser_navbar");
+    private static final By LOGIN_BUTTON = By.cssSelector(".loginblueButton1");
 
-    public static final By MONTH_JANUARY_1_INPUT = By.xpath("//option[text()='January']");
-    public static final By MONTH_OCTOBER_10_INPUT = By.xpath("//option[text()='October']");
-    public static final By MONTH_DECEMBER_12_INPUT = By.xpath("//option[text()='December']");
+    private static final By MONTH_JANUARY_1_INPUT = By.xpath("//option[text()='January']");
+    private static final By MONTH_OCTOBER_10_INPUT = By.xpath("//option[text()='October']");
+    private static final By MONTH_DECEMBER_12_INPUT = By.xpath("//option[text()='December']");
 
-    public static final By DAY_INPUT_1 = By.xpath("//option[text()='1']");
-    public static final By DAY_INPUT_30 = By.xpath("//option[text()='30']");
-    public static final By DAY_INPUT_31 = By.xpath("//option[text()='31']");
+    private static final By DAY_INPUT_1 = By.xpath("//option[text()='1']");
+    private static final By DAY_INPUT_30 = By.xpath("//option[text()='30']");
+    private static final By DAY_INPUT_31 = By.xpath("//option[text()='31']");
 
-    public static final By YEAR_INPUT_1921 = By.xpath("//option[@value='1921']");
-    public static final By YEAR_INPUT_1996 = By.xpath("//option[@value='1996']");
-    public static final By YEAR_INPUT_2010 = By.xpath("//option[@value='2010']");
+    private static final By YEAR_INPUT_1921 = By.xpath("//option[@value='1921']");
+    private static final By YEAR_INPUT_1996 = By.xpath("//option[@value='1996']");
+    private static final By YEAR_INPUT_2010 = By.xpath("//option[@value='2010']");
 
-    public static final By CHECKBOX_IB_INCH_INPUT = By.id("unitradio");
-    public static final By CHECKBOX_KG_CM_INPUT = By.xpath("//input[@onclick='changeUnits(1)']");
-    // [style='margin-left:12px']
+    private static final By CHECKBOX_IB_INCH_INPUT = By.id("unitradio");
+    private static final By CHECKBOX_KG_CM_INPUT = By.xpath("//input[@onclick='changeUnits(1)']");
 
-    public static final By CHECKBOX_GENDER_MAN_INPUT = By.cssSelector("input[value='M']");
-    public static final By CHECKBOX_GENDER_WOMAN_INPUT = By.cssSelector("input[value='F']");
+    private static final By CHECKBOX_GENDER_MAN_INPUT = By.cssSelector("input[value='M']");
+    private static final By CHECKBOX_GENDER_WOMAN_INPUT = By.cssSelector("input[value='F']");
+    public static final By BUTTON_SIGN_OUT = By.xpath("//a[text()='Sign out']");
+
 
     public ProfilePage(WebDriver driver) {
         super(driver);
@@ -60,11 +61,11 @@ public class ProfilePage extends BasePage {
         driver.findElement(CHECKBOX_GENDER_WOMAN_INPUT).click();
     }
 
-    public void selectSaved() {
+    public void selectSavedButton() {
         log.info("Click on button save settings");
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[name='Submit']")));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+        WebElement button = driver.findElement(By.cssSelector("[name='Submit']"));
+        scrollIntoView(button);
+        button.click();
     }
 
     public String getCurrentUrl() {
@@ -122,5 +123,14 @@ public class ProfilePage extends BasePage {
 
     private void selectYearOfBirthday(By pathOfYear) {
         driver.findElement(pathOfYear).click();
+    }
+
+    public void clickButtonSignOut() {
+        log.info("Click on login button");
+        driver.findElement(BUTTON_SIGN_OUT).click();
+    }
+
+    public void scrollIntoView(WebElement element) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 }

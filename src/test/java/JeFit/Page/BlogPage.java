@@ -1,5 +1,4 @@
 package JeFit.Page;
-
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,14 +10,12 @@ import org.openqa.selenium.support.PageFactory;
 @Log4j2
 public class BlogPage extends BasePage {
 
-    public final static String URL_BLOG = "https://www.jefit.com/blog";
-
     public BlogPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
-    public static final By ARRAY_LOCATOR = By.cssSelector("span[class='raven-post-meta-item raven-post-categories']");
+    private static final By ARRAY_LOCATOR = By.cssSelector("span[class='raven-post-meta-item raven-post-categories']");
 
     @FindBy(xpath = "//a[text()='All']")
     public WebElement ALL_INPUT;

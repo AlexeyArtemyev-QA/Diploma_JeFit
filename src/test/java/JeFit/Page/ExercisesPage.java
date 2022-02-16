@@ -6,8 +6,7 @@ import org.openqa.selenium.*;
 @Log4j2
 public class ExercisesPage extends BasePage {
 
-    public static final String URL_EXERCISES = "https://www.jefit.com/exercises/";
-    public static final By EXERCISE_RESULT = By.id("hor-minimalist_3");
+    private static final By EXERCISE_RESULT = By.id("hor-minimalist_3");
 
     // ExercisesPage
     // Лскаторы Picture
@@ -56,10 +55,11 @@ public class ExercisesPage extends BasePage {
         super(driver);
     }
 
-
     public void clickSearchButton() {
         log.info("Search by name. click search button ");
-        driver.findElement(SEARCH_BUTTON_EXERCISE_SEARCH_INPUT).click();
+        WebElement button = driver.findElement(SEARCH_BUTTON_EXERCISE_SEARCH_INPUT);
+        scrollIntoView(button);
+        button.click();
     }
 
     // Методы (Picture)
@@ -99,61 +99,81 @@ public class ExercisesPage extends BasePage {
     }
 
     // Методы (Search, Equipment)
-    public WebElement getExerciseSearchInputFromAllPage() {
-        log.info("Exercise Search. Equipment - All");
-        return driver.findElement(ALL_EXERCISE_SEARCH_INPUT);
+    public void selectCheckBoxAllPage() {
+        log.info("Exercise Search. Type - Strength");
+        WebElement checkbox = driver.findElement(ALL_EXERCISE_SEARCH_INPUT);
+        scrollIntoView(checkbox);
+        checkbox.click();
     }
 
-    public WebElement getExerciseSearchInputFromBody() {
-        log.info("Exercise Search. Equipment - Body Only");
-        return driver.findElement(BODY_ONLY_EXERCISE_SEARCH_INPUT);
-    }
-
-    public WebElement getExerciseSearchMachineCardio() {
+    public void selectCheckBoxMachineCardio() {
         log.info("Exercise Search. Equipment - Machine Cardio");
-        return driver.findElement(MACHINE_CARDIO_EXERCISE_SEARCH_INPUT);
+        WebElement checkbox = driver.findElement(MACHINE_CARDIO_EXERCISE_SEARCH_INPUT);
+        scrollIntoView(checkbox);
+        checkbox.click();
     }
 
-    public WebElement findButtonExerciseWeightPlate() {
+    public void selectCheckBoxWeightPlate() {
         log.info("Exercise Search. Equipment - Weight Plate");
-        return driver.findElement(WEIGHT_PLATE_EXERCISE_SEARCH_INPUT);
+        WebElement checkbox = driver.findElement(WEIGHT_PLATE_EXERCISE_SEARCH_INPUT);
+        scrollIntoView(checkbox);
+        checkbox.click();
     }
 
     // Методы (Search, Type)
-    public void selectStrength() {
+    public void selectCheckBoxStrength() {
         log.info("Exercise Search. Type - Strength");
-        driver.findElement(STRENGTH_EXERCISE_SEARCH_INPUT).click();
+        WebElement checkbox = driver.findElement(STRENGTH_EXERCISE_SEARCH_INPUT);
+        scrollIntoView(checkbox);
+        checkbox.click();
     }
 
-    public void selectStretching() {
+    public void selectCheckBoxBodyOnly() {
+        log.info("Exercise Search. Type - Strength");
+        WebElement checkbox = driver.findElement(BODY_ONLY_EXERCISE_SEARCH_INPUT);
+        scrollIntoView(checkbox);
+        checkbox.click();
+    }
+
+    public void selectCheckBoxStretching() {
         log.info("Exercise Search. Type - Stretching");
         driver.findElement(STRETCHING_EXERCISE_SEARCH_INPUT).click();
     }
 
-    public void selectPowerlifting() {
+    public void selectCheckBoxPowerlifting() {
         log.info("Exercise Search. Type - Powerlifting");
-        driver.findElement(POWERLIFTING_EXERCISE_SEARCH_INPUT).click();
+        WebElement checkbox = driver.findElement(POWERLIFTING_EXERCISE_SEARCH_INPUT);
+        scrollIntoView(checkbox);
+        checkbox.click();
     }
 
-    public void selectOlympic() {
+    public void selectCheckBoxOlympic() {
         log.info("Exercise Search. Type - Olympic");
-        driver.findElement(OLYMPIC_EXERCISE_SEARCH_INPUT).click();
+        WebElement ckeckbox = driver.findElement(OLYMPIC_EXERCISE_SEARCH_INPUT);
+        scrollIntoView(ckeckbox);
+        ckeckbox.click();
     }
 
     // Методы (Search, Difficulty)
-    public void selectBeginner() {
+    public void selectCheckBoxBeginner() {
         log.info("Exercise Search. Difficulty - Beginner");
-        driver.findElement(BEGINNER_EXERCISE_SEARCH_INPUT).click();
+        WebElement checkbox = driver.findElement(BEGINNER_EXERCISE_SEARCH_INPUT);
+        scrollIntoView(checkbox);
+        checkbox.click();
     }
 
-    public void selectIntermediate() {
+    public void selectCheckBoxIntermediate() {
         log.info("Exercise Search. Difficulty - Intermediate");
-        driver.findElement(INTERMEDIATE_EXERCISE_SEARCH_INPUT).click();
+        WebElement checkbox = driver.findElement(INTERMEDIATE_EXERCISE_SEARCH_INPUT);
+        scrollIntoView(checkbox);
+        checkbox.click();
     }
 
-    public void selectExpert() {
+    public void selectCheckBoxExpert() {
         log.info("Exercise Search. Difficulty - Expert");
-        driver.findElement(EXPERT_EXERCISE_SEARCH_INPUT).click();
+        WebElement checkbox = driver.findElement(EXPERT_EXERCISE_SEARCH_INPUT);
+        scrollIntoView(checkbox);
+        checkbox.click();
     }
 
     // Методы (Database)
@@ -202,6 +222,5 @@ public class ExercisesPage extends BasePage {
 
     public void scrollIntoView(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        element.click();
     }
 }

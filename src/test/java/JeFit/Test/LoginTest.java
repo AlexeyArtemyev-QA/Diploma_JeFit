@@ -8,16 +8,16 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utils.AllureUtils;
 
-import static JeFit.Page.LoginPage.URL_MY_JIFIT;
-
 public class LoginTest extends JeFit.Test.BaseTest {
 
-    public final static String USERNAME = "User_1QA";
-    public final static String PASSWORD = "Test_pass0";
-    public final static String ERROR_TEXT = "Invalid username/email or password";
-    public final static String URL_LOGIN = "https://www.jefit.com/login/";
-    public final static String USERNAME_DEFAULT = "Test_123";
-    public final static String PASSWORD_DEFAULT = "Password_123";
+    private final static String URL_MY_JIFIT = "https://www.jefit.com/my-jefit/";
+
+    private final static String USERNAME = "User_1QA";
+    private final static String PASSWORD = "Test_pass0";
+    private final static String ERROR_TEXT = "Invalid username/email or password";
+    private final static String URL_LOGIN = "https://www.jefit.com/login/";
+    private final static String USERNAME_DEFAULT = "Test_123";
+    private final static String PASSWORD_DEFAULT = "Password_123";
 
     @BeforeTest(alwaysRun = true)
     public void navigateToLoginPage() {
