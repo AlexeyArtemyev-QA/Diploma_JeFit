@@ -5,8 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
+import org.openqa.selenium.support.ui.Select;
 
 @Log4j2
 public class ProfilePage extends BasePage {
@@ -16,35 +16,24 @@ public class ProfilePage extends BasePage {
     private static final By CHECKBOX_INPUT = By.id("cb_cookieuser_navbar");
     private static final By LOGIN_BUTTON = By.cssSelector(".loginblueButton1");
 
-    private static final By MONTH_JANUARY_1_INPUT = By.xpath("//option[text()='January']");
-    private static final By MONTH_OCTOBER_10_INPUT = By.xpath("//option[text()='October']");
-    private static final By MONTH_DECEMBER_12_INPUT = By.xpath("//option[text()='December']");
-
-    private static final By DAY_INPUT_1 = By.xpath("//option[text()='1']");
-    private static final By DAY_INPUT_30 = By.xpath("//option[text()='30']");
-    private static final By DAY_INPUT_31 = By.xpath("//option[text()='31']");
-
-    private static final By YEAR_INPUT_1921 = By.xpath("//option[@value='1921']");
-    private static final By YEAR_INPUT_1996 = By.xpath("//option[@value='1996']");
-    private static final By YEAR_INPUT_2010 = By.xpath("//option[@value='2010']");
-
-    private static final By CHECKBOX_IB_INCH_INPUT = By.id("unitradio");
     private static final By CHECKBOX_KG_CM_INPUT = By.xpath("//input[@onclick='changeUnits(1)']");
 
     private static final By CHECKBOX_GENDER_MAN_INPUT = By.cssSelector("input[value='M']");
-    private static final By CHECKBOX_GENDER_WOMAN_INPUT = By.cssSelector("input[value='F']");
     public static final By BUTTON_SIGN_OUT = By.xpath("//a[text()='Sign out']");
 
+
+    private static final By SELECT_BUTTON_SETTINGS = By.xpath("//a[text()='Settings']");
+    private static final By GET_MONTH = By.cssSelector("#monthSelect > option[selected]");
+    private static final By GET_DATE = By.cssSelector("#dateSelect > option[selected]");
+    private static final By GET_YEAR = By.cssSelector("#yearSelect > option[selected]");
+    private static final By GET_KG_CM = By.xpath("//input[@id='unitradio' and @value='1']");
+    private static final By GET_SEX = By.xpath("//input[@name='sex' and @value='M']");
 
     public ProfilePage(WebDriver driver) {
         super(driver);
     }
 
     // Методы
-    public void selectIbInch() {
-        log.info("Select check-box Ib/inch");
-        driver.findElement(CHECKBOX_IB_INCH_INPUT).click();
-    }
 
     public void selectKgCm() {
         log.info("Select check-box kg/cm");
@@ -56,20 +45,11 @@ public class ProfilePage extends BasePage {
         driver.findElement(CHECKBOX_GENDER_MAN_INPUT).click();
     }
 
-    public void selectGenderWoman() {
-        log.info("Select gender check-box woman");
-        driver.findElement(CHECKBOX_GENDER_WOMAN_INPUT).click();
-    }
-
     public void selectSavedButton() {
         log.info("Click on button save settings");
         WebElement button = driver.findElement(By.cssSelector("[name='Submit']"));
         scrollIntoView(button);
         button.click();
-    }
-
-    public String getCurrentUrl() {
-        return driver.getCurrentUrl();
     }
 
     public void enterUserName(String userName) {
@@ -93,41 +73,51 @@ public class ProfilePage extends BasePage {
     }
 
     public void selectDateFromMinimumValueInRange() {
-        log.info("Select of the date - 01.01.1921");
-        selectMonthOfBirthday(MONTH_JANUARY_1_INPUT);
-        selectDayOfBirthday(DAY_INPUT_1);
-        selectYearOfBirthday(YEAR_INPUT_1921);
-    }
-
-    public void selectDateFromMaximumValueInRange() {
-        log.info("Select of the date - 31.12.2010");
-        selectMonthOfBirthday(MONTH_DECEMBER_12_INPUT);
-        selectDayOfBirthday(DAY_INPUT_31);
-        selectYearOfBirthday(YEAR_INPUT_2010);
-    }
-
-    public void selectDateFromMiddleValueInRange() {
-        log.info("Select of the date - 30.10.1996");
-        selectMonthOfBirthday(MONTH_OCTOBER_10_INPUT);
-        selectDayOfBirthday(DAY_INPUT_30);
-        selectYearOfBirthday(YEAR_INPUT_1996);
-    }
-
-    private void selectDayOfBirthday(By pathOfDay) {
-        driver.findElement(pathOfDay).click();
-    }
-
-    private void selectMonthOfBirthday(By pathOfMonth) {
-        driver.findElement(pathOfMonth).click();
-    }
-
-    private void selectYearOfBirthday(By pathOfYear) {
-        driver.findElement(pathOfYear).click();
+        log.info("Select of the date - 18.10.1996");
+        Select selectMonth = new Select(driver.findElement(By.xpath("//select[@name='month']")));
+        selectMonth.selectByVisibleText("October");
+        Select selectDay = new Select(driver.findElement(By.xpath("//select[@name='dt']")));
+        selectDay.selectByVisibleText("18");
+        Select selectYear = new Select(driver.findElement(By.xpath("//select[@name='year']")));
+        selectYear.selectByVisibleText("1996");
     }
 
     public void clickButtonSignOut() {
         log.info("Click on login button");
         driver.findElement(BUTTON_SIGN_OUT).click();
+    }
+
+    public String getTextMonth (){
+        log.info("Get month text");
+        WebElement elementMonth = driver.findElement(GET_MONTH);
+        return elementMonth.getText();
+    }
+
+    public String getTextDate (){
+        log.info("Get date text");
+        WebElement elementDate = driver.findElement(GET_DATE);
+        return elementDate.getText();
+    }
+
+    public String getTextYear (){
+        log.info("Get year text");
+        WebElement elementDate = driver.findElement(GET_YEAR);
+        return elementDate.getText();
+    }
+
+    public boolean isSelectedCheckBoxKgCm (){
+        log.info("Check-box KgCm is selected");
+        return driver.findElement(GET_KG_CM).isSelected();
+    }
+
+    public boolean isSelectedCheckBoxSex (){
+        log.info("Check-box Sex is selected");
+        return driver.findElement(GET_SEX).isSelected();
+    }
+
+    public void selectButtonSetting (){
+        log.info("Click on setting button");
+        driver.findElement(SELECT_BUTTON_SETTINGS).click();
     }
 
     public void scrollIntoView(WebElement element) {
