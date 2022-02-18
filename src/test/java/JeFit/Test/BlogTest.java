@@ -13,7 +13,6 @@ public class BlogTest extends BaseTest {
     private final static int EXPECTED_RESULT = 9;
     private final static String URL_BLOG = "https://www.jefit.com/blog";
 
-
     @BeforeTest(alwaysRun = true)
     public void navigateToBlogPage() {
         blogPage = new BlogPage(driver);

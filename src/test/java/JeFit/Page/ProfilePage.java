@@ -5,8 +5,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 @Log4j2
 public class ProfilePage extends BasePage {
@@ -28,13 +30,33 @@ public class ProfilePage extends BasePage {
     private static final By GET_YEAR = By.cssSelector("#yearSelect > option[selected]");
     private static final By GET_KG_CM = By.xpath("//input[@id='unitradio' and @value='1']");
     private static final By GET_SEX = By.xpath("//input[@name='sex' and @value='M']");
+    private static final By APP_MENU = By.cssSelector("#my-jefit-app-menu");
+
+    private static final By MY_CUSTOM_EXERCISES = By.xpath("//li[contains(text(),' My Custom Exercises')]");
+    private static final By EXERCISE_NAME = By.xpath("//input[@id='newename']");
+    private static final By CREATE_EXERCISE = By.xpath("//input[@name='Submit']");
+    private static final By TEXT_MUSCLE_GROUP = By.xpath("//p[text()='Cardio']");
+    private static final By TEXT_NAME_EXERCISE = By.xpath("//td[text()='Run']");
+
+    private static final By MY_ROUTINES = By.xpath("//a[contains(text(),'My Routines')]");
+    private static final By CREATE_NEW_ROUTINE = By.xpath("//a[text()='Create New Routine']");
+    private static final By NAME_ROUTINE = By.xpath("//input[@name='rpname']");
+    private static final By DESCRIPTION = By.xpath("//textarea[@name='rptext']");
+    private static final By TAGS = By.xpath("//textarea[@name='rtags']");
+    private static final By SAVE_BUTTON = By.xpath("//input[@class='statusblueButton']");
+    private static final By FIRST_ROUTINE = By.xpath("//strong[text()='The first routine']");
+
+    private static final By EXPECTED_FREQUENCY = By.xpath("//p[text()=' 4 days / week']");
+    private static final By EXPECTED_TYPE = By.xpath("//p[text()='Sport Specific']");
+    private static final By EXPECTED_NAME = By.xpath("//strong[text()='The first routine']");
+    private static final By EXPECTED_DESCRIPTION = By.xpath("//p[text()='My first description']");
+
 
     public ProfilePage(WebDriver driver) {
         super(driver);
     }
 
     // Методы
-
     public void selectKgCm() {
         log.info("Select check-box kg/cm");
         driver.findElement(CHECKBOX_KG_CM_INPUT).click();
@@ -87,35 +109,35 @@ public class ProfilePage extends BasePage {
         driver.findElement(BUTTON_SIGN_OUT).click();
     }
 
-    public String getTextMonth (){
+    public String getTextMonth() {
         log.info("Get month text");
         WebElement elementMonth = driver.findElement(GET_MONTH);
         return elementMonth.getText();
     }
 
-    public String getTextDate (){
+    public String getTextDate() {
         log.info("Get date text");
         WebElement elementDate = driver.findElement(GET_DATE);
         return elementDate.getText();
     }
 
-    public String getTextYear (){
+    public String getTextYear() {
         log.info("Get year text");
         WebElement elementDate = driver.findElement(GET_YEAR);
         return elementDate.getText();
     }
 
-    public boolean isSelectedCheckBoxKgCm (){
+    public boolean isSelectedCheckBoxKgCm() {
         log.info("Check-box KgCm is selected");
         return driver.findElement(GET_KG_CM).isSelected();
     }
 
-    public boolean isSelectedCheckBoxSex (){
+    public boolean isSelectedCheckBoxSex() {
         log.info("Check-box Sex is selected");
         return driver.findElement(GET_SEX).isSelected();
     }
 
-    public void selectButtonSetting (){
+    public void selectButtonSetting() {
         log.info("Click on setting button");
         driver.findElement(SELECT_BUTTON_SETTINGS).click();
     }
@@ -123,4 +145,110 @@ public class ProfilePage extends BasePage {
     public void scrollIntoView(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
+
+    public void moveToElementMenu() {
+        Actions actions = new Actions(driver);
+        WebElement menuOption = driver.findElement(APP_MENU);
+        actions.moveToElement(menuOption).perform();
+    }
+
+    public void clickOnMyCustomExercises() {
+        driver.findElement(MY_CUSTOM_EXERCISES).click();
+    }
+
+    public void sendTextExerciseName() {
+        driver.findElement(EXERCISE_NAME).sendKeys("Run");
+    }
+
+    public void selectParametersForExercises() {
+        Select selectMuscleGroup = new Select(driver.findElement(By.xpath("//select[@name='selectpart']")));
+        selectMuscleGroup.selectByVisibleText("Cardio");
+        Select selectRecordType = new Select(driver.findElement(By.xpath("//select[@name='select_recordtype']")));
+        selectRecordType.selectByVisibleText("Cardio");
+    }
+
+    public void clickOnCreateExercise() {
+        driver.findElement(CREATE_EXERCISE).click();
+    }
+
+    public String getTextMuscleGroup() {
+        log.info("Get name muscle group");
+        WebElement elementMonth = driver.findElement(TEXT_MUSCLE_GROUP);
+        return elementMonth.getText();
+    }
+
+    public String getTextNameExercise() {
+        log.info("Get name exercise");
+        WebElement elementMonth = driver.findElement(TEXT_NAME_EXERCISE);
+        return elementMonth.getText();
+    }
+
+    public void clickOnMyRoutines() {
+        driver.findElement(MY_ROUTINES).click();
+    }
+
+    public void clickOnCreateNewRoutine() {
+        driver.findElement(CREATE_NEW_ROUTINE).click();
+    }
+
+    public void sendTextRoutineName() {
+        driver.findElement(NAME_ROUTINE).sendKeys("The first routine");
+    }
+
+    public void selectParametersForRoutine() {
+        Select selectFrequency = new Select(driver.findElement(By.xpath("//select[@name='dayselect']")));
+        selectFrequency.selectByVisibleText("4 day(s) / week");
+        Select selectDateType = new Select(driver.findElement(By.xpath("//select[@name='daytype']")));
+        selectDateType.selectByVisibleText("Numerical - E.g., Day1, Day2...");
+        Select selectType = new Select(driver.findElement(By.xpath("//select[@name='typeselect']")));
+        selectType.selectByVisibleText("Sport Specific");
+        Select selectDifficulty = new Select(driver.findElement(By.xpath("//select[@name='levelselect']")));
+        selectDifficulty.selectByVisibleText("Intermediate - experience >6 and <24 months");
+    }
+
+    public void sendTextDescription() {
+        driver.findElement(DESCRIPTION).sendKeys("My first description");
+    }
+
+    public void sendTextTags() {
+        driver.findElement(TAGS).sendKeys("My first tag");
+    }
+
+    public void clickOnSaveButton() {
+        driver.findElement(SAVE_BUTTON).click();
+    }
+
+    public void clickFirstRoutine() {
+        driver.findElement(FIRST_ROUTINE).click();
+    }
+
+    public String getTextFraquency() {
+        log.info("Get name muscle group");
+        WebElement fraquency = driver.findElement(EXPECTED_FREQUENCY);
+        return fraquency.getText();
+    }
+
+    public String getTextType() {
+        log.info("Get type");
+        WebElement type = driver.findElement(EXPECTED_TYPE);
+        return type.getText();
+    }
+
+    public String getTextName() {
+        log.info("Get name");
+        WebElement name = driver.findElement(EXPECTED_NAME);
+        return name.getText();
+    }
+
+    public String getTextDescription() {
+        log.info("Get name");
+        WebElement desc = driver.findElement(EXPECTED_DESCRIPTION);
+        return desc.getText();
+    }
+
+    public void waitAppMenu() {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(APP_MENU));
+    }
+
 }

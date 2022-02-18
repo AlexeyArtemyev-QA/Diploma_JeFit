@@ -51,6 +51,7 @@ public class ExercisesPage extends BasePage {
     private static final By SHOULDERS_DATABASE_INPUT = By.xpath("//li[@id='exerciselefttext']//descendant::a[text()='Shoulders']");
     private static final By SHOULDERS_DATABASE_RESULT = By.xpath("//strong[text()='Shoulders Exercise Database']");
 
+
     public ExercisesPage(WebDriver driver) {
         super(driver);
     }
@@ -223,4 +224,6 @@ public class ExercisesPage extends BasePage {
     public void scrollIntoView(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
+
+
 }

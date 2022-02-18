@@ -22,7 +22,6 @@ public class BlogPage extends BasePage {
     private static final By PRODUCT_TIPS_AND_FAQ_INPUT = By.cssSelector("[data-category='1270']");
     private static final By WHAT_S_NEW_INPUT = By.cssSelector("[data-category='4']");
     private static final By WORKOUT_TIPS_INPUT = By.cssSelector("[data-category='673']");
-    private static final By SEARCH_TOPICS_INPUT = By.cssSelector("[type='search']");
 
 
     public void selectAll() {

@@ -11,7 +11,6 @@ import utils.AllureUtils;
 public class LoginTest extends JeFit.Test.BaseTest {
 
     private final static String URL_MY_JIFIT = "https://www.jefit.com/my-jefit/";
-
     private final static String USERNAME = "User_1QA";
     private final static String PASSWORD = "Test_pass0";
     private final static String ERROR_TEXT = "Invalid username/email or password";

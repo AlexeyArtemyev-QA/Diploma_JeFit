@@ -28,11 +28,6 @@ public class LoginPage extends BasePage {
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
     }
 
-   public void selectCheckBox() {
-        log.info("Click check box Remember me");
-        driver.findElement(CHECKBOX_INPUT).click();
-    }
-
    public void selectLoginButton() {
         log.info("Click login button");
         driver.findElement(LOGIN_BUTTON).click();
