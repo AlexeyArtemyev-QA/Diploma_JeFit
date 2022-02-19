@@ -8,7 +8,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utils.AllureUtils;
 
-public class LoginTest extends JeFit.Test.BaseTest {
+public class LoginTest extends BaseTest {
 
     private final static String URL_MY_JIFIT = "https://www.jefit.com/my-jefit/";
     private final static String USERNAME = "User_1QA";

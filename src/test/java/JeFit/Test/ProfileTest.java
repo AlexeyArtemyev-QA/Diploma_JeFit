@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 @Log4j2
-public class ProfileTest extends JeFit.Test.BaseTest {
+public class ProfileTest extends BaseTest {
 
     private final static String URL_PROFILE = "https://www.jefit.com/my-jefit/profile/";
     private final static String USERNAME = "User_1QA";
@@ -66,8 +66,8 @@ public class ProfileTest extends JeFit.Test.BaseTest {
         profilePage.sendTextExerciseName();
         profilePage.selectParametersForExercises();
         profilePage.clickOnCreateExercise();
-        Assert.assertEquals(profilePage.getTextMuscleGroup(),EXPECTED_RESULT_MUSCLE);
-        Assert.assertEquals(profilePage.getTextNameExercise(),EXPECTED_RESULT_NAME_EXERCISE);
+        Assert.assertEquals(profilePage.getTextMuscleGroup(), EXPECTED_RESULT_MUSCLE);
+        Assert.assertEquals(profilePage.getTextNameExercise(), EXPECTED_RESULT_NAME_EXERCISE);
     }
 
     @Test(description = "Check to create my routines")
@@ -80,7 +80,7 @@ public class ProfileTest extends JeFit.Test.BaseTest {
         profilePage.sendTextTags();
         profilePage.clickOnSaveButton();
         profilePage.clickFirstRoutine();
-        Assert.assertEquals(profilePage.getTextFraquency(),EXPECTED_RESULT_FREQUENCY);
+        Assert.assertEquals(profilePage.getTextFraquency(), EXPECTED_RESULT_FREQUENCY);
         Assert.assertEquals(profilePage.getTextType(), EXPECTED_RESULT_TYPE);
         Assert.assertEquals(profilePage.getTextName(), EXPECTED_RESULT_NAME);
         Assert.assertEquals(profilePage.getTextDescription(), EXPECTED_DESCRIPTION);

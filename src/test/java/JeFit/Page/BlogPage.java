@@ -13,55 +13,89 @@ public class BlogPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    private static final By ARRAY_LOCATOR = By.cssSelector("span[class='raven-post-meta-item raven-post-categories']");
+    private final By ARRAY_LOCATOR = By.cssSelector("span[class='raven-post-meta-item raven-post-categories']");
+    private final By EXERCISE_TIPS_INPUT = By.cssSelector("[data-category='638']");
+    private final By ALL_INPUT = By.xpath("//a[text()='All']");
+    private final By GENERAL_FITNESS_INPUT = By.cssSelector("[data-category='1244']");
+    private final By NUTRITION_TIPS_INPUT = By.cssSelector("[data-category='674']");
+    private final By PRODUCT_TIPS_AND_FAQ_INPUT = By.cssSelector("[data-category='1270']");
+    private final By WHAT_S_NEW_INPUT = By.cssSelector("[data-category='4']");
+    private final By WORKOUT_TIPS_INPUT = By.cssSelector("[data-category='673']");
 
-    private static final By EXERCISE_TIPS_INPUT = By.cssSelector("[data-category='638']");
-    private static final By ALL_INPUT = By.xpath("//a[text()='All']");
-    private static final By GENERAL_FITNESS_INPUT = By.cssSelector("[data-category='1244']");
-    private static final By NUTRITION_TIPS_INPUT = By.cssSelector("[data-category='674']");
-    private static final By PRODUCT_TIPS_AND_FAQ_INPUT = By.cssSelector("[data-category='1270']");
-    private static final By WHAT_S_NEW_INPUT = By.cssSelector("[data-category='4']");
-    private static final By WORKOUT_TIPS_INPUT = By.cssSelector("[data-category='673']");
 
-
-    public void selectAll() {
+    private void selectBlogNews() {
         log.info("click on All");
         driver.findElement(ALL_INPUT).click();
     }
 
-    public void selectExerciseTips() {
+    private int getTopicSize() {
+        log.info("Considers numbers of elements");
+        return driver.findElements(ARRAY_LOCATOR).size();
+    }
+
+    private void selectExerciseTips() {
         log.info("click on exercise tips");
         driver.findElement(EXERCISE_TIPS_INPUT).click();
     }
 
-    public void selectGeneralFitness() {
+    private void selectGeneralFitnessTips() {
         log.info("click on general fitness");
         driver.findElement(GENERAL_FITNESS_INPUT).click();
     }
 
-    public void selectNutritionTips() {
+    private void selectNutritionTips() {
         log.info("click on nutrition tips");
         driver.findElement(NUTRITION_TIPS_INPUT).click();
     }
 
-    public void selectProductTipsAndFAQ() {
+    private void selectProductTipsAndFAQ() {
         log.info("click on product tips and FAQ");
         driver.findElement(PRODUCT_TIPS_AND_FAQ_INPUT).click();
     }
 
-    public void selectWhatsNew() {
+    private void selectWhatsNew() {
         log.info("click on what`s new");
         driver.findElement(WHAT_S_NEW_INPUT).click();
     }
 
-    public void selectWorkoutTips() {
+    private void selectWorkoutTips() {
         log.info("click on workout tips");
         driver.findElement(WORKOUT_TIPS_INPUT).click();
     }
 
-    public int getTopicSize() {
-        log.info("Considers numbers of elements");
-        return driver.findElements(ARRAY_LOCATOR).size();
+    public int getBlogNewsLength() {
+        selectBlogNews();
+        return getTopicSize();
+    }
+
+    public int getExerciseTipsLength() {
+        selectExerciseTips();
+        return getTopicSize();
+    }
+
+    public int getGeneralFitnessTipsLength() {
+        selectGeneralFitnessTips();
+        return getTopicSize();
+    }
+
+    public int getNutritionTipsLength() {
+        selectNutritionTips();
+        return getTopicSize();
+    }
+
+    public int getProductTipsAndFAQLength() {
+        selectProductTipsAndFAQ();
+        return getTopicSize();
+    }
+
+    public int getWhatsNewLength() {
+        selectWhatsNew();
+        return getTopicSize();
+    }
+
+    public int getWorkoutTipsLength() {
+        selectWorkoutTips();
+        return getTopicSize();
     }
 
 }

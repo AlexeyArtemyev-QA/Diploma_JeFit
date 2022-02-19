@@ -5,7 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class ExercisesTest extends JeFit.Test.BaseTest {
+public class ExercisesTest extends BaseTest {
 
     private static final String URL_EXERCISES = "https://www.jefit.com/exercises/";
     private static final int EXERCISE_RESULT_ARRAY = 10;

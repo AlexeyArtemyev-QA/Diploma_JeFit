@@ -70,7 +70,7 @@ public class ProfilePage extends BasePage {
     public void selectSavedButton() {
         log.info("Click on button save settings");
         WebElement button = driver.findElement(By.cssSelector("[name='Submit']"));
-        scrollIntoView(button);
+        scrollToElement(button);
         button.click();
     }
 
@@ -142,8 +142,8 @@ public class ProfilePage extends BasePage {
         driver.findElement(SELECT_BUTTON_SETTINGS).click();
     }
 
-    public void scrollIntoView(WebElement element) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    public void scrollToElement(WebElement element) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollToElement(true);", element);
     }
 
     public void moveToElementMenu() {

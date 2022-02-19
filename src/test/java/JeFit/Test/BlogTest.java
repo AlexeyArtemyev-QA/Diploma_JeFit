@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 @Log4j2
 public class BlogTest extends BaseTest {
 
-    private final static int EXPECTED_RESULT = 9;
+    private final static int EXPECTED_LENGTH_OF_TIPS = 9;
     private final static String URL_BLOG = "https://www.jefit.com/blog";
 
     @BeforeTest(alwaysRun = true)
@@ -26,44 +26,37 @@ public class BlogTest extends BaseTest {
     }
 
     @Test(description = "Check blog news length on page")
-    public void validateBlogsNewsLengthTest() {
-        blogPage.selectAll();
-        Assert.assertEquals(blogPage.getTopicSize(), EXPECTED_RESULT);
+    public void validateBlogNewsLengthTest() {
+        Assert.assertEquals(blogPage.getBlogNewsLength(), EXPECTED_LENGTH_OF_TIPS);
     }
 
     @Test(description = "Check exercise tips length on page")
     public void validateExerciseTipsLengthTest() {
-        blogPage.selectExerciseTips();
-        Assert.assertEquals(blogPage.getTopicSize(), EXPECTED_RESULT);
+        Assert.assertEquals(blogPage.getExerciseTipsLength(), EXPECTED_LENGTH_OF_TIPS);
     }
 
     @Test(description = "Check general fitness length on page")
     public void validateGeneralFitnessLengthTest() {
-        blogPage.selectGeneralFitness();
-        Assert.assertEquals(blogPage.getTopicSize(), EXPECTED_RESULT);
+        Assert.assertEquals(blogPage.getGeneralFitnessTipsLength(), EXPECTED_LENGTH_OF_TIPS);
     }
 
     @Test(description = "Check nutrition length on page")
     public void validateNutritionTipsLengthTest() {
-        blogPage.selectNutritionTips();
-        Assert.assertEquals(blogPage.getTopicSize(), EXPECTED_RESULT);
+        Assert.assertEquals(blogPage.getNutritionTipsLength(), EXPECTED_LENGTH_OF_TIPS);
     }
 
     @Test(description = "Check product tips and FAQ length on page")
     public void validateProductTipsAndFAQLengthTest() {
-        blogPage.selectProductTipsAndFAQ();
-        Assert.assertEquals(blogPage.getTopicSize(), EXPECTED_RESULT);
+        Assert.assertEquals(blogPage.getProductTipsAndFAQLength(), EXPECTED_LENGTH_OF_TIPS);
     }
 
     @Test(description = "Check what`s new length on page")
     public void validateWhatsNewLengthTest() {
-        blogPage.selectWhatsNew();
-        Assert.assertEquals(blogPage.getTopicSize(), EXPECTED_RESULT);
+        Assert.assertEquals(blogPage.getWhatsNewLength(), EXPECTED_LENGTH_OF_TIPS);
     }
 
     @Test(description = "Check workout tips length on page")
     public void validateWorkoutTipsLengthTest() {
-        blogPage.selectWorkoutTips();
-        Assert.assertEquals(blogPage.getTopicSize(), EXPECTED_RESULT);
+        Assert.assertEquals(blogPage.getWorkoutTipsLength(), EXPECTED_LENGTH_OF_TIPS);
     }
 }

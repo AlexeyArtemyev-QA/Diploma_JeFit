@@ -59,7 +59,7 @@ public class ExercisesPage extends BasePage {
     public void clickSearchButton() {
         log.info("Search by name. click search button ");
         WebElement button = driver.findElement(SEARCH_BUTTON_EXERCISE_SEARCH_INPUT);
-        scrollIntoView(button);
+        scrollToElement(button);
         button.click();
     }
 
@@ -103,21 +103,21 @@ public class ExercisesPage extends BasePage {
     public void selectCheckBoxAllPage() {
         log.info("Exercise Search. Type - Strength");
         WebElement checkbox = driver.findElement(ALL_EXERCISE_SEARCH_INPUT);
-        scrollIntoView(checkbox);
+        scrollToElement(checkbox);
         checkbox.click();
     }
 
     public void selectCheckBoxMachineCardio() {
         log.info("Exercise Search. Equipment - Machine Cardio");
         WebElement checkbox = driver.findElement(MACHINE_CARDIO_EXERCISE_SEARCH_INPUT);
-        scrollIntoView(checkbox);
+        scrollToElement(checkbox);
         checkbox.click();
     }
 
     public void selectCheckBoxWeightPlate() {
         log.info("Exercise Search. Equipment - Weight Plate");
         WebElement checkbox = driver.findElement(WEIGHT_PLATE_EXERCISE_SEARCH_INPUT);
-        scrollIntoView(checkbox);
+        scrollToElement(checkbox);
         checkbox.click();
     }
 
@@ -125,14 +125,14 @@ public class ExercisesPage extends BasePage {
     public void selectCheckBoxStrength() {
         log.info("Exercise Search. Type - Strength");
         WebElement checkbox = driver.findElement(STRENGTH_EXERCISE_SEARCH_INPUT);
-        scrollIntoView(checkbox);
+        scrollToElement(checkbox);
         checkbox.click();
     }
 
     public void selectCheckBoxBodyOnly() {
         log.info("Exercise Search. Type - Strength");
         WebElement checkbox = driver.findElement(BODY_ONLY_EXERCISE_SEARCH_INPUT);
-        scrollIntoView(checkbox);
+        scrollToElement(checkbox);
         checkbox.click();
     }
 
@@ -144,14 +144,14 @@ public class ExercisesPage extends BasePage {
     public void selectCheckBoxPowerlifting() {
         log.info("Exercise Search. Type - Powerlifting");
         WebElement checkbox = driver.findElement(POWERLIFTING_EXERCISE_SEARCH_INPUT);
-        scrollIntoView(checkbox);
+        scrollToElement(checkbox);
         checkbox.click();
     }
 
     public void selectCheckBoxOlympic() {
         log.info("Exercise Search. Type - Olympic");
         WebElement ckeckbox = driver.findElement(OLYMPIC_EXERCISE_SEARCH_INPUT);
-        scrollIntoView(ckeckbox);
+        scrollToElement(ckeckbox);
         ckeckbox.click();
     }
 
@@ -159,21 +159,21 @@ public class ExercisesPage extends BasePage {
     public void selectCheckBoxBeginner() {
         log.info("Exercise Search. Difficulty - Beginner");
         WebElement checkbox = driver.findElement(BEGINNER_EXERCISE_SEARCH_INPUT);
-        scrollIntoView(checkbox);
+        scrollToElement(checkbox);
         checkbox.click();
     }
 
     public void selectCheckBoxIntermediate() {
         log.info("Exercise Search. Difficulty - Intermediate");
         WebElement checkbox = driver.findElement(INTERMEDIATE_EXERCISE_SEARCH_INPUT);
-        scrollIntoView(checkbox);
+        scrollToElement(checkbox);
         checkbox.click();
     }
 
     public void selectCheckBoxExpert() {
         log.info("Exercise Search. Difficulty - Expert");
         WebElement checkbox = driver.findElement(EXPERT_EXERCISE_SEARCH_INPUT);
-        scrollIntoView(checkbox);
+        scrollToElement(checkbox);
         checkbox.click();
     }
 
@@ -210,20 +210,5 @@ public class ExercisesPage extends BasePage {
         log.info("Considers numbers of elements");
         return driver.findElements(RESULT_STRETCHING).size();
     }
-
-    public void scrollPageToBottom() {
-        log.info("Scroll page");
-        driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL, Keys.END);
-    }
-
-    public void scrollPageTo(int x, int y) {
-        log.info("Scroll page");
-        ((JavascriptExecutor) driver).executeScript(String.format("scroll(%,%)", x, y));
-    }
-
-    public void scrollIntoView(WebElement element) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-    }
-
 
 }
