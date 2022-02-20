@@ -1,6 +1,6 @@
-package JeFit.Test;
+package JeFit.tests;
 
-import JeFit.Page.ExercisesPage;
+import JeFit.pages.ExercisesPage;
 import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
 public class ExercisesTest extends BaseTest {
 
     private final static String URL_LOGIN = "https://www.jefit.com/login/";
-    private final static String URL_PROFILE = "https://www.jefit.com/my-jefit/profile/";
     private final static String USERNAME = "User_1QA";
     private final static String PASSWORD = "Test_pass0";
     private static final String URL_EXERCISES = "https://www.jefit.com/exercises/";
@@ -48,7 +47,7 @@ public class ExercisesTest extends BaseTest {
     }
 
     // Exercise Search
-    @Test(retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - body only, type - strength, difficulty - beginner")
+    @Test(retryAnalyzer = JeFit.tests.Retry.class, description = "Exercise Search with parameters: equipment - body only, type - strength, difficulty - beginner")
     public void searchExerciseWithParametersBodyOnlyStrengthBeginnerTest() {
         exercisesPage.selectCheckBoxBodyOnly();
         exercisesPage.selectCheckBoxStrength();
@@ -58,7 +57,7 @@ public class ExercisesTest extends BaseTest {
         Assert.assertEquals(exercisesPage.getSizeArrayStrength(), EXERCISE_RESULT_ARRAY);
     }
 
-    @Test(retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - all, type - stretching, difficulty - intermediate")
+    @Test(retryAnalyzer = JeFit.tests.Retry.class, description = "Exercise Search with parameters: equipment - all, type - stretching, difficulty - intermediate")
     public void searchExerciseWithParametersAllStretchingIntermediateTest() {
         exercisesPage.selectCheckBoxAllPage();
         exercisesPage.selectCheckBoxStretching();
@@ -67,7 +66,7 @@ public class ExercisesTest extends BaseTest {
         Assert.assertEquals(exercisesPage.getSizeArrayStretching(), EXERCISE_RESULT_ARRAY);
     }
 
-    @Test(retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - machine cardio, type - powerlifting, difficulty - expert")
+    @Test(retryAnalyzer = JeFit.tests.Retry.class, description = "Exercise Search with parameters: equipment - machine cardio, type - powerlifting, difficulty - expert")
     public void searchExerciseWithParametersMachineCardioPowerliftingExpertTest() {
         exercisesPage.selectCheckBoxMachineCardio();
         exercisesPage.selectCheckBoxPowerlifting();
@@ -76,7 +75,7 @@ public class ExercisesTest extends BaseTest {
         Assert.assertEquals(exercisesPage.getTextResult(), EXERCISE_RESULT_TEXT);
     }
 
-    @Test(retryAnalyzer = JeFit.Test.Retry.class, description = "Exercise Search with parameters: equipment - weight plat, type - olympic, difficulty - expert")
+    @Test(retryAnalyzer = JeFit.tests.Retry.class, description = "Exercise Search with parameters: equipment - weight plat, type - olympic, difficulty - expert")
     public void searchExerciseWithParametersWeightPlateOlympicExpertTest() {
         exercisesPage.selectCheckBoxWeightPlate();
         exercisesPage.selectCheckBoxOlympic();

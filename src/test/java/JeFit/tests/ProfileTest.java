@@ -1,6 +1,6 @@
-package JeFit.Test;
+package JeFit.tests;
 
-import JeFit.Page.ProfilePage;
+import JeFit.pages.ProfilePage;
 import io.qameta.allure.Description;
 import lombok.extern.log4j.Log4j2;
 import org.testng.Assert;

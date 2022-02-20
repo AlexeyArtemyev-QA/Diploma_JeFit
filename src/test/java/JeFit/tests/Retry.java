@@ -1,4 +1,4 @@
-package JeFit.Test;
+package JeFit.tests;
 
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;

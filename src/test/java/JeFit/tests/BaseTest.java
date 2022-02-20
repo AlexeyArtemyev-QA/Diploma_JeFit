@@ -1,8 +1,8 @@
-package JeFit.Test;
+package JeFit.tests;
 
-import JeFit.Page.ExercisesPage;
-import JeFit.Page.LoginPage;
-import JeFit.Page.ProfilePage;
+import JeFit.pages.ExercisesPage;
+import JeFit.pages.LoginPage;
+import JeFit.pages.ProfilePage;
 import io.qameta.allure.Description;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;

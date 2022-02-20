@@ -1,6 +1,6 @@
-package JeFit.Test;
+package JeFit.tests;
 
-import JeFit.Page.LoginPage;
+import JeFit.pages.LoginPage;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
@@ -24,7 +24,7 @@ public class LoginTest extends BaseTest {
         driver.get(URL_LOGIN);
     }
 
-    @Test(description = "[Positive] Login.", retryAnalyzer = JeFit.Test.Retry.class)
+    @Test(description = "[Positive] Login.", retryAnalyzer = JeFit.tests.Retry.class)
     public void validateLoginPositiveCaseTest() {
         loginPage.enterUserName(USERNAME);
         loginPage.enterPassword(PASSWORD);

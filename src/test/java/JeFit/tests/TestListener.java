@@ -1,4 +1,4 @@
-package JeFit.Test;
+package JeFit.tests;
 
 import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
@@ -28,7 +28,7 @@ public class TestListener implements ITestListener {
     public void onTestFailure(ITestResult result) {
         ITestListener.super.onTestFailure(result);
         //Скриншот
-        log.info("Test failed", result.getName());
+        log.info("tests failed", result.getName());
         WebDriver driver = (WebDriver) (result.getTestContext().getAttribute("driver"));
         AllureUtils.attachScreenshot(driver);
     }
