@@ -7,7 +7,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 
 public class DriverFactory {
 
-
     private static WebDriver driver;
 
     public static WebDriver getDriver (String browserName){

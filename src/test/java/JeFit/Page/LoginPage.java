@@ -19,12 +19,12 @@ public class LoginPage extends BasePage {
 
     // Методы
    public void enterUserName(String userName) {
-        log.info("Enter the User Name");
+        log.info("Enter User Name");
         driver.findElement(USERNAME_INPUT).sendKeys(userName);
     }
 
     public void enterPassword(String password) {
-        log.info("Enter the password");
+        log.info("Enter password");
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
     }
 

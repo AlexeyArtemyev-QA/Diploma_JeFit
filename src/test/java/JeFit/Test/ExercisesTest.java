@@ -1,12 +1,18 @@
 package JeFit.Test;
 
 import JeFit.Page.ExercisesPage;
+import io.qameta.allure.Description;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class ExercisesTest extends BaseTest {
 
+    private final static String URL_LOGIN = "https://www.jefit.com/login/";
+    private final static String URL_PROFILE = "https://www.jefit.com/my-jefit/profile/";
+    private final static String USERNAME = "User_1QA";
+    private final static String PASSWORD = "Test_pass0";
     private static final String URL_EXERCISES = "https://www.jefit.com/exercises/";
     private static final int EXERCISE_RESULT_ARRAY = 10;
     private static final String EXERCISE_RESULT_TEXT = "No result found!";
@@ -18,12 +24,27 @@ public class ExercisesTest extends BaseTest {
     private final static String ABS = "Abs Exercise Database";
     private final static String BACK = "Back Exercise Database";
     private final static String LOWER_LEGS_RESULT = "Lower-Legs Exercise Database";
+    private final static String EXPECTED_MESSAGE = "This routine has been downloaded to your account. Please click the sync button from your device.";
+    private final static String EXPECTED_NAME_WORKOUT = "Posterior Chain Workout";
 
+    private final static String TEXT_EXERCISES_INPUT = "Posterior Chain Workout";
 
     @BeforeMethod(alwaysRun = true)
     public void navigateToLoginPage() {
         exercisesPage = new ExercisesPage(driver);
+        driver.get(URL_LOGIN);
+        exercisesPage.enterUserName(USERNAME);
+        exercisesPage.enterPassword(PASSWORD);
+        exercisesPage.checkBoxIsSelected();
+        exercisesPage.selectLogin();
         driver.get(URL_EXERCISES);
+    }
+
+    @AfterMethod(alwaysRun = true)
+    @Description("Close browser")
+    public void signOut() {
+        exercisesPage.moveToElementMenu();
+        exercisesPage.clickButtonSignOut();
     }
 
     // Exercise Search
@@ -106,4 +127,19 @@ public class ExercisesTest extends BaseTest {
     public void searchPictureLowerLegsTest() {
         Assert.assertEquals(exercisesPage.getTextPictureLowerLegs(), LOWER_LEGS_RESULT);
     }
+
+    @Test(description = "")
+    public void addingExerciseToTheProfileTest() {
+        exercisesPage.clickOnWorkoutPlansButton();
+        exercisesPage.sentTextExercises(TEXT_EXERCISES_INPUT);
+        exercisesPage.clickSearchExercisesButton();
+        exercisesPage.clickOnExercises();
+        exercisesPage.clickOnSaveOnMyWorkouts();
+        Assert.assertEquals(exercisesPage.getTextMessage(), EXPECTED_MESSAGE);
+        exercisesPage.clickOnMyJefit();
+        exercisesPage.clickOnMyRoutines();
+        Assert.assertEquals(exercisesPage.getTextWorkout(), EXPECTED_NAME_WORKOUT);
+    }
+
+
 }

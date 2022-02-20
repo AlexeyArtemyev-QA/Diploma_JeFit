@@ -1,12 +1,13 @@
 package JeFit.Test;
 
 import lombok.SneakyThrows;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import utils.AllureUtils;
-
+@Log4j2
 public class TestListener implements ITestListener {
 
     protected WebDriver driver;
@@ -26,7 +27,7 @@ public class TestListener implements ITestListener {
     public void onTestFailure(ITestResult result) {
         ITestListener.super.onTestFailure(result);
         //Скриншот
-        System.out.println(String.format("Test '%s' failed", result.getName()));
+        log.info("Test failed", result.getName());
         WebDriver driver = (WebDriver) (result.getTestContext().getAttribute("driver"));
         AllureUtils.attachScreenshot(driver);
     }

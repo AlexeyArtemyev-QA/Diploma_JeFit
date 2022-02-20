@@ -23,7 +23,30 @@ public class ProfileTest extends BaseTest {
     private final static String EXPECTED_RESULT_TYPE = "Type: Sport Specific";
     private final static String EXPECTED_RESULT_NAME = "The first routine";
     private final static String EXPECTED_DESCRIPTION = "My first description";
-
+    private final static String EXPECTED_FRIEND_NAME = "Alex 13";
+    private final static String EXPECTED_REQUEST_SENT = "Friend Request Sent";
+    private final static String EXPECTED_STATUS = "Status: My first status";
+    private final static String EXPECTED_NOTE = "Note : My first note";
+    private final static String WEIGHT_INPUT = "78";
+    private final static String HEIGHT_INPUT = "175";
+    private final static String MUSCLE_GROUP_INPUT = "Cardio";
+    private final static String RECORD_TYPE_INPUT = "Cardio";
+    private final static String EXERCISE_NAME_INPUT = "Run";
+    private final static String MONTH_INPUT = "October";
+    private final static String DAY_INPUT = "18";
+    private final static String YEAR_INPUT = "1996";
+    private final static String TEXT_ROUTINE_NAME_INPUT = "The first routine";
+    private final static String FREQUENCY_PARAMETER_INPUT = "4 day(s) / week";
+    private final static String DATE_TYPE_PARAMETER_INPUT = "Numerical - E.g., Day1, Day2...";
+    private final static String TYPE_PARAMETER_INPUT = "Sport Specific";
+    private final static String DIFFICULTY_PARAMETER_INPUT = "Intermediate - experience >6 and <24 months";
+    private final static String DESCRIPTION_INPUT = "My first description";
+    private final static String TAG_INPUT = "My first tag";
+    private final static String NAME_FRIEND_INPUT = "Alex 13";
+    private final static String STATUS_INPUT = "My first status";
+    private final static String NOTE_INPUT = "My first note";
+    private final static String EXPECTED_HEIGHT = "Height : 175  cm";
+    private final static String EXPECTED_WEIGHT = "Weight : 78  kg";
 
     @BeforeMethod(alwaysRun = true)
     public void navigateToProfilePage() {
@@ -32,7 +55,7 @@ public class ProfileTest extends BaseTest {
         profilePage.enterUserName(USERNAME);
         profilePage.enterPassword(PASSWORD);
         profilePage.checkBoxIsSelected();
-        profilePage.selectLogin();
+        profilePage.clickLogin();
         driver.get(URL_PROFILE);
     }
 
@@ -45,14 +68,13 @@ public class ProfileTest extends BaseTest {
 
     @Test(description = "Check is profile can be editable with minimum range value")
     public void profilePositiveModifyDataTestVersionOne() {
-        driver.get(URL_PROFILE);
-        profilePage.selectDateFromMinimumValueInRange();
+        profilePage.selectDateFromMinimumValueInRange(MONTH_INPUT, DAY_INPUT, YEAR_INPUT);
         profilePage.selectKgCm();
         profilePage.selectGenderMan();
-        profilePage.selectSavedButton();
+        profilePage.clickSavedButton();
         profilePage.moveToElementMenu();
         profilePage.waitAppMenu();
-        profilePage.selectButtonSetting();
+        profilePage.clickButtonSetting();
         Assert.assertEquals(profilePage.getTextMonth(), EXPECTED_RESULT_MONTH);
         Assert.assertEquals(profilePage.getTextDate(), EXPECTED_RESULT_DATE);
         Assert.assertEquals(profilePage.getTextYear(), EXPECTED_RESULT_YEAR);
@@ -63,8 +85,8 @@ public class ProfileTest extends BaseTest {
     @Test(description = "Check to create my custom exercise")
     public void createMyCustomExercises() {
         profilePage.clickOnMyCustomExercises();
-        profilePage.sendTextExerciseName();
-        profilePage.selectParametersForExercises();
+        profilePage.sendTextExerciseName(EXERCISE_NAME_INPUT);
+        profilePage.selectParametersForExercises(MUSCLE_GROUP_INPUT, RECORD_TYPE_INPUT);
         profilePage.clickOnCreateExercise();
         Assert.assertEquals(profilePage.getTextMuscleGroup(), EXPECTED_RESULT_MUSCLE);
         Assert.assertEquals(profilePage.getTextNameExercise(), EXPECTED_RESULT_NAME_EXERCISE);
@@ -74,17 +96,59 @@ public class ProfileTest extends BaseTest {
     public void createMyRoutines() {
         profilePage.clickOnMyRoutines();
         profilePage.clickOnCreateNewRoutine();
-        profilePage.sendTextRoutineName();
-        profilePage.selectParametersForRoutine();
-        profilePage.sendTextDescription();
-        profilePage.sendTextTags();
+        profilePage.sendTextRoutineName(TEXT_ROUTINE_NAME_INPUT);
+        profilePage.selectParametersForRoutine(FREQUENCY_PARAMETER_INPUT, DATE_TYPE_PARAMETER_INPUT, TYPE_PARAMETER_INPUT, DIFFICULTY_PARAMETER_INPUT);
+        profilePage.sendTextDescription(DESCRIPTION_INPUT);
+        profilePage.sendTextTags(TAG_INPUT);
         profilePage.clickOnSaveButton();
         profilePage.clickFirstRoutine();
-        Assert.assertEquals(profilePage.getTextFraquency(), EXPECTED_RESULT_FREQUENCY);
+        Assert.assertEquals(profilePage.getTextFrequency(), EXPECTED_RESULT_FREQUENCY);
         Assert.assertEquals(profilePage.getTextType(), EXPECTED_RESULT_TYPE);
         Assert.assertEquals(profilePage.getTextName(), EXPECTED_RESULT_NAME);
         Assert.assertEquals(profilePage.getTextDescription(), EXPECTED_DESCRIPTION);
+    }
 
+    @Test(description = "Check to create my routines")
+    public void addFriends() {
+        profilePage.moveToElementMenu();
+        profilePage.clickFriendsButton();
+        profilePage.clickSearchFriendsButton();
+        profilePage.sentTextNameForSearch(NAME_FRIEND_INPUT);
+        profilePage.clickSearchButton();
+        Assert.assertEquals(profilePage.getTextFriendName(), EXPECTED_FRIEND_NAME);
+        //profilePage.clickAddButton();
+        profilePage.clickFriendName();
+        Assert.assertEquals(profilePage.getTextFriendRequest(), EXPECTED_REQUEST_SENT);
+    }
+
+    @Test(description = "")
+    public void addStatus() {
+        profilePage.clickAppMenu();
+        profilePage.sentTextStatus(STATUS_INPUT);
+        profilePage.clickPostButton();
+        Assert.assertEquals(profilePage.getTextCurrentStatus(), EXPECTED_STATUS);
+    }
+
+    @Test(description = "")
+    public void addNotes() {
+        profilePage.clickAppMenu();
+        profilePage.clickLogWorkoutButton();
+        profilePage.clickButtonAddNote();
+        profilePage.sentTextNote(NOTE_INPUT);
+        profilePage.clickButtonCreateNote();
+        Assert.assertEquals(profilePage.getTextNote(), EXPECTED_NOTE);
+    }
+
+    @Test(description = "")
+    public void addBodyStatus() throws InterruptedException {
+        profilePage.clickAppMenu();
+        profilePage.clickLogWorkoutButton();
+        profilePage.clickButtonAddBodyStatus();
+        profilePage.sendValueBodyParameters(WEIGHT_INPUT, HEIGHT_INPUT);
+        profilePage.clickButtonDone();
+        Thread.sleep(5000);
+        Assert.assertEquals(profilePage.getTextWeight(), EXPECTED_WEIGHT);
+        Assert.assertEquals(profilePage.getTextHeight(), EXPECTED_HEIGHT);
     }
 
 }

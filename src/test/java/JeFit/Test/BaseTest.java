@@ -1,12 +1,10 @@
 package JeFit.Test;
 
-import JeFit.Page.BlogPage;
 import JeFit.Page.ExercisesPage;
 import JeFit.Page.LoginPage;
 import JeFit.Page.ProfilePage;
 import io.qameta.allure.Description;
 import lombok.extern.log4j.Log4j2;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
@@ -21,7 +19,6 @@ public abstract class BaseTest {
     protected LoginPage loginPage;
     protected ProfilePage profilePage;
     protected ExercisesPage exercisesPage;
-    protected BlogPage blogPage;
 
     @Parameters({"browser"})
     @BeforeTest(alwaysRun = true)
@@ -40,8 +37,6 @@ public abstract class BaseTest {
         driver.manage().deleteAllCookies();
         driver.quit();
     }
-
-
 }
 
 
