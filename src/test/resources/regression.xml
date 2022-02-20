@@ -4,7 +4,7 @@
     <test name="Exercises test">
         <parameter name="browser" value="Chrome"></parameter>
         <classes>
-            <class name="JeFit.Test.ExercisesTest"/>
+            <class name="JeFit.tests.ExercisesTest"/>
         </classes>
-    </test> <!-- Test -->
+    </test> <!-- tests -->
 </suite>
