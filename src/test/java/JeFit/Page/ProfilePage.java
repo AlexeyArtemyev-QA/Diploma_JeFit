@@ -2,14 +2,12 @@ package JeFit.Page;
 
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 
 @Log4j2
 public class ProfilePage extends BasePage {
@@ -21,7 +19,6 @@ public class ProfilePage extends BasePage {
     private static final By CHECKBOX_KG_CM_INPUT = By.xpath("//input[@onclick='changeUnits(1)']");
     private static final By CHECKBOX_GENDER_MAN_INPUT = By.cssSelector("input[value='M']");
     public static final By BUTTON_SIGN_OUT = By.xpath("//a[text()='Sign out']");
-
     private static final By SELECT_BUTTON_SETTINGS = By.xpath("//a[text()='Settings']");
     private static final By GET_MONTH = By.cssSelector("#monthSelect > option[selected]");
     private static final By GET_DATE = By.cssSelector("#dateSelect > option[selected]");
@@ -29,13 +26,12 @@ public class ProfilePage extends BasePage {
     private static final By GET_KG_CM = By.xpath("//input[@id='unitradio' and @value='1']");
     private static final By GET_SEX = By.xpath("//input[@name='sex' and @value='M']");
     private static final By APP_MENU = By.cssSelector("#my-jefit-app-menu");
-
     private static final By MY_CUSTOM_EXERCISES = By.xpath("//li[contains(text(),' My Custom Exercises')]");
     private static final By EXERCISE_NAME = By.xpath("//input[@id='newename']");
     private static final By CREATE_EXERCISE = By.xpath("//input[@name='Submit']");
     private static final By TEXT_MUSCLE_GROUP = By.xpath("//p[text()='Cardio']");
     private static final By TEXT_NAME_EXERCISE = By.xpath("//td[text()='Run']");
-
+    private static final By WALK_CUSTOM_EXERCISES = By.xpath("//td[text()='Walk']");
     private static final By MY_ROUTINES = By.xpath("//a[contains(text(),'My Routines')]");
     private static final By CREATE_NEW_ROUTINE = By.xpath("//a[text()='Create New Routine']");
     private static final By NAME_ROUTINE = By.xpath("//input[@name='rpname']");
@@ -43,8 +39,8 @@ public class ProfilePage extends BasePage {
     private static final By TAGS = By.xpath("//textarea[@name='rtags']");
     private static final By SAVE_BUTTON = By.xpath("//input[@class='statusblueButton']");
     private static final By FIRST_ROUTINE = By.xpath("//strong[text()='The first routine']");
-
     private static final By FREQUENCY = By.xpath("//p[text()=' 4 days / week']");
+    private static final By FREQUENCY_EDIT = By.xpath("//p[text()=' 2 days / week']");
     private static final By TYPE = By.xpath("//p[text()='Sport Specific']");
     private static final By NAME = By.xpath("//strong[text()='The first routine']");
     private static final By DESCRIPTION_TEXT = By.xpath("//p[text()='My first description']");
@@ -52,19 +48,17 @@ public class ProfilePage extends BasePage {
     private static final By SEARCH_FRIENDS_BUTTON = By.xpath("//div[contains(text(),'Search Friends')]");
     private static final By SEARCH_FRIENDS_FIELD = By.xpath("//input[@id='suggestionsinput']");
     private static final By SEARCH_BUTTON = By.xpath("//input[@id='searchFriend']");
-    private static final By FRIEND_NAME = By.xpath("//a[contains(text(),'Alex 13')]");
+    private static final By FRIEND_NAME = By.xpath("//a[contains(text(),'Alex 1980')]");
     private static final By ADD_BUTTON = By.xpath("//a[contains(text(),'Add')]");
     private static final By FRIEND_REQUEST_SENT = By.xpath("//div[contains(text(),'Friend Request Sent')]");
     private static final By TEXT_AREA = By.xpath("//textarea[@id='statusinputbox']");
     private static final By POST_BUTTON = By.xpath("//input[@value='Post']");
     private static final By TEXT_STATUS = By.xpath("//div[@id='statusText']//descendant::div");
-
     private static final By LOG_WORKOUT = By.xpath("//a[@class='btn btn-outline-secondary btn-block']");
     private static final By ADD_BUTTON_NOTE = By.xpath("//span[@id='add-note']");
     private static final By NOTE_FIELD = By.xpath("//form[@name='add-note']//descendant::textarea[@name='note']");
     private static final By CREATE_NOTE_BUTTON = By.xpath("//button[text()='Create Note']");
     private static final By NOTE = By.xpath("//div[@class='fixed-note']//descendant::div");
-
     private static final By ADD_BUTTON_BODY_STATUS = By.xpath("//span[@id='edit-body-stats']");
     private static final By EDIT_BODY_STATUS_POPUP = By.id("add-body-stats-div");
     private static final By WEIGHT = By.xpath("//input[@name='weight']");
@@ -72,7 +66,6 @@ public class ProfilePage extends BasePage {
     private static final By DONE_BUTTON = By.xpath("//div[contains(text(),'Done')]");
     private static final By WEIGHT_VALUE = By.xpath("//strong[contains(text(),'Weight : ')]//ancestor::a");
     private static final By HEIGHT_VALUE = By.xpath("//strong[contains(text(),'Height : ')]//ancestor::a");
-
     private static final By SUBMIT_BUTTON = By.cssSelector("[name='Submit']");
     private static final By MONTH_VALUE = By.xpath("//select[@name='month']");
     private static final By DAY_VALUE = By.xpath("//select[@name='dt']");
@@ -83,12 +76,70 @@ public class ProfilePage extends BasePage {
     private static final By DATA_TYPE_INPUT = By.xpath("//select[@name='daytype']");
     private static final By TYPE_INPUT = By.xpath("//select[@name='typeselect']");
     private static final By DIFFICULTY_INPUT = By.xpath("//select[@name='levelselect']");
+    private static final By ROUTINE_SECOND = By.xpath("//strong[text()='The second routine']");
+    private static final By DELETE_BUTTON = By.xpath("//a[text()=' Delete']");
+    private static final By EDIT_ROUTINE = By.xpath("//a[@class='confirmText']");
+    private static final By TYPE_EDIT = By.xpath("//p[text()='General Fitness']");
+    private static final By REMOVAL_TEXT = By.xpath("//p[text()='You have not setup a default routine yet. Please create one or set one as default routine']");
+    private static final By EDIT_BUTTON = By.cssSelector("#hor-minimalist_3 > tbody > tr > td > table > tbody > tr:nth-of-type(2) > td:nth-of-type(3) > a");
+    private static final By DELETE_BUTTON_CUSTOM_EXERCISES = By.cssSelector("#hor-minimalist_3 > tbody > tr > td > table > tbody > tr:nth-of-type(2) > td:nth-of-type(4) > a");
+    private static final By EDIT_BUTTON_CUSTOM_EXERCISE = By.xpath("//td[text()='Jump']//ancestor::td[@align='center']//following::td[@align='center']");
+    private static final By DELETE_CUSTOM_EXERCISE = By.xpath("//td[@colspan='4']");
 
     public ProfilePage(WebDriver driver) {
         super(driver);
     }
 
     // Методы
+    public void clickRoutineSecond() {
+        log.info("Click button My second routine");
+        driver.findElement(ROUTINE_SECOND).click();
+    }
+
+    public void clickEditButtonCustomExercise() {
+        log.info("Click edit button");
+        driver.findElement(EDIT_BUTTON_CUSTOM_EXERCISE).click();
+    }
+
+    public void clickEditButton() {
+        log.info("Click edit button");
+        driver.findElement(EDIT_BUTTON).click();
+    }
+
+    public void clickDeleteButtonCustomExercises() {
+        log.info("Click delete button");
+        driver.findElement(DELETE_BUTTON_CUSTOM_EXERCISES).click();
+    }
+
+    public void clickDeleteButton() {
+        log.info("Click button My third routine");
+        driver.findElement(DELETE_BUTTON).click();
+        driver.switchTo().alert().accept();
+    }
+
+    public String getTextSuccessfulRemoval() {
+        log.info("Get text frequency");
+        WebElement frequency = driver.findElement(REMOVAL_TEXT);
+        return frequency.getText();
+    }
+
+    public void clickEditRoutine() {
+        log.info("Click button Edit");
+        driver.findElement(EDIT_ROUTINE).click();
+    }
+
+    public String getTextEditFrequency() {
+        log.info("Get text frequency");
+        WebElement frequency = driver.findElement(FREQUENCY_EDIT);
+        return frequency.getText();
+    }
+
+    public String getTextEditType() {
+        log.info("Get text type");
+        WebElement type = driver.findElement(TYPE_EDIT);
+        return type.getText();
+    }
+
     public void selectKgCm() {
         log.info("Select check-box kg/cm");
         driver.findElement(CHECKBOX_KG_CM_INPUT).click();
@@ -99,7 +150,7 @@ public class ProfilePage extends BasePage {
         driver.findElement(CHECKBOX_GENDER_MAN_INPUT).click();
     }
 
-    public void clickSavedButton() {
+    public void clickSaveButton() {
         log.info("Click on button save settings");
         WebElement button = driver.findElement(SUBMIT_BUTTON);
         scrollToElement(button);
@@ -172,11 +223,6 @@ public class ProfilePage extends BasePage {
     public void clickButtonSetting() {
         log.info("Click on setting button");
         driver.findElement(SELECT_BUTTON_SETTINGS).click();
-    }
-
-    public void scrollToElement(WebElement element) {
-        log.info("Scroll to element");
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollToElement(true);", element);
     }
 
     public void moveToElementMenu() {
@@ -264,7 +310,9 @@ public class ProfilePage extends BasePage {
 
     public void clickOnSaveButton() {
         log.info("Click save button");
-        driver.findElement(SAVE_BUTTON).click();
+        WebElement saveButton = driver.findElement(SAVE_BUTTON);
+        scrollToElement(saveButton);
+        saveButton.click();
     }
 
     public void clickFirstRoutine() {
@@ -396,11 +444,11 @@ public class ProfilePage extends BasePage {
         driver.findElement(ADD_BUTTON_BODY_STATUS).click();
     }
 
-    public void sendValueBodyParameters(String WEIGHT_INPUT, String HEIGHT_INPUT) {
+    public void sendValueBodyParameters(String weightInputKeys, String hieghtInputKeys) {
         log.info("Send value weight");
-        driver.findElement(WEIGHT).sendKeys(WEIGHT_INPUT);
+        driver.findElement(WEIGHT).sendKeys(weightInputKeys);
         log.info("Send value height");
-        driver.findElement(HEIGHT).sendKeys(HEIGHT_INPUT);
+        driver.findElement(HEIGHT).sendKeys(hieghtInputKeys);
     }
 
     public void clickButtonDone() {
@@ -425,5 +473,21 @@ public class ProfilePage extends BasePage {
         return note.getText();
     }
 
+    public void cleanFieldName (){
+        log.info("Clean field exercise name");
+        driver.findElement(EXERCISE_NAME).clear();
+    }
+
+    public String getTextCustomExercises() {
+        log.info("Get text walk exercises");
+        WebElement note = driver.findElement(WALK_CUSTOM_EXERCISES);
+        return note.getText();
+    }
+
+    public String getTextDeleteCustomExercises() {
+        log.info("Get text after deleting ");
+        WebElement space = driver.findElement(DELETE_CUSTOM_EXERCISE);
+        return space.getText();
+    }
 
 }

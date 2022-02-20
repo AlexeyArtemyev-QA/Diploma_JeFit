@@ -23,30 +23,50 @@ public class ProfileTest extends BaseTest {
     private final static String EXPECTED_RESULT_TYPE = "Type: Sport Specific";
     private final static String EXPECTED_RESULT_NAME = "The first routine";
     private final static String EXPECTED_DESCRIPTION = "My first description";
-    private final static String EXPECTED_FRIEND_NAME = "Alex 13";
+    private final static String EXPECTED_FRIEND_NAME = "Alex 1980";
     private final static String EXPECTED_REQUEST_SENT = "Friend Request Sent";
     private final static String EXPECTED_STATUS = "Status: My first status";
     private final static String EXPECTED_NOTE = "Note : My first note";
     private final static String WEIGHT_INPUT = "78";
     private final static String HEIGHT_INPUT = "175";
     private final static String MUSCLE_GROUP_INPUT = "Cardio";
+    private final static String MUSCLE_GROUP_INPUT_EDIT = "Lower Legs";
+    private final static String MUSCLE_GROUP_INPUT_EDIT_ABS = "Abs";
     private final static String RECORD_TYPE_INPUT = "Cardio";
+    private final static String RECORD_TYPE_INPUT_EDIT = "Weight and Reps";
+    private final static String RECORD_TYPE_INPUT_EDIT_REPS_ONLY = "Reps Only";
     private final static String EXERCISE_NAME_INPUT = "Run";
+    private final static String EXERCISE_NAME_EDIT_INPUT = "Jump";
+    private final static String EXERCISE_NAME_DELETE_INPUT = "Acrobatics";
+    private final static String EXERCISE_NAME_EDIT_INPUT_WALK = "Walk";
     private final static String MONTH_INPUT = "October";
     private final static String DAY_INPUT = "18";
     private final static String YEAR_INPUT = "1996";
     private final static String TEXT_ROUTINE_NAME_INPUT = "The first routine";
+    private final static String TEXT_ROUTINE_NAME_INPUT_EDIT = "The second routine";
+    private final static String TEXT_ROUTINE_NAME_INPUT_REMOVAL = "The third routine";
+    private final static String DESCRIPTION_INPUT_EDIT = "My second description";
+    private final static String DESCRIPTION_INPUT_REMOVAL = "My third description";
+    private final static String TAG_INPUT_EDIT = "My second tag";
+    private final static String TAG_INPUT_REMOVAL = "My third tag";
+    private final static String FREQUENCY_PARAMETER = "2 day(s) / week";
+    private final static String TYPE_PARAMETER = "General Fitness";
+    private final static String DATE_TYPE_PARAMETER = "Day of Week - E.g., Monday, Tuesday...";
+    private final static String EXPECTED_RESULT_EDIT_FREQUENCY = "Frequency: 2 days / week";
+    private final static String EXPECTED_RESULT_EDIT_TYPE = "Type: General Fitness";
     private final static String FREQUENCY_PARAMETER_INPUT = "4 day(s) / week";
     private final static String DATE_TYPE_PARAMETER_INPUT = "Numerical - E.g., Day1, Day2...";
     private final static String TYPE_PARAMETER_INPUT = "Sport Specific";
     private final static String DIFFICULTY_PARAMETER_INPUT = "Intermediate - experience >6 and <24 months";
     private final static String DESCRIPTION_INPUT = "My first description";
     private final static String TAG_INPUT = "My first tag";
-    private final static String NAME_FRIEND_INPUT = "Alex 13";
+    private final static String NAME_FRIEND_INPUT = "Alex 1980";
     private final static String STATUS_INPUT = "My first status";
     private final static String NOTE_INPUT = "My first note";
     private final static String EXPECTED_HEIGHT = "Height : 175  inches";
     private final static String EXPECTED_WEIGHT = "Weight : 78  lbs";
+    private final static String EXPECTED_NAME_EDIT = "Walk";
+    private final static String EXPECTED_NAME_DELETE = "";
 
     @BeforeMethod(alwaysRun = true)
     public void navigateToProfilePage() {
@@ -66,16 +86,15 @@ public class ProfileTest extends BaseTest {
         profilePage.clickButtonSignOut();
     }
 
-    @Test(description = "Check is profile can be editable with minimum range value")
+    @Test(description = "Check is profile can be editable with minimum range value", priority = 2)
     public void profilePositiveModifyDataTestVersionOne() {
         profilePage.selectDateFromMinimumValueInRange(MONTH_INPUT, DAY_INPUT, YEAR_INPUT);
         profilePage.selectKgCm();
         profilePage.selectGenderMan();
-        profilePage.clickSavedButton();
+        profilePage.clickSaveButton();
         profilePage.moveToElementMenu();
         profilePage.waitAppMenu();
         profilePage.clickButtonSetting();
-
         Assert.assertEquals(profilePage.getTextMonth(), EXPECTED_RESULT_MONTH);
         Assert.assertEquals(profilePage.getTextDate(), EXPECTED_RESULT_DATE);
         Assert.assertEquals(profilePage.getTextYear(), EXPECTED_RESULT_YEAR);
@@ -83,18 +102,17 @@ public class ProfileTest extends BaseTest {
         Assert.assertTrue(profilePage.isSelectedCheckBoxSex());
     }
 
-    @Test(description = "Check to create my custom exercise")
+    @Test(description = "Check to create my custom exercise", priority = 2)
     public void validateCreatingMyExercisesTest() {
         profilePage.clickOnMyCustomExercises();
         profilePage.sendTextExerciseName(EXERCISE_NAME_INPUT);
         profilePage.selectParametersForExercises(MUSCLE_GROUP_INPUT, RECORD_TYPE_INPUT);
         profilePage.clickOnCreateExercise();
-
         Assert.assertEquals(profilePage.getTextMuscleGroup(), EXPECTED_RESULT_MUSCLE);
         Assert.assertEquals(profilePage.getTextNameExercise(), EXPECTED_RESULT_NAME_EXERCISE);
     }
 
-    @Test(description = "Check to create my routines")
+    @Test(description = "Check to create my routines", priority = 2)
     public void validateCreatingRoutineTest() {
         profilePage.clickOnMyRoutines();
         profilePage.clickOnCreateNewRoutine();
@@ -104,14 +122,13 @@ public class ProfileTest extends BaseTest {
         profilePage.sendTextTags(TAG_INPUT);
         profilePage.clickOnSaveButton();
         profilePage.clickFirstRoutine();
-
         Assert.assertEquals(profilePage.getTextFrequency(), EXPECTED_RESULT_FREQUENCY);
         Assert.assertEquals(profilePage.getTextType(), EXPECTED_RESULT_TYPE);
         Assert.assertEquals(profilePage.getTextName(), EXPECTED_RESULT_NAME);
         Assert.assertEquals(profilePage.getTextDescription(), EXPECTED_DESCRIPTION);
     }
 
-    @Test(description = "Check to create my routines")
+    @Test(description = "Check to create my routines", priority = 2)
     public void validateAddingFriendTest() {
         profilePage.moveToElementMenu();
         profilePage.clickFriendsButton();
@@ -121,40 +138,90 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextFriendName(), EXPECTED_FRIEND_NAME);
         //profilePage.clickAddButton();
         profilePage.clickFriendName();
-
         Assert.assertEquals(profilePage.getTextFriendRequest(), EXPECTED_REQUEST_SENT);
     }
 
-    @Test(description = "")
+    @Test(priority = 2)
     public void validateSavingNoteTest() {
         profilePage.clickAppMenu();
         profilePage.sentTextStatus(STATUS_INPUT);
         profilePage.clickPostButton();
-
         Assert.assertEquals(profilePage.getTextCurrentStatus(), EXPECTED_STATUS);
     }
 
-    @Test(description = "")
+    @Test(priority = 2)
     public void validateNoteSavingTest() {
         profilePage.clickAppMenu();
         profilePage.clickLogWorkoutButton();
         profilePage.clickButtonAddNote();
         profilePage.sentTextNote(NOTE_INPUT);
         profilePage.clickButtonCreateNote();
-
         Assert.assertEquals(profilePage.getTextNote(), EXPECTED_NOTE);
     }
 
-    @Test(description = "")
+    @Test(priority = 2)
     public void validateBodyStatusSavingTest() {
         profilePage.clickAppMenu();
         profilePage.clickLogWorkoutButton();
         profilePage.clickButtonAddBodyStatus();
         profilePage.sendValueBodyParameters(WEIGHT_INPUT, HEIGHT_INPUT);
         profilePage.clickButtonDoneAndWaitUntilPopupDisappear();
-
         Assert.assertEquals(profilePage.getTextWeight(), EXPECTED_WEIGHT);
         Assert.assertEquals(profilePage.getTextHeight(), EXPECTED_HEIGHT);
     }
 
+    @Test(priority = 2)
+    public void validateEditingRoutineTest() {
+        profilePage.clickOnMyRoutines();
+        profilePage.clickOnCreateNewRoutine();
+        profilePage.sendTextRoutineName(TEXT_ROUTINE_NAME_INPUT_EDIT);
+        profilePage.selectParametersForRoutine(FREQUENCY_PARAMETER_INPUT, DATE_TYPE_PARAMETER_INPUT, TYPE_PARAMETER_INPUT, DIFFICULTY_PARAMETER_INPUT);
+        profilePage.sendTextDescription(DESCRIPTION_INPUT_EDIT);
+        profilePage.sendTextTags(TAG_INPUT_EDIT);
+        profilePage.clickOnSaveButton();
+        profilePage.clickRoutineSecond();
+        profilePage.clickEditRoutine();
+        profilePage.selectParametersForRoutine(FREQUENCY_PARAMETER, DATE_TYPE_PARAMETER, TYPE_PARAMETER, DIFFICULTY_PARAMETER_INPUT);
+        profilePage.clickOnSaveButton();
+        profilePage.clickRoutineSecond();
+        Assert.assertEquals(profilePage.getTextEditFrequency(), EXPECTED_RESULT_EDIT_FREQUENCY);
+        Assert.assertEquals(profilePage.getTextEditType(), EXPECTED_RESULT_EDIT_TYPE);
+    }
+
+    @Test(priority = 1)
+    public void validateRemovalRoutineTest() {
+        profilePage.clickOnMyRoutines();
+        profilePage.clickOnCreateNewRoutine();
+        profilePage.sendTextRoutineName(TEXT_ROUTINE_NAME_INPUT_REMOVAL);
+        profilePage.selectParametersForRoutine(FREQUENCY_PARAMETER_INPUT, DATE_TYPE_PARAMETER_INPUT, TYPE_PARAMETER_INPUT, DIFFICULTY_PARAMETER_INPUT);
+        profilePage.sendTextDescription(DESCRIPTION_INPUT_REMOVAL);
+        profilePage.sendTextTags(TAG_INPUT_REMOVAL);
+        profilePage.clickOnSaveButton();
+        profilePage.clickDeleteButton();
+        Assert.assertEquals(profilePage.getTextSuccessfulRemoval(), "You have not setup a default routine yet. Please create one or set one as default routine");
+    }
+
+    @Test(priority = 2)
+    public void validateEditingMyExercisesTest() {
+        profilePage.clickOnMyCustomExercises();
+        profilePage.sendTextExerciseName(EXERCISE_NAME_EDIT_INPUT);
+        profilePage.selectParametersForExercises(MUSCLE_GROUP_INPUT_EDIT, RECORD_TYPE_INPUT_EDIT);
+        profilePage.clickOnCreateExercise();
+        profilePage.clickEditButton();
+        profilePage.cleanFieldName();
+        profilePage.sendTextExerciseName(EXERCISE_NAME_EDIT_INPUT_WALK);
+        profilePage.selectParametersForExercises(MUSCLE_GROUP_INPUT_EDIT_ABS, RECORD_TYPE_INPUT_EDIT_REPS_ONLY);
+        profilePage.clickOnCreateExercise();
+        Assert.assertEquals(profilePage.getTextCustomExercises(), EXPECTED_NAME_EDIT);
+    }
+
+    @Test(priority = 2)
+    public void validateDeletingMyExercisesTest() {
+        profilePage.clickOnMyCustomExercises();
+        profilePage.sendTextExerciseName(EXERCISE_NAME_DELETE_INPUT);
+        profilePage.selectParametersForExercises(MUSCLE_GROUP_INPUT_EDIT, RECORD_TYPE_INPUT_EDIT);
+        profilePage.clickOnCreateExercise();
+        profilePage.clickDeleteButtonCustomExercises();
+        Assert.assertEquals(profilePage.getTextDeleteCustomExercises(), EXPECTED_NAME_DELETE);
+    }
 }
