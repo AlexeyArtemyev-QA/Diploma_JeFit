@@ -9,11 +9,11 @@ public class DriverFactory {
 
     private static WebDriver driver;
 
-    public static WebDriver getDriver (String browserName){
-        if (browserName.equalsIgnoreCase("chrome")){
+    public static WebDriver getDriver(String browserName) {
+        if (browserName.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
-        } else if (browserName.equalsIgnoreCase("edge")){
+        } else if (browserName.equalsIgnoreCase("edge")) {
             WebDriverManager.edgedriver().setup();
             driver = new EdgeDriver();
         }

@@ -12,7 +12,7 @@ public class ExercisesPage extends BasePage {
 
     private static final By USERNAME_INPUT = By.cssSelector("[id='navbar_username']");
     private static final By PASSWORD_INPUT = By.id("navbar_password");
-    private static final By CHECKBOX_INPUT = By.id("cb_cookieuser_navbar");
+    private static final By COOKIE_CHECKBOX = By.id("cb_cookieuser_navbar");
     private static final By LOGIN_BUTTON = By.cssSelector(".loginblueButton1");
     private static final By APP_MENU = By.cssSelector("#my-jefit-app-menu");
 
@@ -106,7 +106,7 @@ public class ExercisesPage extends BasePage {
         driver.findElement(MY_JEFIT).click();
     }
 
-    public String getTextMessage(){
+    public String getTextMessage() {
         log.info("Get text message");
         WebElement element = driver.findElement(MESSAGE);
         scrollToElement(element);
@@ -118,7 +118,7 @@ public class ExercisesPage extends BasePage {
         driver.findElement(MY_ROUTINES).click();
     }
 
-    public String getTextWorkout(){
+    public String getTextWorkout() {
         log.info("Get text message workout");
         WebElement element = driver.findElement(NAME_WORKOUT);
         scrollToElement(element);
@@ -290,9 +290,9 @@ public class ExercisesPage extends BasePage {
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
     }
 
-    public boolean checkBoxIsSelected() {
+    public boolean isCookieCheckboxSelected() {
         log.info("Check that check-box selected");
-        return driver.findElement(CHECKBOX_INPUT).isSelected();
+        return driver.findElement(COOKIE_CHECKBOX).isSelected();
     }
 
     public void selectLogin() {

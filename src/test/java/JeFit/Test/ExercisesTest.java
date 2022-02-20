@@ -35,7 +35,7 @@ public class ExercisesTest extends BaseTest {
         driver.get(URL_LOGIN);
         exercisesPage.enterUserName(USERNAME);
         exercisesPage.enterPassword(PASSWORD);
-        exercisesPage.checkBoxIsSelected();
+        exercisesPage.isCookieCheckboxSelected();
         exercisesPage.selectLogin();
         driver.get(URL_EXERCISES);
     }

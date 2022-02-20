@@ -66,6 +66,7 @@ public class ProfilePage extends BasePage {
     private static final By NOTE = By.xpath("//div[@class='fixed-note']//descendant::div");
 
     private static final By ADD_BUTTON_BODY_STATUS = By.xpath("//span[@id='edit-body-stats']");
+    private static final By EDIT_BODY_STATUS_POPUP = By.id("add-body-stats-div");
     private static final By WEIGHT = By.xpath("//input[@name='weight']");
     private static final By HEIGHT = By.xpath("//input[@name='height']");
     private static final By DONE_BUTTON = By.xpath("//div[contains(text(),'Done')]");
@@ -190,18 +191,18 @@ public class ProfilePage extends BasePage {
         driver.findElement(MY_CUSTOM_EXERCISES).click();
     }
 
-    public void sendTextExerciseName(String EXERCISE_NAME_INPUT) {
+    public void sendTextExerciseName(String exerciseNameInputKeys) {
         log.info("Send name exercise");
-        driver.findElement(EXERCISE_NAME).sendKeys(EXERCISE_NAME_INPUT);
+        driver.findElement(EXERCISE_NAME).sendKeys(exerciseNameInputKeys);
     }
 
-    public void selectParametersForExercises(String MUSCLE_GROUP_INPUT, String RECORD_TYPE_INPUT) {
+    public void selectParametersForExercises(String muscleGroupInputText, String recordTypeInputText) {
         log.info("Select Muscle group");
         Select selectMuscleGroup = new Select(driver.findElement(MUSCLE_GROUP));
-        selectMuscleGroup.selectByVisibleText(MUSCLE_GROUP_INPUT);
+        selectMuscleGroup.selectByVisibleText(muscleGroupInputText);
         log.info("Select Record type");
         Select selectRecordType = new Select(driver.findElement(RECORD_TYPE));
-        selectRecordType.selectByVisibleText(RECORD_TYPE_INPUT);
+        selectRecordType.selectByVisibleText(recordTypeInputText);
     }
 
     public void clickOnCreateExercise() {
@@ -231,24 +232,24 @@ public class ProfilePage extends BasePage {
         driver.findElement(CREATE_NEW_ROUTINE).click();
     }
 
-    public void sendTextRoutineName(String TEXT_ROUTINE_NAME_INPUT) {
+    public void sendTextRoutineName(String routineNameInputText) {
         log.info("Send text Routine name");
-        driver.findElement(NAME_ROUTINE).sendKeys(TEXT_ROUTINE_NAME_INPUT);
+        driver.findElement(NAME_ROUTINE).sendKeys(routineNameInputText);
     }
 
-    public void selectParametersForRoutine(String FREQUENCY_PARAMETER_INPUT, String DATE_TYPE_PARAMETER_INPUT, String TYPE_PARAMETER_INPUT, String DIFFICULTY_PARAMETER_INPUT) {
+    public void selectParametersForRoutine(String frequencyInputParameter, String dateTypeInputParameter, String typeInputParameter, String difficultyInputParameter) {
         log.info("Select Frequency");
         Select selectFrequency = new Select(driver.findElement(FREQUENCY_INPUT));
-        selectFrequency.selectByVisibleText(FREQUENCY_PARAMETER_INPUT);
+        selectFrequency.selectByVisibleText(frequencyInputParameter);
         log.info("Select Date Type");
         Select selectDateType = new Select(driver.findElement(DATA_TYPE_INPUT));
-        selectDateType.selectByVisibleText(DATE_TYPE_PARAMETER_INPUT);
+        selectDateType.selectByVisibleText(dateTypeInputParameter);
         log.info("Select Type");
         Select selectType = new Select(driver.findElement(TYPE_INPUT));
-        selectType.selectByVisibleText(TYPE_PARAMETER_INPUT);
+        selectType.selectByVisibleText(typeInputParameter);
         log.info("Select Difficulty");
         Select selectDifficulty = new Select(driver.findElement(DIFFICULTY_INPUT));
-        selectDifficulty.selectByVisibleText(DIFFICULTY_PARAMETER_INPUT);
+        selectDifficulty.selectByVisibleText(difficultyInputParameter);
     }
 
     public void sendTextDescription(String DESCRIPTION_INPUT) {
@@ -301,12 +302,12 @@ public class ProfilePage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(APP_MENU));
     }
 
-    public void clickFriendsButton(){
+    public void clickFriendsButton() {
         log.info("Click button friends");
         driver.findElement(FRIENDS).click();
     }
 
-    public void clickSearchFriendsButton(){
+    public void clickSearchFriendsButton() {
         log.info("Click search friends");
         driver.findElement(SEARCH_FRIENDS_BUTTON).click();
     }
@@ -316,7 +317,7 @@ public class ProfilePage extends BasePage {
         driver.findElement(SEARCH_FRIENDS_FIELD).sendKeys(NAME_FRIEND_INPUT);
     }
 
-    public void clickSearchButton(){
+    public void clickSearchButton() {
         log.info("Click search button");
         driver.findElement(SEARCH_BUTTON).click();
     }
@@ -327,7 +328,7 @@ public class ProfilePage extends BasePage {
         return name.getText();
     }
 
-    public void clickAddButton(){
+    public void clickAddButton() {
         log.info("Click add button");
         driver.findElement(ADD_BUTTON).click();
     }
@@ -343,43 +344,43 @@ public class ProfilePage extends BasePage {
         return request.getText();
     }
 
-    public void clickAppMenu (){
+    public void clickAppMenu() {
         log.info("Click on My JeFit");
         driver.findElement(APP_MENU).click();
     }
 
-    public void sentTextStatus (String STATUS_INPUT){
+    public void sentTextStatus(String STATUS_INPUT) {
         log.info("Send text status");
-         driver.findElement(TEXT_AREA).sendKeys(STATUS_INPUT);
+        driver.findElement(TEXT_AREA).sendKeys(STATUS_INPUT);
     }
 
-    public void clickPostButton (){
+    public void clickPostButton() {
         log.info("Click post button");
         driver.findElement(POST_BUTTON).click();
     }
 
-    public String getTextCurrentStatus(){
+    public String getTextCurrentStatus() {
         log.info("Get text status");
         WebElement text = driver.findElement(TEXT_STATUS);
         return text.getText();
     }
 
-    public void clickLogWorkoutButton (){
+    public void clickLogWorkoutButton() {
         log.info("click Log workout button");
         driver.findElement(LOG_WORKOUT).click();
     }
 
-    public void clickButtonAddNote () {
+    public void clickButtonAddNote() {
         log.info("Click add note");
         driver.findElement(ADD_BUTTON_NOTE).click();
     }
 
-    public void sentTextNote (String NOTE_INPUT){
+    public void sentTextNote(String NOTE_INPUT) {
         log.info("Sent text note");
         driver.findElement(NOTE_FIELD).sendKeys(NOTE_INPUT);
     }
 
-    public void clickButtonCreateNote () {
+    public void clickButtonCreateNote() {
         log.info("Click button create note");
         driver.findElement(CREATE_NOTE_BUTTON).click();
     }
@@ -390,34 +391,37 @@ public class ProfilePage extends BasePage {
         return note.getText();
     }
 
-    public void clickButtonAddBodyStatus () {
+    public void clickButtonAddBodyStatus() {
         log.info("Click button add body status");
         driver.findElement(ADD_BUTTON_BODY_STATUS).click();
     }
 
-    public void sendValueBodyParameters(String WEIGHT_INPUT, String HEIGHT_INPUT){
+    public void sendValueBodyParameters(String WEIGHT_INPUT, String HEIGHT_INPUT) {
         log.info("Send value weight");
         driver.findElement(WEIGHT).sendKeys(WEIGHT_INPUT);
         log.info("Send value height");
         driver.findElement(HEIGHT).sendKeys(HEIGHT_INPUT);
     }
 
-    public void clickButtonDone () {
+    public void clickButtonDone() {
         log.info("Click button Done");
         driver.findElement(DONE_BUTTON).click();
+    }
+
+    public void clickButtonDoneAndWaitUntilPopupDisappear() {
+        clickButtonDone();
+        wainUntilElementWillBePresentOnPageByLocator(EDIT_BODY_STATUS_POPUP, 5);
     }
 
     public String getTextWeight() {
         log.info("Get text weight");
         WebElement note = driver.findElement(WEIGHT_VALUE);
-        wainUntil(note);
-       return note.getText();
+        return note.getText();
     }
 
     public String getTextHeight() {
         log.info("Get text height");
         WebElement note = driver.findElement(HEIGHT_VALUE);
-        wainUntil(note);
         return note.getText();
     }
 

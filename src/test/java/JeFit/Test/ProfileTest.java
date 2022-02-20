@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 @Log4j2
 public class ProfileTest extends BaseTest {
 
-    private final static String URL_PROFILE = "https://www.jefit.com/my-jefit/profile/";
+    private final static String JEFIT_PROFILE_URL = "https://www.jefit.com/my-jefit/profile/";
     private final static String USERNAME = "User_1QA";
     private final static String PASSWORD = "Test_pass0";
     private final static String EXPECTED_RESULT_MONTH = "October";
@@ -51,12 +51,12 @@ public class ProfileTest extends BaseTest {
     @BeforeMethod(alwaysRun = true)
     public void navigateToProfilePage() {
         profilePage = new ProfilePage(driver);
-        driver.get(URL_PROFILE);
+        driver.get(JEFIT_PROFILE_URL);
         profilePage.enterUserName(USERNAME);
         profilePage.enterPassword(PASSWORD);
         profilePage.checkBoxIsSelected();
         profilePage.clickLogin();
-        driver.get(URL_PROFILE);
+        driver.get(JEFIT_PROFILE_URL);
     }
 
     @AfterMethod(alwaysRun = true)
@@ -75,6 +75,7 @@ public class ProfileTest extends BaseTest {
         profilePage.moveToElementMenu();
         profilePage.waitAppMenu();
         profilePage.clickButtonSetting();
+
         Assert.assertEquals(profilePage.getTextMonth(), EXPECTED_RESULT_MONTH);
         Assert.assertEquals(profilePage.getTextDate(), EXPECTED_RESULT_DATE);
         Assert.assertEquals(profilePage.getTextYear(), EXPECTED_RESULT_YEAR);
@@ -83,17 +84,18 @@ public class ProfileTest extends BaseTest {
     }
 
     @Test(description = "Check to create my custom exercise")
-    public void createMyCustomExercises() {
+    public void validateCreatingMyExercisesTest() {
         profilePage.clickOnMyCustomExercises();
         profilePage.sendTextExerciseName(EXERCISE_NAME_INPUT);
         profilePage.selectParametersForExercises(MUSCLE_GROUP_INPUT, RECORD_TYPE_INPUT);
         profilePage.clickOnCreateExercise();
+
         Assert.assertEquals(profilePage.getTextMuscleGroup(), EXPECTED_RESULT_MUSCLE);
         Assert.assertEquals(profilePage.getTextNameExercise(), EXPECTED_RESULT_NAME_EXERCISE);
     }
 
     @Test(description = "Check to create my routines")
-    public void createMyRoutines() {
+    public void validateCreatingRoutineTest() {
         profilePage.clickOnMyRoutines();
         profilePage.clickOnCreateNewRoutine();
         profilePage.sendTextRoutineName(TEXT_ROUTINE_NAME_INPUT);
@@ -102,6 +104,7 @@ public class ProfileTest extends BaseTest {
         profilePage.sendTextTags(TAG_INPUT);
         profilePage.clickOnSaveButton();
         profilePage.clickFirstRoutine();
+
         Assert.assertEquals(profilePage.getTextFrequency(), EXPECTED_RESULT_FREQUENCY);
         Assert.assertEquals(profilePage.getTextType(), EXPECTED_RESULT_TYPE);
         Assert.assertEquals(profilePage.getTextName(), EXPECTED_RESULT_NAME);
@@ -109,7 +112,7 @@ public class ProfileTest extends BaseTest {
     }
 
     @Test(description = "Check to create my routines")
-    public void addFriends() {
+    public void validateAddingFriendTest() {
         profilePage.moveToElementMenu();
         profilePage.clickFriendsButton();
         profilePage.clickSearchFriendsButton();
@@ -118,35 +121,38 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextFriendName(), EXPECTED_FRIEND_NAME);
         //profilePage.clickAddButton();
         profilePage.clickFriendName();
+
         Assert.assertEquals(profilePage.getTextFriendRequest(), EXPECTED_REQUEST_SENT);
     }
 
     @Test(description = "")
-    public void addStatus() {
+    public void validateSavingNoteTest() {
         profilePage.clickAppMenu();
         profilePage.sentTextStatus(STATUS_INPUT);
         profilePage.clickPostButton();
+
         Assert.assertEquals(profilePage.getTextCurrentStatus(), EXPECTED_STATUS);
     }
 
     @Test(description = "")
-    public void addNotes() {
+    public void validateNoteSavingTest() {
         profilePage.clickAppMenu();
         profilePage.clickLogWorkoutButton();
         profilePage.clickButtonAddNote();
         profilePage.sentTextNote(NOTE_INPUT);
         profilePage.clickButtonCreateNote();
+
         Assert.assertEquals(profilePage.getTextNote(), EXPECTED_NOTE);
     }
 
     @Test(description = "")
-    public void addBodyStatus() throws InterruptedException {
+    public void validateBodyStatusSavingTest() {
         profilePage.clickAppMenu();
         profilePage.clickLogWorkoutButton();
         profilePage.clickButtonAddBodyStatus();
         profilePage.sendValueBodyParameters(WEIGHT_INPUT, HEIGHT_INPUT);
-        profilePage.clickButtonDone();
-        //Thread.sleep(5000);
+        profilePage.clickButtonDoneAndWaitUntilPopupDisappear();
+
         Assert.assertEquals(profilePage.getTextWeight(), EXPECTED_WEIGHT);
         Assert.assertEquals(profilePage.getTextHeight(), EXPECTED_HEIGHT);
     }

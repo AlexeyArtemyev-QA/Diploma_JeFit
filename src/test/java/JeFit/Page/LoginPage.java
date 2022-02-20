@@ -9,7 +9,7 @@ public class LoginPage extends BasePage {
 
     private static final By USERNAME_INPUT = By.cssSelector("[id='navbar_username']");
     private static final By PASSWORD_INPUT = By.id("navbar_password");
-    private static final By CHECKBOX_INPUT = By.id("cb_cookieuser_navbar");
+    private static final By COOKIE_CHECKBOX = By.id("cb_cookieuser_navbar");
     private static final By LOGIN_BUTTON = By.cssSelector(".loginblueButton1");
     private static final By ERROR_MESSAGE = By.id("invalidpassworderrormessage");
 
@@ -18,7 +18,7 @@ public class LoginPage extends BasePage {
     }
 
     // Методы
-   public void enterUserName(String userName) {
+    public void enterUserName(String userName) {
         log.info("Enter User Name");
         driver.findElement(USERNAME_INPUT).sendKeys(userName);
     }
@@ -28,7 +28,7 @@ public class LoginPage extends BasePage {
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
     }
 
-   public void selectLoginButton() {
+    public void selectLoginButton() {
         log.info("Click login button");
         driver.findElement(LOGIN_BUTTON).click();
     }
@@ -38,9 +38,9 @@ public class LoginPage extends BasePage {
         return driver.findElement(ERROR_MESSAGE).getText();
     }
 
-    public boolean checkBoxIsSelected() {
+    public boolean isCookieCheckboxSelected() {
         log.info("Check-box Remember me selected");
-        return driver.findElement(CHECKBOX_INPUT).isSelected();
+        return driver.findElement(COOKIE_CHECKBOX).isSelected();
     }
 
     // Проверка что мы на нужной странице
