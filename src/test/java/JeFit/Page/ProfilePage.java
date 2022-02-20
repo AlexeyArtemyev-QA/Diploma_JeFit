@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
 @Log4j2
 public class ProfilePage extends BasePage {
 
@@ -409,13 +410,16 @@ public class ProfilePage extends BasePage {
     public String getTextWeight() {
         log.info("Get text weight");
         WebElement note = driver.findElement(WEIGHT_VALUE);
+        wainUntil(note);
        return note.getText();
     }
 
     public String getTextHeight() {
         log.info("Get text height");
         WebElement note = driver.findElement(HEIGHT_VALUE);
+        wainUntil(note);
         return note.getText();
     }
+
 
 }

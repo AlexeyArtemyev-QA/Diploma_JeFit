@@ -45,8 +45,8 @@ public class ProfileTest extends BaseTest {
     private final static String NAME_FRIEND_INPUT = "Alex 13";
     private final static String STATUS_INPUT = "My first status";
     private final static String NOTE_INPUT = "My first note";
-    private final static String EXPECTED_HEIGHT = "Height : 175  cm";
-    private final static String EXPECTED_WEIGHT = "Weight : 78  kg";
+    private final static String EXPECTED_HEIGHT = "Height : 175  inches";
+    private final static String EXPECTED_WEIGHT = "Weight : 78  lbs";
 
     @BeforeMethod(alwaysRun = true)
     public void navigateToProfilePage() {
@@ -146,7 +146,7 @@ public class ProfileTest extends BaseTest {
         profilePage.clickButtonAddBodyStatus();
         profilePage.sendValueBodyParameters(WEIGHT_INPUT, HEIGHT_INPUT);
         profilePage.clickButtonDone();
-        Thread.sleep(5000);
+        //Thread.sleep(5000);
         Assert.assertEquals(profilePage.getTextWeight(), EXPECTED_WEIGHT);
         Assert.assertEquals(profilePage.getTextHeight(), EXPECTED_HEIGHT);
     }

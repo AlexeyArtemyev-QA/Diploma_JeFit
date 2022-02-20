@@ -27,4 +27,9 @@ public abstract class BasePage {
         ((JavascriptExecutor) driver).executeScript(String.format("scroll(%,%)", x, y));
     }
 
+    protected void wainUntil (WebElement element){
+        WebDriverWait wait = new WebDriverWait(driver,10);
+        wait.until(ExpectedConditions.visibilityOf(element));
+
+    }
 }
