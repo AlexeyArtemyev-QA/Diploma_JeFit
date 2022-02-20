@@ -156,7 +156,7 @@ public class ProfilePage extends BasePage {
         log.info("Move to element Menu");
         Actions actions = new Actions(driver);
         WebElement menuOption = driver.findElement(ProfilePageConstants.APP_MENU);
-        actions.moveToElement(menuOption).perform();
+        actions.moveToElement(menuOption).build().perform();
     }
 
     public void clickOnMyCustomExercises() {

@@ -80,9 +80,10 @@ public class ProfileTest extends BaseTest {
     }
 
     @AfterMethod(alwaysRun = true)
-    @Description("Close browser")
+    @Description("Sign out")
     public void signOut() {
         profilePage.moveToElementMenu();
+        profilePage.waitAppMenu();
         profilePage.clickButtonSignOut();
     }
 
