@@ -215,7 +215,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextCustomExercises(), EXPECTED_NAME_EDIT);
     }
 
-    @Test(priority = 2)
+    @Test(priority = 1)
     public void validateDeletingMyExercisesTest() {
         profilePage.clickOnMyCustomExercises();
         profilePage.sendTextExerciseName(EXERCISE_NAME_DELETE_INPUT);
