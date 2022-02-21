@@ -12,18 +12,10 @@ import org.testng.annotations.Test;
 @Log4j2
 public class ProfileTest extends BaseTest {
 
-    private final static String EXPECTED_RESULT_MONTH = "October";
-    private final static String EXPECTED_RESULT_DATE = "18";
-    private final static String EXPECTED_RESULT_YEAR = "1996";
-    private final static String EXPECTED_RESULT_MUSCLE = "Cardio";
-    private final static String EXPECTED_RESULT_NAME_EXERCISE = "Run";
     private final static String EXPECTED_RESULT_FREQUENCY = "Frequency: 4 days / week";
     private final static String EXPECTED_RESULT_TYPE = "Type: Sport Specific";
-    private final static String EXPECTED_RESULT_NAME = "The first routine";
-    private final static String EXPECTED_DESCRIPTION = "My first description";
-    private final static String EXPECTED_REQUEST_SENT = "Friend Request Sent";
+    private final static String EXPECTED_REQUEST_SENT = " Friend Request Sent ";
     private final static String EXPECTED_STATUS = "Status: My first status";
-    private final static String EXPECTED_NOTE = "Note : My first note";
     private final static String WEIGHT_INPUT = "78";
     private final static String HEIGHT_INPUT = "175";
     private final static String MUSCLE_GROUP_INPUT = "Cardio";
@@ -62,7 +54,6 @@ public class ProfileTest extends BaseTest {
     private final static String NOTE_INPUT = "My first note";
     private final static String EXPECTED_HEIGHT = "Height : 175  cm";
     private final static String EXPECTED_WEIGHT = "Weight : 78  kg";
-    private final static String EXPECTED_NAME_EDIT = "Walk";
     private final static String EXPECTED_NAME_DELETE = "";
     private final static String EXPECTED_TEXT_REMOVAL_ROUTINE = "You have not setup a default routine yet. Please create one or set one as default routine";
 
@@ -95,9 +86,9 @@ public class ProfileTest extends BaseTest {
         profilePage.moveToElementMenu();
         profilePage.waitAppMenu();
         profilePage.clickButtonSetting();
-        Assert.assertEquals(profilePage.getTextMonth(), EXPECTED_RESULT_MONTH);
-        Assert.assertEquals(profilePage.getTextDate(), EXPECTED_RESULT_DATE);
-        Assert.assertEquals(profilePage.getTextYear(), EXPECTED_RESULT_YEAR);
+        Assert.assertEquals(profilePage.getTextMonth(), MONTH_INPUT);
+        Assert.assertEquals(profilePage.getTextDate(), DAY_INPUT);
+        Assert.assertEquals(profilePage.getTextYear(), YEAR_INPUT);
         Assert.assertTrue(profilePage.isSelectedCheckBoxKgCm());
         Assert.assertTrue(profilePage.isSelectedCheckBoxSex());
     }
@@ -108,8 +99,8 @@ public class ProfileTest extends BaseTest {
         profilePage.sendTextExerciseName(EXERCISE_NAME_INPUT);
         profilePage.selectParametersForExercises(MUSCLE_GROUP_INPUT, RECORD_TYPE_INPUT);
         profilePage.clickOnCreateExercise();
-        Assert.assertEquals(profilePage.getTextMuscleGroup(), EXPECTED_RESULT_MUSCLE);
-        Assert.assertEquals(profilePage.getTextNameExercise(), EXPECTED_RESULT_NAME_EXERCISE);
+        Assert.assertEquals(profilePage.getTextMuscleGroup(), MUSCLE_GROUP_INPUT);
+        Assert.assertEquals(profilePage.getTextNameExercise(), EXERCISE_NAME_INPUT);
     }
 
     @Test(groups = {"regression"}, description = "Check to create my routines")
@@ -124,8 +115,8 @@ public class ProfileTest extends BaseTest {
         profilePage.clickFirstRoutine();
         Assert.assertEquals(profilePage.getTextFrequency(), EXPECTED_RESULT_FREQUENCY);
         Assert.assertEquals(profilePage.getTextType(), EXPECTED_RESULT_TYPE);
-        Assert.assertEquals(profilePage.getTextName(), EXPECTED_RESULT_NAME);
-        Assert.assertEquals(profilePage.getTextDescription(), EXPECTED_DESCRIPTION);
+        Assert.assertEquals(profilePage.getTextName(), TEXT_ROUTINE_NAME_INPUT);
+        Assert.assertEquals(profilePage.getTextDescription(), DESCRIPTION_INPUT);
     }
 
     @Test(groups = {"regression"}, description = "Check to create my routines")
@@ -133,10 +124,9 @@ public class ProfileTest extends BaseTest {
         profilePage.moveToElementMenu();
         profilePage.clickFriendsButton();
         profilePage.clickSearchFriendsButton();
-        profilePage.sentTextNameForSearch(NAME_FRIEND_INPUT);
+        profilePage.sentTextNameForSearch();
         profilePage.clickSearchButton();
         profilePage.clickAddButton();
-        profilePage.clickFriendName();
         Assert.assertEquals(profilePage.getTextFriendRequest(), EXPECTED_REQUEST_SENT);
     }
 
@@ -155,7 +145,7 @@ public class ProfileTest extends BaseTest {
         profilePage.clickButtonAddNote();
         profilePage.sentTextNote(NOTE_INPUT);
         profilePage.clickButtonCreateNote();
-        Assert.assertEquals(profilePage.getTextNote(), EXPECTED_NOTE);
+        Assert.assertEquals(profilePage.getTextNote(), NOTE_INPUT);
     }
 
     @Test(groups = {"regression"})
@@ -211,7 +201,7 @@ public class ProfileTest extends BaseTest {
         profilePage.sendTextExerciseName(EXERCISE_NAME_EDIT_INPUT_WALK);
         profilePage.selectParametersForExercises(MUSCLE_GROUP_INPUT_EDIT_ABS, RECORD_TYPE_INPUT_EDIT_REPS_ONLY);
         profilePage.clickOnCreateExercise();
-        Assert.assertEquals(profilePage.getTextCustomExercises(), EXPECTED_NAME_EDIT);
+        Assert.assertEquals(profilePage.getTextCustomExercises(), EXERCISE_NAME_EDIT_INPUT_WALK);
     }
 
     @Test(groups = {"regression"})

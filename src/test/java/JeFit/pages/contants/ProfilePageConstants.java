@@ -34,9 +34,8 @@ public class ProfilePageConstants {
     public static final By SEARCH_FRIENDS_BUTTON = By.xpath("//div[contains(text(),'Search Friends')]");
     public static final By SEARCH_FRIENDS_FIELD = By.xpath("//input[@id='suggestionsinput']");
     public static final By SEARCH_BUTTON = By.xpath("//input[@id='searchFriend']");
-    public static final By FRIEND_NAME = By.xpath("//a[contains(text(),'Alex 1980')]");
     public static final By ADD_BUTTON = By.xpath("//a[contains(text(),'Add')]");
-    public static final By FRIEND_REQUEST_SENT = By.xpath("//div[contains(text(),'Friend Request Sent')]");
+    public static final By FRIEND_REQUEST_SENT = By.xpath("//a[contains(text(),'Friend Request Sent')]");
     public static final By TEXT_AREA = By.xpath("//textarea[@id='statusinputbox']");
     public static final By POST_BUTTON = By.xpath("//input[@value='Post']");
     public static final By TEXT_STATUS = By.xpath("//div[@id='statusText']//descendant::div");

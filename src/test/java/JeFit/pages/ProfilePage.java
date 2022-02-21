@@ -268,7 +268,7 @@ public class ProfilePage extends BasePage {
         driver.findElement(ProfilePageConstants.SEARCH_FRIENDS_BUTTON).click();
     }
 
-    public void sentTextNameForSearch(String NAME_FRIEND_INPUT) {
+    public void sentTextNameForSearch() {
         log.info("Sent text user name for search");
         Faker fakerUserName = new Faker();
         String firstName = fakerUserName.name().firstName();
@@ -280,20 +280,9 @@ public class ProfilePage extends BasePage {
         driver.findElement(ProfilePageConstants.SEARCH_BUTTON).click();
     }
 
-    public String getTextFriendName() {
-        log.info("Get friend name");
-        WebElement name = driver.findElement(ProfilePageConstants.FRIEND_NAME);
-        return name.getText();
-    }
-
     public void clickAddButton() {
         log.info("Click add button");
         driver.findElement(ProfilePageConstants.ADD_BUTTON).click();
-    }
-
-    public void clickFriendName() {
-        log.info("Click friend name");
-        driver.findElement(ProfilePageConstants.FRIEND_NAME).click();
     }
 
     public String getTextFriendRequest() {
