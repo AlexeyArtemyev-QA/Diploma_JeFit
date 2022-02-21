@@ -16,8 +16,10 @@ public abstract class BasePage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
     }
 
-    protected void wainUntilElementWillBePresentOnPageByLocator(By locator, int timeOut) {
+    protected void wainUntilElementWillBeHiddenOnPageByLocator(By locator, int timeOut) {
         new WebDriverWait(driver, timeOut).until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
+
+    public abstract void openPage();
 
 }

@@ -21,6 +21,8 @@ public abstract class BaseTest {
     protected LoginPage loginPage;
     protected ProfilePage profilePage;
     protected ExercisesPage exercisesPage;
+    private final String USERNAME = "User_1QA";
+    private final String PASSWORD = "Test_pass0";
 
     @Parameters({"browser"})
     @BeforeTest(alwaysRun = true)
@@ -41,6 +43,14 @@ public abstract class BaseTest {
     public void tearDown() {
         driver.manage().deleteAllCookies();
         driver.quit();
+    }
+
+    public String getUsername() {
+        return USERNAME;
+    }
+
+    public String getPassword() {
+        return PASSWORD;
     }
 }
 

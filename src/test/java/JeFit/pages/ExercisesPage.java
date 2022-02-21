@@ -3,13 +3,18 @@ package JeFit.pages;
 import JeFit.pages.contants.ExercisesPageConstants;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 
 @Log4j2
 public class ExercisesPage extends BasePage {
+    private final String EXERCISE_PAGE_URL = "https://www.jefit.com/exercises/";
 
     public ExercisesPage(WebDriver driver) {
         super(driver);
+    }
+
+    @Override
+    public void openPage() {
+        driver.get(EXERCISE_PAGE_URL);
     }
 
     public void clickOnWorkoutPlansButton() {

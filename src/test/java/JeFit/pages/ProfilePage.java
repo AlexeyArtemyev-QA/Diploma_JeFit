@@ -2,7 +2,6 @@ package JeFit.pages;
 
 import JeFit.pages.contants.ProfilePageConstants;
 import lombok.extern.log4j.Log4j2;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -12,9 +11,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 @Log4j2
 public class ProfilePage extends BasePage {
+    private final static String PROFILE_PAGE_URL = "https://www.jefit.com/my-jefit/profile/";
 
     public ProfilePage(WebDriver driver) {
         super(driver);
+    }
+
+    @Override
+    public void openPage() {
+        driver.get(PROFILE_PAGE_URL);
     }
 
     // Методы
@@ -362,7 +367,7 @@ public class ProfilePage extends BasePage {
 
     public void clickButtonDoneAndWaitUntilPopupDisappear() {
         clickButtonDone();
-        wainUntilElementWillBePresentOnPageByLocator(ProfilePageConstants.EDIT_BODY_STATUS_POPUP, 5);
+        wainUntilElementWillBeHiddenOnPageByLocator(ProfilePageConstants.EDIT_BODY_STATUS_POPUP, 5);
     }
 
     public String getTextWeight() {

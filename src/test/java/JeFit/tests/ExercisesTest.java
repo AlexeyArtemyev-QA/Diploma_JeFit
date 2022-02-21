@@ -10,32 +10,27 @@ import org.testng.annotations.Test;
 
 public class ExercisesTest extends BaseTest {
 
-    private final static String URL_LOGIN = "https://www.jefit.com/login/";
-    private final static String USERNAME = "User_1QA";
-    private final static String PASSWORD = "Test_pass0";
-    private static final String URL_EXERCISES = "https://www.jefit.com/exercises/";
-    private static final int EXERCISE_RESULT_ARRAY = 10;
-    private static final String EXERCISE_RESULT_TEXT = "No result found!";
-    private final static String GLUTES = "Glutes Exercise Database";
-    private final static String BICEPS = "Biceps Exercise Database";
-    private final static String SHOULDERS = "Shoulders Exercise Database";
-    private final static String TRICEPS = "Triceps Exercise Database";
-    private final static String CHEST = "Chest Exercise Database";
-    private final static String ABS = "Abs Exercise Database";
-    private final static String BACK = "Back Exercise Database";
-    private final static String LOWER_LEGS_RESULT = "Lower-Legs Exercise Database";
-    private final static String EXPECTED_MESSAGE = "This routine has been downloaded to your account. Please click the sync button from your device.";
-    private final static String EXPECTED_NAME_WORKOUT = "Posterior Chain Workout";
-
-    private final static String TEXT_EXERCISES_INPUT = "Posterior Chain Workout";
+    private final String URL_EXERCISES = "https://www.jefit.com/exercises/";
+    private final int EXERCISE_RESULT_ARRAY = 10;
+    private final String EXERCISE_RESULT_TEXT = "No result found!";
+    private final String GLUTES = "Glutes Exercise Database";
+    private final String BICEPS = "Biceps Exercise Database";
+    private final String SHOULDERS = "Shoulders Exercise Database";
+    private final String TRICEPS = "Triceps Exercise Database";
+    private final String CHEST = "Chest Exercise Database";
+    private final String ABS = "Abs Exercise Database";
+    private final String BACK = "Back Exercise Database";
+    private final String LOWER_LEGS_RESULT = "Lower-Legs Exercise Database";
+    private final String EXPECTED_MESSAGE = "This routine has been downloaded to your account. Please click the sync button from your device.";
+    private final String WORKOUT_NAME = "Posterior Chain Workout";
 
     @BeforeMethod(alwaysRun = true)
     public void navigateToLoginPage() {
         exercisesPage = new ExercisesPage(driver);
         loginPage = new LoginPage(driver);
-        driver.get(URL_LOGIN);
-        loginPage.enterUserName(USERNAME);
-        loginPage.enterPassword(PASSWORD);
+        exercisesPage.openPage();
+        loginPage.enterUserName(getUsername());
+        loginPage.enterPassword(getPassword());
         loginPage.selectLoginButton();
         driver.get(URL_EXERCISES);
     }
@@ -131,14 +126,14 @@ public class ExercisesTest extends BaseTest {
     @Test
     public void addingExerciseToTheProfileTest() {
         exercisesPage.clickOnWorkoutPlansButton();
-        exercisesPage.sentTextExercises(TEXT_EXERCISES_INPUT);
+        exercisesPage.sentTextExercises(WORKOUT_NAME);
         exercisesPage.clickSearchExercisesButton();
         exercisesPage.clickOnExercises();
         exercisesPage.clickOnSaveOnMyWorkouts();
         Assert.assertEquals(exercisesPage.getTextMessage(), EXPECTED_MESSAGE);
         exercisesPage.clickOnMyJefit();
         exercisesPage.clickOnMyRoutines();
-        Assert.assertEquals(exercisesPage.getTextWorkout(), EXPECTED_NAME_WORKOUT);
+        Assert.assertEquals(exercisesPage.getTextWorkout(), WORKOUT_NAME);
     }
 
 

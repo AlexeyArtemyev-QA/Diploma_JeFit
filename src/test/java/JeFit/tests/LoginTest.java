@@ -14,14 +14,13 @@ public class LoginTest extends BaseTest {
     private final static String USERNAME = "User_1QA";
     private final static String PASSWORD = "Test_pass0";
     private final static String ERROR_MESSAGE_TEXT = "Invalid username/email or password";
-    private final static String URL_LOGIN = "https://www.jefit.com/login/";
     private final static String USERNAME_DEFAULT = "Test_123";
     private final static String PASSWORD_DEFAULT = "Password_123";
 
     @BeforeTest(alwaysRun = true)
     public void navigateToLoginPage() {
         loginPage = new LoginPage(driver);
-        driver.get(URL_LOGIN);
+        loginPage.openPage();
     }
 
     @Test(groups = {"regression"}, description = "[Positive] Login.", retryAnalyzer = JeFit.tests.Retry.class)
@@ -44,6 +43,7 @@ public class LoginTest extends BaseTest {
         String actualErrorMessageText = loginPage.getErrorMessageText();
         Assert.assertEquals(actualErrorMessageText, expectedErrorMessageText);
     }
+
     @DataProvider(name = "Negative Login Tests")
     public Object[][] getNegativeLoginData() {
         return new Object[][]{

@@ -3,13 +3,8 @@ package JeFit.pages.contants;
 import org.openqa.selenium.By;
 
 public class ProfilePageConstants {
-    public static final By USERNAME_INPUT = By.cssSelector("[id='navbar_username']");
-    public static final By PASSWORD_INPUT = By.id("navbar_password");
-    public static final By CHECKBOX_INPUT = By.id("cb_cookieuser_navbar");
-    public static final By LOGIN_BUTTON = By.cssSelector(".loginblueButton1");
     public static final By CHECKBOX_KG_CM_INPUT = By.xpath("//input[@onclick='changeUnits(1)']");
     public static final By CHECKBOX_GENDER_MAN_INPUT = By.cssSelector("input[value='M']");
-    public static final By BUTTON_SIGN_OUT = By.xpath("//a[text()='Sign out']");
     public static final By SELECT_BUTTON_SETTINGS = By.xpath("//a[text()='Settings']");
     public static final By GET_MONTH = By.cssSelector("#monthSelect > option[selected]");
     public static final By GET_DATE = By.cssSelector("#dateSelect > option[selected]");

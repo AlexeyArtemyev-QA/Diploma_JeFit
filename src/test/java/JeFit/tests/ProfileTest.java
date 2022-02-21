@@ -12,9 +12,6 @@ import org.testng.annotations.Test;
 @Log4j2
 public class ProfileTest extends BaseTest {
 
-    private final static String JEFIT_PROFILE_URL = "https://www.jefit.com/my-jefit/profile/";
-    private final static String USERNAME = "User_1QA";
-    private final static String PASSWORD = "Test_pass0";
     private final static String EXPECTED_RESULT_MONTH = "October";
     private final static String EXPECTED_RESULT_DATE = "18";
     private final static String EXPECTED_RESULT_YEAR = "1996";
@@ -74,11 +71,10 @@ public class ProfileTest extends BaseTest {
     public void navigateToProfilePage() {
         profilePage = new ProfilePage(driver);
         loginPage = new LoginPage(driver);
-        driver.get(JEFIT_PROFILE_URL);
-        loginPage.enterUserName(USERNAME);
-        loginPage.enterPassword(PASSWORD);
+        profilePage.openPage();
+        loginPage.enterUserName(getUsername());
+        loginPage.enterPassword(getPassword());
         loginPage.selectLoginButton();
-        driver.get(JEFIT_PROFILE_URL);
     }
 
     @AfterMethod(alwaysRun = true)
@@ -105,7 +101,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertTrue(profilePage.isSelectedCheckBoxSex());
     }
 
-    @Test(groups = {"regression"}, description = "Check to create my custom exercise", priority = 2)
+    @Test(groups = {"regression"}, description = "Check to create my custom exercise")
     public void validateCreatingMyExercisesTest() {
         profilePage.clickOnMyCustomExercises();
         profilePage.sendTextExerciseName(EXERCISE_NAME_INPUT);
@@ -115,7 +111,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextNameExercise(), EXPECTED_RESULT_NAME_EXERCISE);
     }
 
-    @Test(groups = {"regression"}, description = "Check to create my routines", priority = 2)
+    @Test(groups = {"regression"}, description = "Check to create my routines")
     public void validateCreatingRoutineTest() {
         profilePage.clickOnMyRoutines();
         profilePage.clickOnCreateNewRoutine();
@@ -131,7 +127,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextDescription(), EXPECTED_DESCRIPTION);
     }
 
-    @Test(groups = {"regression"}, description = "Check to create my routines", priority = 2)
+    @Test(groups = {"regression"}, description = "Check to create my routines")
     public void validateAddingFriendTest() {
         profilePage.moveToElementMenu();
         profilePage.clickFriendsButton();
@@ -144,7 +140,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextFriendRequest(), EXPECTED_REQUEST_SENT);
     }
 
-    @Test(groups = {"regression"}, priority = 2)
+    @Test(groups = {"regression"})
     public void validateSavingNoteTest() {
         profilePage.clickAppMenu();
         profilePage.sentTextStatus(STATUS_INPUT);
@@ -152,7 +148,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextCurrentStatus(), EXPECTED_STATUS);
     }
 
-    @Test(groups = {"regression"}, priority = 2)
+    @Test(groups = {"regression"})
     public void validateNoteSavingTest() {
         profilePage.clickAppMenu();
         profilePage.clickLogWorkoutButton();
@@ -162,7 +158,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextNote(), EXPECTED_NOTE);
     }
 
-    @Test(groups = {"regression"}, priority = 2)
+    @Test(groups = {"regression"})
     public void validateBodyStatusSavingTest() {
         profilePage.clickAppMenu();
         profilePage.clickLogWorkoutButton();
@@ -173,7 +169,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextHeight(), EXPECTED_HEIGHT);
     }
 
-    @Test(groups = {"regression"}, priority = 2)
+    @Test(groups = {"regression"})
     public void validateEditingRoutineTest() {
         profilePage.clickOnMyRoutines();
         profilePage.clickOnCreateNewRoutine();
@@ -191,7 +187,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextEditType(), EXPECTED_RESULT_EDIT_TYPE);
     }
 
-    @Test(groups = {"regression"}, priority = 1)
+    @Test(groups = {"regression"})
     public void validateRemovalRoutineTest() {
         profilePage.clickOnMyRoutines();
         profilePage.clickOnCreateNewRoutine();
@@ -204,7 +200,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextSuccessfulRemoval(), EXPECTED_TEXT_REMOVAL_ROUTINE);
     }
 
-    @Test(groups = {"regression"}, priority = 2)
+    @Test(groups = {"regression"})
     public void validateEditingMyExercisesTest() {
         profilePage.clickOnMyCustomExercises();
         profilePage.sendTextExerciseName(EXERCISE_NAME_EDIT_INPUT);
@@ -218,7 +214,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextCustomExercises(), EXPECTED_NAME_EDIT);
     }
 
-    @Test(groups = {"regression"}, priority = 1)
+    @Test(groups = {"regression"})
     public void validateDeletingMyExercisesTest() {
         profilePage.clickOnMyCustomExercises();
         profilePage.sendTextExerciseName(EXERCISE_NAME_DELETE_INPUT);
