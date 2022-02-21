@@ -95,7 +95,7 @@ public class ProfilePage extends BasePage {
         button.click();
     }
 
-    public void selectDateFromMinimumValueInRange(String monthInputText, String dayInputText, String yearInputText) {
+    public void selectDateOfBirth(String monthInputText, String dayInputText, String yearInputText) {
         log.info("Select date");
         Select selectMonth = new Select(driver.findElement(ProfilePageConstants.MONTH_VALUE));
         selectMonth.selectByVisibleText(monthInputText);

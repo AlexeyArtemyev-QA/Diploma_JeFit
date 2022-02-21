@@ -74,7 +74,7 @@ public class ProfileTest extends BaseTest {
     @Test(groups = {"regression"}, description = "Check is profile can be editable with minimum range value", priority = 2)
     public void profilePositiveModifyDataTestVersionOne() {
         profilePage.openPage();
-        profilePage.selectDateFromMinimumValueInRange(MONTH_INPUT, DAY_INPUT, YEAR_INPUT);
+        profilePage.selectDateOfBirth(MONTH_INPUT, DAY_INPUT, YEAR_INPUT);
         profilePage.selectKgCm();
         profilePage.selectGenderMan();
         profilePage.clickSaveButton();
