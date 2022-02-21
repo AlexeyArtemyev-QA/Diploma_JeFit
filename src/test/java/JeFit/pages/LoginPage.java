@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class LoginPage extends BasePage {
 
     private final String LOGIN_PAGE_URL = "https://www.jefit.com/login/";
-    private final By USERNAME_INPUT = By.cssSelector("[id='navbar_username']");
+    private final By USERNAME_INPUT = By.cssSelector("#navbar_username");
     private final By PASSWORD_INPUT = By.id("navbar_password");
     private final By LOGIN_BUTTON = By.cssSelector(".loginblueButton1");
     private final By ERROR_MESSAGE = By.id("invalidpassworderrormessage");
