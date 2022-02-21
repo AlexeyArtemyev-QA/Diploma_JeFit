@@ -1,8 +1,10 @@
 package JeFit.tests;
 
 import JeFit.pages.LoginPage;
+import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -18,6 +20,12 @@ public class LoginTest extends BaseTest {
     @BeforeTest(alwaysRun = true)
     public void initLoginPage() {
         loginPage = new LoginPage(driver);
+    }
+
+    @AfterMethod(alwaysRun = true)
+    @Description("Sign out")
+    public void signOut() {
+        loginPage.logOut();
     }
 
     @Test(groups = {"regression"}, description = "[Positive] Login.", retryAnalyzer = JeFit.tests.Retry.class)
