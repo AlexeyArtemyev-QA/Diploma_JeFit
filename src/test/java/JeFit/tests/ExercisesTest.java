@@ -1,6 +1,7 @@
 package JeFit.tests;
 
 import JeFit.pages.ExercisesPage;
+import JeFit.pages.LoginPage;
 import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -31,19 +32,19 @@ public class ExercisesTest extends BaseTest {
     @BeforeMethod(alwaysRun = true)
     public void navigateToLoginPage() {
         exercisesPage = new ExercisesPage(driver);
+        loginPage = new LoginPage(driver);
         driver.get(URL_LOGIN);
-        exercisesPage.enterUserName(USERNAME);
-        exercisesPage.enterPassword(PASSWORD);
-        exercisesPage.isCookieCheckboxSelected();
-        exercisesPage.selectLogin();
+        loginPage.enterUserName(USERNAME);
+        loginPage.enterPassword(PASSWORD);
+        loginPage.selectLoginButton();
         driver.get(URL_EXERCISES);
     }
 
     @AfterMethod(alwaysRun = true)
     @Description("Close browser")
     public void signOut() {
-        exercisesPage.moveToElementMenu();
-        exercisesPage.clickButtonSignOut();
+        loginPage.moveToElementMenu();
+        loginPage.clickButtonSignOut();
     }
 
     // Exercise Search
@@ -127,7 +128,7 @@ public class ExercisesTest extends BaseTest {
         Assert.assertEquals(exercisesPage.getTextPictureLowerLegs(), LOWER_LEGS_RESULT);
     }
 
-    @Test(description = "")
+    @Test
     public void addingExerciseToTheProfileTest() {
         exercisesPage.clickOnWorkoutPlansButton();
         exercisesPage.sentTextExercises(TEXT_EXERCISES_INPUT);

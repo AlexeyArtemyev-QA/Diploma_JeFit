@@ -1,5 +1,6 @@
 package JeFit.tests;
 
+import JeFit.pages.LoginPage;
 import JeFit.pages.ProfilePage;
 import io.qameta.allure.Description;
 import lombok.extern.log4j.Log4j2;
@@ -63,31 +64,32 @@ public class ProfileTest extends BaseTest {
     private final static String NAME_FRIEND_INPUT = "Alex 1980";
     private final static String STATUS_INPUT = "My first status";
     private final static String NOTE_INPUT = "My first note";
-    private final static String EXPECTED_HEIGHT = "Height : 175  inches";
-    private final static String EXPECTED_WEIGHT = "Weight : 78  lbs";
+    private final static String EXPECTED_HEIGHT = "Height : 175  cm";
+    private final static String EXPECTED_WEIGHT = "Weight : 78  kg";
     private final static String EXPECTED_NAME_EDIT = "Walk";
     private final static String EXPECTED_NAME_DELETE = "";
+    private final static String EXPECTED_TEXT_REMOVAL_ROUTINE = "You have not setup a default routine yet. Please create one or set one as default routine";
 
     @BeforeMethod(alwaysRun = true)
     public void navigateToProfilePage() {
         profilePage = new ProfilePage(driver);
+        loginPage = new LoginPage(driver);
         driver.get(JEFIT_PROFILE_URL);
-        profilePage.enterUserName(USERNAME);
-        profilePage.enterPassword(PASSWORD);
-        profilePage.checkBoxIsSelected();
-        profilePage.clickLogin();
+        loginPage.enterUserName(USERNAME);
+        loginPage.enterPassword(PASSWORD);
+        loginPage.selectLoginButton();
         driver.get(JEFIT_PROFILE_URL);
     }
 
     @AfterMethod(alwaysRun = true)
     @Description("Sign out")
     public void signOut() {
-        profilePage.moveToElementMenu();
-        profilePage.waitAppMenu();
-        profilePage.clickButtonSignOut();
+        loginPage.moveToElementMenu();
+        loginPage.waitAppMenu();
+        loginPage.clickButtonSignOut();
     }
 
-    @Test(description = "Check is profile can be editable with minimum range value", priority = 2)
+    @Test(groups = {"regression"}, description = "Check is profile can be editable with minimum range value", priority = 2)
     public void profilePositiveModifyDataTestVersionOne() {
         profilePage.selectDateFromMinimumValueInRange(MONTH_INPUT, DAY_INPUT, YEAR_INPUT);
         profilePage.selectKgCm();
@@ -103,7 +105,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertTrue(profilePage.isSelectedCheckBoxSex());
     }
 
-    @Test(description = "Check to create my custom exercise", priority = 2)
+    @Test(groups = {"regression"}, description = "Check to create my custom exercise", priority = 2)
     public void validateCreatingMyExercisesTest() {
         profilePage.clickOnMyCustomExercises();
         profilePage.sendTextExerciseName(EXERCISE_NAME_INPUT);
@@ -113,7 +115,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextNameExercise(), EXPECTED_RESULT_NAME_EXERCISE);
     }
 
-    @Test(description = "Check to create my routines", priority = 2)
+    @Test(groups = {"regression"}, description = "Check to create my routines", priority = 2)
     public void validateCreatingRoutineTest() {
         profilePage.clickOnMyRoutines();
         profilePage.clickOnCreateNewRoutine();
@@ -129,7 +131,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextDescription(), EXPECTED_DESCRIPTION);
     }
 
-    @Test(description = "Check to create my routines", priority = 2)
+    @Test(groups = {"regression"}, description = "Check to create my routines", priority = 2)
     public void validateAddingFriendTest() {
         profilePage.moveToElementMenu();
         profilePage.clickFriendsButton();
@@ -142,7 +144,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextFriendRequest(), EXPECTED_REQUEST_SENT);
     }
 
-    @Test(priority = 2)
+    @Test(groups = {"regression"}, priority = 2)
     public void validateSavingNoteTest() {
         profilePage.clickAppMenu();
         profilePage.sentTextStatus(STATUS_INPUT);
@@ -150,7 +152,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextCurrentStatus(), EXPECTED_STATUS);
     }
 
-    @Test(priority = 2)
+    @Test(groups = {"regression"}, priority = 2)
     public void validateNoteSavingTest() {
         profilePage.clickAppMenu();
         profilePage.clickLogWorkoutButton();
@@ -160,7 +162,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextNote(), EXPECTED_NOTE);
     }
 
-    @Test(priority = 2)
+    @Test(groups = {"regression"}, priority = 2)
     public void validateBodyStatusSavingTest() {
         profilePage.clickAppMenu();
         profilePage.clickLogWorkoutButton();
@@ -171,7 +173,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextHeight(), EXPECTED_HEIGHT);
     }
 
-    @Test(priority = 2)
+    @Test(groups = {"regression"}, priority = 2)
     public void validateEditingRoutineTest() {
         profilePage.clickOnMyRoutines();
         profilePage.clickOnCreateNewRoutine();
@@ -189,7 +191,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextEditType(), EXPECTED_RESULT_EDIT_TYPE);
     }
 
-    @Test(priority = 1)
+    @Test(groups = {"regression"}, priority = 1)
     public void validateRemovalRoutineTest() {
         profilePage.clickOnMyRoutines();
         profilePage.clickOnCreateNewRoutine();
@@ -199,10 +201,10 @@ public class ProfileTest extends BaseTest {
         profilePage.sendTextTags(TAG_INPUT_REMOVAL);
         profilePage.clickOnSaveButton();
         profilePage.clickDeleteButton();
-        Assert.assertEquals(profilePage.getTextSuccessfulRemoval(), "You have not setup a default routine yet. Please create one or set one as default routine");
+        Assert.assertEquals(profilePage.getTextSuccessfulRemoval(), EXPECTED_TEXT_REMOVAL_ROUTINE);
     }
 
-    @Test(priority = 2)
+    @Test(groups = {"regression"}, priority = 2)
     public void validateEditingMyExercisesTest() {
         profilePage.clickOnMyCustomExercises();
         profilePage.sendTextExerciseName(EXERCISE_NAME_EDIT_INPUT);
@@ -216,7 +218,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextCustomExercises(), EXPECTED_NAME_EDIT);
     }
 
-    @Test(priority = 1)
+    @Test(groups = {"regression"}, priority = 1)
     public void validateDeletingMyExercisesTest() {
         profilePage.clickOnMyCustomExercises();
         profilePage.sendTextExerciseName(EXERCISE_NAME_DELETE_INPUT);

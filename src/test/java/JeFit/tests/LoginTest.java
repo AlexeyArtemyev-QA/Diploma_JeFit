@@ -24,11 +24,10 @@ public class LoginTest extends BaseTest {
         driver.get(URL_LOGIN);
     }
 
-    @Test(description = "[Positive] Login.", retryAnalyzer = JeFit.tests.Retry.class)
+    @Test(groups = {"regression"}, description = "[Positive] Login.", retryAnalyzer = JeFit.tests.Retry.class)
     public void validateLoginPositiveCaseTest() {
         loginPage.enterUserName(USERNAME);
         loginPage.enterPassword(PASSWORD);
-        loginPage.isCookieCheckboxSelected();
         loginPage.selectLoginButton();
 
         AllureUtils.attachScreenshot(driver);
@@ -36,19 +35,15 @@ public class LoginTest extends BaseTest {
     }
 
     @Step("Username {username}, password {password}")
-    @Test(description = "[Negative] Login. Negative login tests by using annotation DataProvider", dataProvider = "Negative Login Tests")
+    @Test(groups = {"negative"}, description = "[Negative] Login. Negative login tests by using annotation DataProvider", dataProvider = "Negative Login Tests")
     public void validateLoginNegativeCaseTest(String username, String password, String expectedErrorMessageText) {
         loginPage.enterUserName(username);
         loginPage.enterPassword(password);
-        loginPage.isCookieCheckboxSelected();
         loginPage.selectLoginButton();
-
-        // Скриншот
         AllureUtils.attachScreenshot(driver);
         String actualErrorMessageText = loginPage.getErrorMessageText();
         Assert.assertEquals(actualErrorMessageText, expectedErrorMessageText);
     }
-
     @DataProvider(name = "Negative Login Tests")
     public Object[][] getNegativeLoginData() {
         return new Object[][]{

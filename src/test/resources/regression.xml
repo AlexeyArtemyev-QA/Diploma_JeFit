@@ -3,8 +3,13 @@
 <suite name="Regression" thread-count="3" parallel="tests">
     <test name="Exercises test">
         <parameter name="browser" value="Chrome"></parameter>
+        <groups>
+            <run>
+                <include name="regression"/>
+            </run>
+        </groups>
         <classes>
-            <class name="JeFit.tests.ExercisesTest"/>
+            <class name="JeFit.tests.ProfileTest"></class>
         </classes>
     </test> <!-- tests -->
 </suite>

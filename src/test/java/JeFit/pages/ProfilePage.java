@@ -84,26 +84,6 @@ public class ProfilePage extends BasePage {
         button.click();
     }
 
-    public void enterUserName(String userName) {
-        log.info("Enter User Name");
-        driver.findElement(ProfilePageConstants.USERNAME_INPUT).sendKeys(userName);
-    }
-
-    public void enterPassword(String password) {
-        log.info("Enter password");
-        driver.findElement(ProfilePageConstants.PASSWORD_INPUT).sendKeys(password);
-    }
-
-    public void clickLogin() {
-        log.info("Click on login button");
-        driver.findElement(ProfilePageConstants.LOGIN_BUTTON).click();
-    }
-
-    public boolean checkBoxIsSelected() {
-        log.info("Check that check-box selected");
-        return driver.findElement(ProfilePageConstants.CHECKBOX_INPUT).isSelected();
-    }
-
     public void selectDateFromMinimumValueInRange(String monthInputText, String dayInputText, String yearInputText) {
         log.info("Select date");
         Select selectMonth = new Select(driver.findElement(ProfilePageConstants.MONTH_VALUE));
@@ -112,11 +92,6 @@ public class ProfilePage extends BasePage {
         selectDay.selectByVisibleText(dayInputText);
         Select selectYear = new Select(driver.findElement(ProfilePageConstants.YEAR_VALUE));
         selectYear.selectByVisibleText(yearInputText);
-    }
-
-    public void clickButtonSignOut() {
-        log.info("Click on Sign Out");
-        driver.findElement(ProfilePageConstants.BUTTON_SIGN_OUT).click();
     }
 
     public String getTextMonth() {
@@ -373,8 +348,10 @@ public class ProfilePage extends BasePage {
 
     public void sendValueBodyParameters(String weightInputKeys, String hieghtInputKeys) {
         log.info("Send value weight");
+        driver.findElement(ProfilePageConstants.WEIGHT).clear();
         driver.findElement(ProfilePageConstants.WEIGHT).sendKeys(weightInputKeys);
         log.info("Send value height");
+        driver.findElement(ProfilePageConstants.HEIGHT).clear();
         driver.findElement(ProfilePageConstants.HEIGHT).sendKeys(hieghtInputKeys);
     }
 

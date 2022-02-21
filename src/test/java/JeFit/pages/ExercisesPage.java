@@ -218,36 +218,4 @@ public class ExercisesPage extends BasePage {
         log.info("Considers numbers of elements Stretching");
         return driver.findElements(ExercisesPageConstants.RESULT_STRETCHING).size();
     }
-
-    public void enterUserName(String userName) {
-        log.info("Enter User Name");
-        driver.findElement(ExercisesPageConstants.USERNAME_INPUT).sendKeys(userName);
-    }
-
-    public void enterPassword(String password) {
-        log.info("Enter password");
-        driver.findElement(ExercisesPageConstants.PASSWORD_INPUT).sendKeys(password);
-    }
-
-    public boolean isCookieCheckboxSelected() {
-        log.info("Check that check-box selected");
-        return driver.findElement(ExercisesPageConstants.COOKIE_CHECKBOX).isSelected();
-    }
-
-    public void selectLogin() {
-        log.info("Click on login button");
-        driver.findElement(ExercisesPageConstants.LOGIN_BUTTON).click();
-    }
-
-    public void moveToElementMenu() {
-        log.info("Move to Menu");
-        Actions actions = new Actions(driver);
-        WebElement menuOption = driver.findElement(ExercisesPageConstants.APP_MENU);
-        actions.moveToElement(menuOption).perform();
-    }
-
-    public void clickButtonSignOut() {
-        log.info("Click on login button");
-        driver.findElement(ExercisesPageConstants.BUTTON_SIGN_OUT).click();
-    }
 }

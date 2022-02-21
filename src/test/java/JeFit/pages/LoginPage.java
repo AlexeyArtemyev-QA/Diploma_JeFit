@@ -1,8 +1,14 @@
 package JeFit.pages;
 
+import JeFit.pages.contants.ExercisesPageConstants;
+import JeFit.pages.contants.ProfilePageConstants;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 @Log4j2
 public class LoginPage extends BasePage {
@@ -38,14 +44,26 @@ public class LoginPage extends BasePage {
         return driver.findElement(ERROR_MESSAGE).getText();
     }
 
-    public boolean isCookieCheckboxSelected() {
-        log.info("Check-box Remember me selected");
-        return driver.findElement(COOKIE_CHECKBOX).isSelected();
-    }
-
     // Проверка что мы на нужной странице
     public String atPage() {
         return driver.getCurrentUrl();
     }
 
+    public void moveToElementMenu() {
+        log.info("Move to Menu");
+        Actions actions = new Actions(driver);
+        WebElement menuOption = driver.findElement(ExercisesPageConstants.APP_MENU);
+        actions.moveToElement(menuOption).perform();
+    }
+
+    public void clickButtonSignOut() {
+        log.info("Click on login button");
+        driver.findElement(ExercisesPageConstants.BUTTON_SIGN_OUT).click();
+    }
+
+    public void waitAppMenu() {
+        log.info("Wait app menu");
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(ProfilePageConstants.APP_MENU));
+    }
 }

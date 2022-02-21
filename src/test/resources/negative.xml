@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Negative" thread-count="3" parallel="tests">
+<suite name="negative" thread-count="3" parallel="tests">
     <test name="Login test">
-        <parameter name="browser" value="Chrome"></parameter>
+        <parameter name="browser" value="Chrome"/>
+         <groups>
+           <run>
+              <include name="negative"/>
+           </run>
+        </groups>
         <classes>
-            <class name="JeFit.tests.LoginTest"/>
+            <class name="JeFit.tests.LoginTest"></class>
         </classes>
     </test> <!-- tests -->
 </suite>
