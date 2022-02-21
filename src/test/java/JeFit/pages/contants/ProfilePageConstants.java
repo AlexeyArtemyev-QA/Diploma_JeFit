@@ -40,10 +40,6 @@ public class ProfilePageConstants {
     public static final By POST_BUTTON = By.xpath("//input[@value='Post']");
     public static final By TEXT_STATUS = By.xpath("//div[@id='statusText']//descendant::div");
     public static final By LOG_WORKOUT = By.xpath("//a[@class='btn btn-outline-secondary btn-block']");
-    public static final By ADD_BUTTON_NOTE = By.xpath("//span[@id='add-note']");
-    public static final By NOTE_FIELD = By.xpath("//form[@name='add-note']//descendant::textarea[@name='note']");
-    public static final By CREATE_NOTE_BUTTON = By.xpath("//button[text()='Create Note']");
-    public static final By NOTE = By.xpath("//div[@class='fixed-note']//descendant::div");
     public static final By ADD_BUTTON_BODY_STATUS = By.xpath("//span[@id='edit-body-stats']");
     public static final By EDIT_BODY_STATUS_POPUP = By.id("add-body-stats-div");
     public static final By WEIGHT = By.xpath("//input[@name='weight']");

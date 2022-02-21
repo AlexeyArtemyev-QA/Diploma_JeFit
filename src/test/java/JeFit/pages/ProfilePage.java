@@ -3,6 +3,7 @@ package JeFit.pages;
 import JeFit.pages.contants.ProfilePageConstants;
 import com.github.javafaker.Faker;
 import lombok.extern.log4j.Log4j2;
+import org.apache.commons.lang.RandomStringUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -273,10 +274,8 @@ public class ProfilePage extends BasePage {
         driver.findElement(ProfilePageConstants.SEARCH_FRIENDS_BUTTON).click();
     }
 
-    public void sentTextNameForSearch() {
+    public void sentTextNameForSearch(String firstName) {
         log.info("Sent text user name for search");
-        Faker fakerUserName = new Faker();
-        String firstName = fakerUserName.name().firstName();
         driver.findElement(ProfilePageConstants.SEARCH_FRIENDS_FIELD).sendKeys(firstName);
     }
 
@@ -320,27 +319,6 @@ public class ProfilePage extends BasePage {
     public void clickLogWorkoutButton() {
         log.info("click Log workout button");
         driver.findElement(ProfilePageConstants.LOG_WORKOUT).click();
-    }
-
-    public void clickButtonAddNote() {
-        log.info("Click add note");
-        driver.findElement(ProfilePageConstants.ADD_BUTTON_NOTE).click();
-    }
-
-    public void sentTextNote(String noteInputKeys) {
-        log.info("Sent text note");
-        driver.findElement(ProfilePageConstants.NOTE_FIELD).sendKeys(noteInputKeys);
-    }
-
-    public void clickButtonCreateNote() {
-        log.info("Click button create note");
-        driver.findElement(ProfilePageConstants.CREATE_NOTE_BUTTON).click();
-    }
-
-    public String getTextNote() {
-        log.info("Get text note");
-        WebElement note = driver.findElement(ProfilePageConstants.NOTE);
-        return note.getText();
     }
 
     public void clickButtonAddBodyStatus() {
@@ -394,12 +372,6 @@ public class ProfilePage extends BasePage {
         log.info("Get text after deleting ");
         WebElement space = driver.findElement(ProfilePageConstants.DELETE_CUSTOM_EXERCISE);
         return space.getText();
-    }
-
-    public void waitNote() {
-        log.info("Wait app menu");
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(ProfilePageConstants.NOTE));
     }
 
 }

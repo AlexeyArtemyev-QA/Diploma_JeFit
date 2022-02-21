@@ -2,8 +2,10 @@ package JeFit.tests;
 
 import JeFit.pages.LoginPage;
 import JeFit.pages.ProfilePage;
+import com.github.javafaker.Faker;
 import io.qameta.allure.Description;
 import lombok.extern.log4j.Log4j2;
+import org.apache.commons.lang.RandomStringUtils;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -50,8 +52,6 @@ public class ProfileTest extends BaseTest {
     private final static String DESCRIPTION_INPUT = "My first description";
     private final static String TAG_INPUT = "My first tag";
     private final static String STATUS_INPUT = "My first status";
-    private final static String NOTE_INPUT = "My first note";
-    private final static String EXPECTED_NOTE_INPUT = "Note : My first note";
     private final static String EXPECTED_HEIGHT = "Height : 175  cm";
     private final static String EXPECTED_WEIGHT = "Weight : 78  kg";
     private final static String EXPECTED_NAME_DELETE = "";
@@ -71,9 +71,8 @@ public class ProfileTest extends BaseTest {
         loginPage.logOut();
     }
 
-    @Test(groups = {"regression"}, description = "Check is profile can be editable with minimum range value", priority = 2)
+    @Test(groups = {"regression"}, description = "Check is profile can be editable with minimum range value")
     public void profilePositiveModifyDataTestVersionOne() {
-        profilePage.openPage();
         profilePage.selectDateOfBirth(MONTH_INPUT, DAY_INPUT, YEAR_INPUT);
         profilePage.selectKgCm();
         profilePage.selectGenderMan();
@@ -117,37 +116,28 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextDescription(), DESCRIPTION_INPUT);
     }
 
+    Faker fakerUserName = new Faker();
+    String firstName = fakerUserName.name().firstName();
+
     @Test(groups = {"regression"}, description = "Check to create my routines")
     public void validateAddingFriendTest() {
         profilePage.moveToElementMenu();
         profilePage.clickFriendsButton();
         profilePage.clickSearchFriendsButton();
-        profilePage.sentTextNameForSearch();
+        profilePage.sentTextNameForSearch(firstName);
         profilePage.clickSearchButton();
         profilePage.clickAddButton();
 
         Assert.assertEquals(profilePage.getTextFriendRequest(), EXPECTED_REQUEST_SENT);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void validateSavingNoteTest() {
         profilePage.clickAppMenu();
         profilePage.sentTextStatus(STATUS_INPUT);
         profilePage.clickPostButton();
 
         Assert.assertEquals(profilePage.getTextCurrentStatus(), EXPECTED_STATUS);
-    }
-
-    @Test(groups = {"regression"})
-    public void validateNoteSavingTest() {
-        profilePage.clickAppMenu();
-        profilePage.clickLogWorkoutButton();
-        profilePage.clickButtonAddNote();
-        profilePage.sentTextNote(NOTE_INPUT);
-        profilePage.clickButtonCreateNote();
-        profilePage.waitNote();
-
-        Assert.assertEquals(profilePage.getTextNote(), EXPECTED_NOTE_INPUT);
     }
 
     @Test(groups = {"regression"})
