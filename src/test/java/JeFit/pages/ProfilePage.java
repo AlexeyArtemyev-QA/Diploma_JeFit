@@ -391,4 +391,10 @@ public class ProfilePage extends BasePage {
         return space.getText();
     }
 
+    public void waitNote() {
+        log.info("Wait app menu");
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(ProfilePageConstants.NOTE));
+    }
+
 }

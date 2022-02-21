@@ -49,9 +49,9 @@ public class ProfileTest extends BaseTest {
     private final static String DIFFICULTY_PARAMETER_INPUT = "Intermediate - experience >6 and <24 months";
     private final static String DESCRIPTION_INPUT = "My first description";
     private final static String TAG_INPUT = "My first tag";
-    private final static String NAME_FRIEND_INPUT = "Alex 1980";
     private final static String STATUS_INPUT = "My first status";
     private final static String NOTE_INPUT = "My first note";
+    private final static String EXPECTED_NOTE_INPUT = "Note : My first note";
     private final static String EXPECTED_HEIGHT = "Height : 175  cm";
     private final static String EXPECTED_WEIGHT = "Weight : 78  kg";
     private final static String EXPECTED_NAME_DELETE = "";
@@ -145,7 +145,8 @@ public class ProfileTest extends BaseTest {
         profilePage.clickButtonAddNote();
         profilePage.sentTextNote(NOTE_INPUT);
         profilePage.clickButtonCreateNote();
-        Assert.assertEquals(profilePage.getTextNote(), NOTE_INPUT);
+        profilePage.waitNote();
+        Assert.assertEquals(profilePage.getTextNote(), EXPECTED_NOTE_INPUT);
     }
 
     @Test(groups = {"regression"})
