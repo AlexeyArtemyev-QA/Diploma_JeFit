@@ -11,34 +11,28 @@ import utils.AllureUtils;
 public class LoginTest extends BaseTest {
 
     private final static String MY_JEFIT_URL = "https://www.jefit.com/my-jefit/";
-    private final static String USERNAME = "User_1QA";
-    private final static String PASSWORD = "Test_pass0";
     private final static String ERROR_MESSAGE_TEXT = "Invalid username/email or password";
     private final static String USERNAME_DEFAULT = "Test_123";
     private final static String PASSWORD_DEFAULT = "Password_123";
 
     @BeforeTest(alwaysRun = true)
-    public void navigateToLoginPage() {
+    public void initLoginPage() {
         loginPage = new LoginPage(driver);
-        loginPage.openPage();
     }
 
     @Test(groups = {"regression"}, description = "[Positive] Login.", retryAnalyzer = JeFit.tests.Retry.class)
     public void validateLoginPositiveCaseTest() {
-        loginPage.enterUserName(USERNAME);
-        loginPage.enterPassword(PASSWORD);
-        loginPage.selectLoginButton();
+        loginPage.login(USERNAME, PASSWORD);
 
         AllureUtils.attachScreenshot(driver);
-        Assert.assertEquals(loginPage.atPage(), MY_JEFIT_URL, "ERROR:Positive test was failed");
+        Assert.assertEquals(loginPage.getCurrentPageUrl(), MY_JEFIT_URL, "ERROR:Positive test was failed");
     }
 
     @Step("Username {username}, password {password}")
     @Test(groups = {"negative"}, description = "[Negative] Login. Negative login tests by using annotation DataProvider", dataProvider = "Negative Login Tests")
     public void validateLoginNegativeCaseTest(String username, String password, String expectedErrorMessageText) {
-        loginPage.enterUserName(username);
-        loginPage.enterPassword(password);
-        loginPage.selectLoginButton();
+        loginPage.login(USERNAME, PASSWORD);
+
         AllureUtils.attachScreenshot(driver);
         String actualErrorMessageText = loginPage.getErrorMessageText();
         Assert.assertEquals(actualErrorMessageText, expectedErrorMessageText);

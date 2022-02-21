@@ -1,7 +1,5 @@
 package JeFit.pages;
 
-import JeFit.pages.contants.ExercisesPageConstants;
-import JeFit.pages.contants.ProfilePageConstants;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,6 +16,9 @@ public class LoginPage extends BasePage {
     private final By PASSWORD_INPUT = By.id("navbar_password");
     private final By LOGIN_BUTTON = By.cssSelector(".loginblueButton1");
     private final By ERROR_MESSAGE = By.id("invalidpassworderrormessage");
+    private final By BUTTON_SIGN_OUT = By.xpath("//a[text()='Sign out']");
+    private final By APP_MENU = By.cssSelector("#my-jefit-app-menu");
+
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -29,17 +30,24 @@ public class LoginPage extends BasePage {
     }
 
     // Методы
-    public void enterUserName(String userName) {
+    public void login(String userName, String password) {
+        openPage();
+        enterUserName(userName);
+        enterPassword(password);
+        selectLoginButton();
+    }
+
+    private void enterUserName(String userName) {
         log.info("Enter User Name");
         driver.findElement(USERNAME_INPUT).sendKeys(userName);
     }
 
-    public void enterPassword(String password) {
+    private void enterPassword(String password) {
         log.info("Enter password");
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
     }
 
-    public void selectLoginButton() {
+    private void selectLoginButton() {
         log.info("Click login button");
         driver.findElement(LOGIN_BUTTON).click();
     }
@@ -49,26 +57,38 @@ public class LoginPage extends BasePage {
         return driver.findElement(ERROR_MESSAGE).getText();
     }
 
-    // Проверка что мы на нужной странице
-    public String atPage() {
+    public void logOut() {
+        moveToElementMenu();
+        waitAppMenu();
+        waitSignOutButton();
+        clickButtonSignOut();
+    }
+
+    public String getCurrentPageUrl() {
         return driver.getCurrentUrl();
     }
 
     public void moveToElementMenu() {
         log.info("Move to Menu");
         Actions actions = new Actions(driver);
-        WebElement menuOption = driver.findElement(ExercisesPageConstants.APP_MENU);
+        WebElement menuOption = driver.findElement(APP_MENU);
         actions.moveToElement(menuOption).perform();
     }
 
     public void clickButtonSignOut() {
         log.info("Click on login button");
-        driver.findElement(ExercisesPageConstants.BUTTON_SIGN_OUT).click();
+        driver.findElement(BUTTON_SIGN_OUT).click();
     }
 
     public void waitAppMenu() {
         log.info("Wait app menu");
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(ProfilePageConstants.APP_MENU));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(APP_MENU));
+    }
+
+    public void waitSignOutButton() {
+        log.info("Wait sign out buttom");
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.elementToBeClickable(BUTTON_SIGN_OUT));
     }
 }

@@ -4,9 +4,6 @@ import org.openqa.selenium.By;
 
 public class ExercisesPageConstants {
     public static final By EXERCISE_RESULT = By.id("hor-minimalist_3");
-    public static final By BUTTON_SIGN_OUT = By.xpath("//a[text()='Sign out']");
-
-    public static final By APP_MENU = By.cssSelector("#my-jefit-app-menu");
 
     // ExercisesPage
     // Локаторы Picture

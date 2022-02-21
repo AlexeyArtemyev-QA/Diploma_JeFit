@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
 
 public class ExercisesTest extends BaseTest {
 
-    private final String URL_EXERCISES = "https://www.jefit.com/exercises/";
     private final int EXERCISE_RESULT_ARRAY = 10;
     private final String EXERCISE_RESULT_TEXT = "No result found!";
     private final String GLUTES = "Glutes Exercise Database";
@@ -25,21 +24,17 @@ public class ExercisesTest extends BaseTest {
     private final String WORKOUT_NAME = "Posterior Chain Workout";
 
     @BeforeMethod(alwaysRun = true)
-    public void navigateToLoginPage() {
+    public void loginAndNavigateToExercisePage() {
         exercisesPage = new ExercisesPage(driver);
         loginPage = new LoginPage(driver);
-        loginPage.openPage();
-        loginPage.enterUserName(getUsername());
-        loginPage.enterPassword(getPassword());
-        loginPage.selectLoginButton();
+        loginPage.login(USERNAME, PASSWORD);
         exercisesPage.openPage();
     }
 
     @AfterMethod(alwaysRun = true)
-    @Description("Close browser")
+    @Description("Sign out")
     public void signOut() {
-        loginPage.moveToElementMenu();
-        loginPage.clickButtonSignOut();
+        loginPage.logOut();
     }
 
     // Exercise Search

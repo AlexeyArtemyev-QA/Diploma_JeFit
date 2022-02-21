@@ -3,6 +3,7 @@ package JeFit.pages;
 import JeFit.pages.contants.ProfilePageConstants;
 import com.github.javafaker.Faker;
 import lombok.extern.log4j.Log4j2;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -47,7 +48,11 @@ public class ProfilePage extends BasePage {
     public void clickDeleteButton() {
         log.info("Click button My third routine");
         driver.findElement(ProfilePageConstants.DELETE_BUTTON).click();
-        driver.switchTo().alert().accept();
+    }
+
+    public void clickDeleteButtonAndAcceptConfirmationAlert() {
+        clickDeleteButton();
+        acceptConfirmationAlert();
     }
 
     public String getTextSuccessfulRemoval() {

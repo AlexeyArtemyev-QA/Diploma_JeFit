@@ -58,22 +58,17 @@ public class ProfileTest extends BaseTest {
     private final static String EXPECTED_TEXT_REMOVAL_ROUTINE = "You have not setup a default routine yet. Please create one or set one as default routine";
 
     @BeforeMethod(alwaysRun = true)
-    public void navigateToProfilePage() {
+    public void loginAndNavigateToProfilePage() {
         profilePage = new ProfilePage(driver);
         loginPage = new LoginPage(driver);
-        loginPage.openPage();
-        loginPage.enterUserName(getUsername());
-        loginPage.enterPassword(getPassword());
-        loginPage.selectLoginButton();
+        loginPage.login(USERNAME, PASSWORD);
         profilePage.openPage();
     }
 
     @AfterMethod(alwaysRun = true)
     @Description("Sign out")
     public void signOut() {
-        loginPage.moveToElementMenu();
-        loginPage.waitAppMenu();
-        loginPage.clickButtonSignOut();
+        loginPage.logOut();
     }
 
     @Test(groups = {"regression"}, description = "Check is profile can be editable with minimum range value", priority = 2)
@@ -86,6 +81,7 @@ public class ProfileTest extends BaseTest {
         profilePage.moveToElementMenu();
         profilePage.waitAppMenu();
         profilePage.clickButtonSetting();
+
         Assert.assertEquals(profilePage.getTextMonth(), MONTH_INPUT);
         Assert.assertEquals(profilePage.getTextDate(), DAY_INPUT);
         Assert.assertEquals(profilePage.getTextYear(), YEAR_INPUT);
@@ -99,6 +95,7 @@ public class ProfileTest extends BaseTest {
         profilePage.sendTextExerciseName(EXERCISE_NAME_INPUT);
         profilePage.selectParametersForExercises(MUSCLE_GROUP_INPUT, RECORD_TYPE_INPUT);
         profilePage.clickOnCreateExercise();
+
         Assert.assertEquals(profilePage.getTextMuscleGroup(), MUSCLE_GROUP_INPUT);
         Assert.assertEquals(profilePage.getTextNameExercise(), EXERCISE_NAME_INPUT);
     }
@@ -113,6 +110,7 @@ public class ProfileTest extends BaseTest {
         profilePage.sendTextTags(TAG_INPUT);
         profilePage.clickOnSaveButton();
         profilePage.clickFirstRoutine();
+
         Assert.assertEquals(profilePage.getTextFrequency(), EXPECTED_RESULT_FREQUENCY);
         Assert.assertEquals(profilePage.getTextType(), EXPECTED_RESULT_TYPE);
         Assert.assertEquals(profilePage.getTextName(), TEXT_ROUTINE_NAME_INPUT);
@@ -127,6 +125,7 @@ public class ProfileTest extends BaseTest {
         profilePage.sentTextNameForSearch();
         profilePage.clickSearchButton();
         profilePage.clickAddButton();
+
         Assert.assertEquals(profilePage.getTextFriendRequest(), EXPECTED_REQUEST_SENT);
     }
 
@@ -135,6 +134,7 @@ public class ProfileTest extends BaseTest {
         profilePage.clickAppMenu();
         profilePage.sentTextStatus(STATUS_INPUT);
         profilePage.clickPostButton();
+
         Assert.assertEquals(profilePage.getTextCurrentStatus(), EXPECTED_STATUS);
     }
 
@@ -146,6 +146,7 @@ public class ProfileTest extends BaseTest {
         profilePage.sentTextNote(NOTE_INPUT);
         profilePage.clickButtonCreateNote();
         profilePage.waitNote();
+
         Assert.assertEquals(profilePage.getTextNote(), EXPECTED_NOTE_INPUT);
     }
 
@@ -156,6 +157,7 @@ public class ProfileTest extends BaseTest {
         profilePage.clickButtonAddBodyStatus();
         profilePage.sendValueBodyParameters(WEIGHT_INPUT, HEIGHT_INPUT);
         profilePage.clickButtonDoneAndWaitUntilPopupDisappear();
+
         Assert.assertEquals(profilePage.getTextWeight(), EXPECTED_WEIGHT);
         Assert.assertEquals(profilePage.getTextHeight(), EXPECTED_HEIGHT);
     }
@@ -174,6 +176,7 @@ public class ProfileTest extends BaseTest {
         profilePage.selectParametersForRoutine(FREQUENCY_PARAMETER, DATE_TYPE_PARAMETER, TYPE_PARAMETER, DIFFICULTY_PARAMETER_INPUT);
         profilePage.clickOnSaveButton();
         profilePage.clickRoutineSecond();
+
         Assert.assertEquals(profilePage.getTextEditFrequency(), EXPECTED_RESULT_EDIT_FREQUENCY);
         Assert.assertEquals(profilePage.getTextEditType(), EXPECTED_RESULT_EDIT_TYPE);
     }
@@ -187,7 +190,8 @@ public class ProfileTest extends BaseTest {
         profilePage.sendTextDescription(DESCRIPTION_INPUT_REMOVAL);
         profilePage.sendTextTags(TAG_INPUT_REMOVAL);
         profilePage.clickOnSaveButton();
-        profilePage.clickDeleteButton();
+        profilePage.clickDeleteButtonAndAcceptConfirmationAlert();
+
         Assert.assertEquals(profilePage.getTextSuccessfulRemoval(), EXPECTED_TEXT_REMOVAL_ROUTINE);
     }
 
@@ -202,6 +206,7 @@ public class ProfileTest extends BaseTest {
         profilePage.sendTextExerciseName(EXERCISE_NAME_EDIT_INPUT_WALK);
         profilePage.selectParametersForExercises(MUSCLE_GROUP_INPUT_EDIT_ABS, RECORD_TYPE_INPUT_EDIT_REPS_ONLY);
         profilePage.clickOnCreateExercise();
+
         Assert.assertEquals(profilePage.getTextCustomExercises(), EXERCISE_NAME_EDIT_INPUT_WALK);
     }
 
@@ -212,6 +217,7 @@ public class ProfileTest extends BaseTest {
         profilePage.selectParametersForExercises(MUSCLE_GROUP_INPUT_EDIT, RECORD_TYPE_INPUT_EDIT);
         profilePage.clickOnCreateExercise();
         profilePage.clickDeleteButtonCustomExercises();
+
         Assert.assertEquals(profilePage.getTextDeleteCustomExercises(), EXPECTED_NAME_DELETE);
     }
 }

@@ -20,6 +20,12 @@ public abstract class BasePage {
         new WebDriverWait(driver, timeOut).until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
 
+    protected void acceptConfirmationAlert() {
+        WebDriverWait wait = new WebDriverWait(driver, 15);
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        alert.accept();
+    }
+
     public abstract void openPage();
 
 }
