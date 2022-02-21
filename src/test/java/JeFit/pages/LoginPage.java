@@ -15,7 +15,7 @@ public class LoginPage extends BasePage {
     private final By USERNAME_INPUT = By.cssSelector("#navbar_username");
     private final By PASSWORD_INPUT = By.id("navbar_password");
     private final By LOGIN_BUTTON = By.cssSelector(".loginblueButton1");
-    private final By ERROR_MESSAGE = By.id("invalidpassworderrormessage");
+    private final By ERROR_MESSAGE = By.cssSelector("#invalidpassworderrormessage");
     private final By BUTTON_SIGN_OUT = By.xpath("//a[text()='Sign out']");
     private final By APP_MENU = By.cssSelector("#my-jefit-app-menu");
 

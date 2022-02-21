@@ -1,10 +1,8 @@
 package JeFit.tests;
 
 import JeFit.pages.LoginPage;
-import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -22,12 +20,6 @@ public class LoginTest extends BaseTest {
         loginPage = new LoginPage(driver);
     }
 
-    @AfterMethod(alwaysRun = true)
-    @Description("Sign out")
-    public void signOut() {
-        loginPage.logOut();
-    }
-
     @Test(groups = {"regression"}, description = "[Positive] Login.", retryAnalyzer = JeFit.tests.Retry.class)
     public void validateLoginPositiveCaseTest() {
         loginPage.login(USERNAME, PASSWORD);
@@ -39,7 +31,7 @@ public class LoginTest extends BaseTest {
     @Step("Username {username}, password {password}")
     @Test(groups = {"negative"}, description = "[Negative] Login. Negative login tests by using annotation DataProvider", dataProvider = "Negative Login Tests")
     public void validateLoginNegativeCaseTest(String username, String password, String expectedErrorMessageText) {
-        loginPage.login(USERNAME, PASSWORD);
+        loginPage.login(username, password);
 
         AllureUtils.attachScreenshot(driver);
         String actualErrorMessageText = loginPage.getErrorMessageText();
