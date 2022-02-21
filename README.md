@@ -105,5 +105,6 @@ command result: Tests run: 13, Failures: 0, Errors: 0, Skipped: 0
 
 mvn clean test -DsuiteXmlFile=src/test/resources/regression.xml
 
-command result: Tests run: 12, Failures: 4, Errors: 0, Skipped: 1
+command result: Tests run: 10, Failures: 0, Errors: 0, Skipped: 0
+
 
