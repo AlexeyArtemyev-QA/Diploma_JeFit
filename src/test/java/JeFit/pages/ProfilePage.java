@@ -1,6 +1,7 @@
 package JeFit.pages;
 
 import JeFit.pages.contants.ProfilePageConstants;
+import com.github.javafaker.Faker;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -269,7 +270,9 @@ public class ProfilePage extends BasePage {
 
     public void sentTextNameForSearch(String NAME_FRIEND_INPUT) {
         log.info("Sent text user name for search");
-        driver.findElement(ProfilePageConstants.SEARCH_FRIENDS_FIELD).sendKeys(NAME_FRIEND_INPUT);
+        Faker fakerUserName = new Faker();
+        String firstName = fakerUserName.name().firstName();
+        driver.findElement(ProfilePageConstants.SEARCH_FRIENDS_FIELD).sendKeys(firstName);
     }
 
     public void clickSearchButton() {

@@ -21,7 +21,6 @@ public class ProfileTest extends BaseTest {
     private final static String EXPECTED_RESULT_TYPE = "Type: Sport Specific";
     private final static String EXPECTED_RESULT_NAME = "The first routine";
     private final static String EXPECTED_DESCRIPTION = "My first description";
-    private final static String EXPECTED_FRIEND_NAME = "Alex 1980";
     private final static String EXPECTED_REQUEST_SENT = "Friend Request Sent";
     private final static String EXPECTED_STATUS = "Status: My first status";
     private final static String EXPECTED_NOTE = "Note : My first note";
@@ -71,10 +70,11 @@ public class ProfileTest extends BaseTest {
     public void navigateToProfilePage() {
         profilePage = new ProfilePage(driver);
         loginPage = new LoginPage(driver);
-        profilePage.openPage();
+        loginPage.openPage();
         loginPage.enterUserName(getUsername());
         loginPage.enterPassword(getPassword());
         loginPage.selectLoginButton();
+        profilePage.openPage();
     }
 
     @AfterMethod(alwaysRun = true)
@@ -87,6 +87,7 @@ public class ProfileTest extends BaseTest {
 
     @Test(groups = {"regression"}, description = "Check is profile can be editable with minimum range value", priority = 2)
     public void profilePositiveModifyDataTestVersionOne() {
+        profilePage.openPage();
         profilePage.selectDateFromMinimumValueInRange(MONTH_INPUT, DAY_INPUT, YEAR_INPUT);
         profilePage.selectKgCm();
         profilePage.selectGenderMan();
@@ -134,13 +135,12 @@ public class ProfileTest extends BaseTest {
         profilePage.clickSearchFriendsButton();
         profilePage.sentTextNameForSearch(NAME_FRIEND_INPUT);
         profilePage.clickSearchButton();
-        Assert.assertEquals(profilePage.getTextFriendName(), EXPECTED_FRIEND_NAME);
-        //profilePage.clickAddButton();
+        profilePage.clickAddButton();
         profilePage.clickFriendName();
         Assert.assertEquals(profilePage.getTextFriendRequest(), EXPECTED_REQUEST_SENT);
     }
 
-    @Test(groups = {"regression"})
+    @Test
     public void validateSavingNoteTest() {
         profilePage.clickAppMenu();
         profilePage.sentTextStatus(STATUS_INPUT);

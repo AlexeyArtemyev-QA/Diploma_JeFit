@@ -28,11 +28,11 @@ public class ExercisesTest extends BaseTest {
     public void navigateToLoginPage() {
         exercisesPage = new ExercisesPage(driver);
         loginPage = new LoginPage(driver);
-        exercisesPage.openPage();
+        loginPage.openPage();
         loginPage.enterUserName(getUsername());
         loginPage.enterPassword(getPassword());
         loginPage.selectLoginButton();
-        driver.get(URL_EXERCISES);
+        exercisesPage.openPage();
     }
 
     @AfterMethod(alwaysRun = true)
