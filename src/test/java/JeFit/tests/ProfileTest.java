@@ -116,11 +116,10 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextDescription(), DESCRIPTION_INPUT);
     }
 
-    Faker fakerUserName = new Faker();
-    String firstName = fakerUserName.name().firstName();
-
     @Test(groups = {"regression"}, description = "Check to create my routines")
     public void validateAddingFriendTest() {
+        Faker fakerUserName = new Faker();
+        String firstName = fakerUserName.name().firstName();
         profilePage.moveToElementMenu();
         profilePage.clickFriendsButton();
         profilePage.clickSearchFriendsButton();
