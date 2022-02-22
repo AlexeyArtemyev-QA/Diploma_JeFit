@@ -131,5 +131,4 @@ public class ExercisesTest extends BaseTest {
         Assert.assertEquals(exercisesPage.getTextWorkout(), WORKOUT_NAME);
     }
 
-
 }
