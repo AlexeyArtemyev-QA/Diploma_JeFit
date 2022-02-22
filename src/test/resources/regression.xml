@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression" thread-count="3" parallel="tests">
+    <test name="Exercises test">
+        <parameter name="browser" value="Chrome"></parameter>
+        <groups>
+            <run>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <packages>
+                <package name="JeFit.tests"></package>
+        </packages>
+    </test> <!-- tests -->
+</suite>
