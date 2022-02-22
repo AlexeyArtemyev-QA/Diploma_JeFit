@@ -25,7 +25,7 @@ public abstract class BaseTest {
     protected final String PASSWORD = "Test_pass0";
 
     @Parameters({"browser"})
-    @BeforeTest(alwaysRun = true)
+    @BeforeClass(alwaysRun = true)
     @Description("Open browser")
     public void setUp(ITestContext testContext, @Optional("chrome") String browser) {
         driver = DriverFactory.getDriver(browser);
@@ -38,7 +38,7 @@ public abstract class BaseTest {
         testContext.setAttribute("driver", driver);
     }
 
-    @AfterTest(alwaysRun = true)
+    @AfterClass(alwaysRun = true)
     @Description("Close browser")
     public void tearDown() {
         driver.manage().deleteAllCookies();

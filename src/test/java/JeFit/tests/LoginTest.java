@@ -3,6 +3,7 @@ package JeFit.tests;
 import JeFit.pages.LoginPage;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -15,12 +16,12 @@ public class LoginTest extends BaseTest {
     private final static String USERNAME_DEFAULT = "Test_123";
     private final static String PASSWORD_DEFAULT = "Password_123";
 
-    @BeforeTest(alwaysRun = true)
+    @BeforeClass(alwaysRun = true)
     public void initLoginPage() {
         loginPage = new LoginPage(driver);
     }
 
-    @Test(groups = {"regression"}, description = "[Positive] Login.", retryAnalyzer = JeFit.tests.Retry.class)
+    @Test(groups = {"smoke","regression"}, description = "[Positive] Login.", retryAnalyzer = JeFit.tests.Retry.class)
     public void validateLoginPositiveCaseTest() {
         loginPage.login(USERNAME, PASSWORD);
 

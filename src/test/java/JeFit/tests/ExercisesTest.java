@@ -38,7 +38,7 @@ public class ExercisesTest extends BaseTest {
     }
 
     // Exercise Search
-    @Test(retryAnalyzer = JeFit.tests.Retry.class, description = "Exercise Search with parameters: equipment - body only, type - strength, difficulty - beginner")
+    @Test(groups = {"smoke"}, retryAnalyzer = JeFit.tests.Retry.class, description = "Exercise Search with parameters: equipment - body only, type - strength, difficulty - beginner")
     public void searchExerciseWithParametersBodyOnlyStrengthBeginnerTest() {
         exercisesPage.selectCheckBoxBodyOnly();
         exercisesPage.selectCheckBoxStrength();
@@ -48,7 +48,7 @@ public class ExercisesTest extends BaseTest {
         Assert.assertEquals(exercisesPage.getSizeArrayStrength(), EXERCISE_RESULT_ARRAY);
     }
 
-    @Test(retryAnalyzer = JeFit.tests.Retry.class, description = "Exercise Search with parameters: equipment - all, type - stretching, difficulty - intermediate")
+    @Test(groups = {"regression"}, retryAnalyzer = JeFit.tests.Retry.class, description = "Exercise Search with parameters: equipment - all, type - stretching, difficulty - intermediate")
     public void searchExerciseWithParametersAllStretchingIntermediateTest() {
         exercisesPage.selectCheckBoxAllPage();
         exercisesPage.selectCheckBoxStretching();
@@ -57,7 +57,7 @@ public class ExercisesTest extends BaseTest {
         Assert.assertEquals(exercisesPage.getSizeArrayStretching(), EXERCISE_RESULT_ARRAY);
     }
 
-    @Test(retryAnalyzer = JeFit.tests.Retry.class, description = "Exercise Search with parameters: equipment - machine cardio, type - powerlifting, difficulty - expert")
+    @Test(groups = {"negative"}, retryAnalyzer = JeFit.tests.Retry.class, description = "Exercise Search with parameters: equipment - machine cardio, type - powerlifting, difficulty - expert")
     public void searchExerciseWithParametersMachineCardioPowerliftingExpertTest() {
         exercisesPage.selectCheckBoxMachineCardio();
         exercisesPage.selectCheckBoxPowerlifting();
@@ -66,7 +66,7 @@ public class ExercisesTest extends BaseTest {
         Assert.assertEquals(exercisesPage.getTextResult(), EXERCISE_RESULT_TEXT);
     }
 
-    @Test(retryAnalyzer = JeFit.tests.Retry.class, description = "Exercise Search with parameters: equipment - weight plat, type - olympic, difficulty - expert")
+    @Test(groups = {"negative"}, retryAnalyzer = JeFit.tests.Retry.class, description = "Exercise Search with parameters: equipment - weight plat, type - olympic, difficulty - expert")
     public void searchExerciseWithParametersWeightPlateOlympicExpertTest() {
         exercisesPage.selectCheckBoxWeightPlate();
         exercisesPage.selectCheckBoxOlympic();
@@ -76,49 +76,49 @@ public class ExercisesTest extends BaseTest {
     }
 
     // Exercise Database
-    @Test(description = "Exercise Database. Glutes")
+    @Test(groups = {"smoke"}, description = "Exercise Database. Glutes")
     public void searchDataBaseGlutesTest() {
         String result = exercisesPage.getTextDataBaseGlutes();
         Assert.assertEquals(result, GLUTES);
     }
 
-    @Test(description = "Exercise Database. Biceps")
+    @Test(groups = {"regression"}, description = "Exercise Database. Biceps")
     public void searchDataBaseBicepsTest() {
         Assert.assertEquals(exercisesPage.getTextDataBaseBiceps(), BICEPS);
     }
 
-    @Test(description = "Exercise Database. Shoulders")
+    @Test(groups = {"regression"}, description = "Exercise Database. Shoulders")
     public void searchDataBaseShouldersTest() {
         Assert.assertEquals(exercisesPage.getTextDataBaseShoulders(), SHOULDERS);
     }
 
     // Picture
-    @Test(description = "Picture. Triceps")
+    @Test(groups = {"smoke"}, description = "Picture. Triceps")
     public void searchPictureTricepsTest() {
         Assert.assertEquals(exercisesPage.getTextPictureTriceps(), TRICEPS);
     }
 
-    @Test(description = "Picture. Chest")
+    @Test(groups = {"smoke"}, description = "Picture. Chest")
     public void searchPictureChestTest() {
         Assert.assertEquals(exercisesPage.getTextPictureChest(), CHEST);
     }
 
-    @Test(description = "Picture. Abs")
+    @Test(groups = {"regression"}, description = "Picture. Abs")
     public void searchPictureAbsTest() {
         Assert.assertEquals(exercisesPage.getTextPictureAbs(), ABS);
     }
 
-    @Test(description = "Picture. Back")
+    @Test(groups = {"regression"}, description = "Picture. Back")
     public void searchPictureBackTest() {
         Assert.assertEquals(exercisesPage.getTextPictureBack(), BACK);
     }
 
-    @Test(description = "Picture. Lower-legs")
+    @Test(groups = {"regression"}, description = "Picture. Lower-legs")
     public void searchPictureLowerLegsTest() {
         Assert.assertEquals(exercisesPage.getTextPictureLowerLegs(), LOWER_LEGS_RESULT);
     }
 
-    @Test
+    @Test(groups = {"smoke", "regression"})
     public void addingExerciseToTheProfileTest() {
         exercisesPage.clickOnWorkoutPlansButton();
         exercisesPage.sentTextExercises(WORKOUT_NAME);

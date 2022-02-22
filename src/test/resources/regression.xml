@@ -8,8 +8,8 @@
                 <include name="regression"/>
             </run>
         </groups>
-        <classes>
-            <class name="JeFit.tests.ProfileTest"></class>
-        </classes>
+        <packages>
+                <package name="JeFit.tests"></package>
+        </packages>
     </test> <!-- tests -->
 </suite>

@@ -9,7 +9,9 @@
            </run>
         </groups>
         <classes>
-            <class name="JeFit.tests.LoginTest"></class>
+            <class name="JeFit.tests.LoginTest"/>
+            <class name="JeFit.tests.ProfileTest"/>
+            <class name="JeFit.tests.ExercisesTest"/>
         </classes>
     </test> <!-- tests -->
 </suite>

@@ -3,8 +3,16 @@
 <suite name="Smoke" thread-count="3" parallel="tests">
     <test name="Profile test">
         <parameter name="browser" value="Chrome"></parameter>
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
         <classes>
+            <class name="JeFit.tests.LoginTest"/>
             <class name="JeFit.tests.ProfileTest"/>
+            <class name="JeFit.tests.ExercisesTest"/>
         </classes>
     </test> <!-- tests -->
 </suite>
+

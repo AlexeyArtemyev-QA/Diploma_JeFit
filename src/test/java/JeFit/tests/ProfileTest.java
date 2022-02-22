@@ -71,7 +71,7 @@ public class ProfileTest extends BaseTest {
         loginPage.logOut();
     }
 
-    @Test(groups = {"regression"}, description = "Check is profile can be editable with minimum range value")
+    @Test(groups = {"smoke", "regression"},  description = "Check is profile can be editable with minimum range value")
     public void profilePositiveModifyDataTestVersionOne() {
         profilePage.selectDateOfBirth(MONTH_INPUT, DAY_INPUT, YEAR_INPUT);
         profilePage.selectKgCm();
@@ -88,7 +88,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertTrue(profilePage.isSelectedCheckBoxSex());
     }
 
-    @Test(groups = {"regression"}, description = "Check to create my custom exercise")
+    @Test(groups = {"smoke", "regression"}, description = "Check to create my custom exercise")
     public void validateCreatingMyExercisesTest() {
         profilePage.clickOnMyCustomExercises();
         profilePage.sendTextExerciseName(EXERCISE_NAME_INPUT);
@@ -99,7 +99,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextNameExercise(), EXERCISE_NAME_INPUT);
     }
 
-    @Test(groups = {"regression"}, description = "Check to create my routines")
+    @Test(groups = {"smoke", "regression"}, description = "Check to create my routines")
     public void validateCreatingRoutineTest() {
         profilePage.clickOnMyRoutines();
         profilePage.clickOnCreateNewRoutine();
@@ -131,8 +131,8 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextFriendRequest(), EXPECTED_REQUEST_SENT);
     }
 
-    @Test(alwaysRun = true)
-    public void validateSavingNoteTest() {
+    @Test(groups = {"regression"}, alwaysRun = true)
+    public void validateSavingStatusTest() {
         profilePage.clickAppMenu();
         profilePage.sentTextStatus(STATUS_INPUT);
         profilePage.clickPostButton();
@@ -152,7 +152,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextHeight(), EXPECTED_HEIGHT);
     }
 
-    @Test(groups = {"regression"})
+    @Test(groups = {"smoke", "regression"})
     public void validateEditingRoutineTest() {
         profilePage.clickOnMyRoutines();
         profilePage.clickOnCreateNewRoutine();
@@ -171,7 +171,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextEditType(), EXPECTED_RESULT_EDIT_TYPE);
     }
 
-    @Test(groups = {"regression"})
+    @Test(groups = {"smoke", "regression"})
     public void validateRemovalRoutineTest() {
         profilePage.clickOnMyRoutines();
         profilePage.clickOnCreateNewRoutine();
@@ -185,7 +185,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextSuccessfulRemoval(), EXPECTED_TEXT_REMOVAL_ROUTINE);
     }
 
-    @Test(groups = {"regression"})
+    @Test(groups = {"smoke", "regression"})
     public void validateEditingMyExercisesTest() {
         profilePage.clickOnMyCustomExercises();
         profilePage.sendTextExerciseName(EXERCISE_NAME_EDIT_INPUT);
@@ -200,7 +200,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertEquals(profilePage.getTextCustomExercises(), EXERCISE_NAME_EDIT_INPUT_WALK);
     }
 
-    @Test(groups = {"regression"})
+    @Test(groups = {"smoke", "regression"})
     public void validateDeletingMyExercisesTest() {
         profilePage.clickOnMyCustomExercises();
         profilePage.sendTextExerciseName(EXERCISE_NAME_DELETE_INPUT);
